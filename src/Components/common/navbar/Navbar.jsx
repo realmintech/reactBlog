@@ -20,18 +20,20 @@ export default function Navbar() {
       </header>
 
       <nav>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='./components/pages/about/About'>About</Link>
-        </li>
-        <li>
-          <Link to='./components/pages/blogs/Blogs'>Blogs</Link>
-        </li>
-        <li>
-          <Link to='./components/pages/contact/Contact'>Contact</Link>
-        </li>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='./components/pages/about/About'>About</Link>
+          </li>
+          <li>
+            <Link to='./components/pages/blogs/Blogs'>Blogs</Link>
+          </li>
+          <li>
+            <Link to='./components/pages/contact/Contact'>Contact</Link>
+          </li>
+        </ul>
       </nav> 
     </>
   );

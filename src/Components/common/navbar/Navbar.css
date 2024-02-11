@@ -1,24 +1,24 @@
 nav {
     text-align: center;
-    display: flex;
     background-color: white;
     height: 80px;
-    display: flex;
     position: sticky;
-    text-align: center;
-    align-items: center;
+    justify-content: space-evenly;
     top: 0;
     z-index: 1;
 }
 
-nav > li {
-    padding: 20px 50px;
-    list-style-type: none;
+nav a {
     text-decoration: none;
+    color: black; 
+    font-size: 18px; 
+    margin: 0 15px;
 }
 
-li{
-    text-decoration: none;
+nav > ul {
+    padding: 20px 50px;
+    display: flex;
+    list-style-type: none;
 }
 
 header {
