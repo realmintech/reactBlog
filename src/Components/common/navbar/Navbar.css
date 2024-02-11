@@ -1,0 +1,42 @@
+nav {
+    text-align: center;
+    display: flex;
+    background-color: white;
+    height: 80px;
+    display: flex;
+    position: sticky;
+    text-align: center;
+    align-items: center;
+    top: 0;
+    z-index: 1;
+}
+
+nav > li {
+    padding: 20px 50px;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+li{
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.socialIcons {
+    color: orangered;
+    padding-top: 35px;
+}
+
+.headerWord {
+    font-size: 30px;
+}
+
+.searchBtn {
+    color: orangered;
+    padding-top: 35px;
+}
