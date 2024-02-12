@@ -15,7 +15,14 @@ nav a {
     margin: 0 15px;
 }
 
-nav > ul {
+nav a:hover {
+    color: orangered;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+nav ul {
     padding: 20px 50px;
     display: flex;
     list-style-type: none;
