@@ -1,15 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home/Index';
-function App() {
-  return (
-    <BrowserRouter>
-      {/*put Navbar here  */}
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
-      {/*put footer here  */}
-    </BrowserRouter>
-  );
-}
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './Components/pages/home/Index';
+import About from './Components/pages/about/About';
+import Blogs from './Components/pages/blogs/Blogs';
+import Contact from './Components/pages/contact/Contact';
+import Navbar from './Components/common/navbar/Navbar';
+import Footer from './Components/common/footer/Footer';
 
-export default App;
+
+export default function App() {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Navbar />
+            <Routes>
+                <Route exact path='/' Component={ Home } />
+                <Route path='/components/pages/about/About'  Component={ About } />
+                <Route path='/components/pages/blogs/Blogs'  Component={ Blogs } />
+                <Route path='/components/pages/contact/Contact' Component={ Contact } />
+            </Routes>
+          <Footer />
+        </BrowserRouter>
+      </div>
+    );
+  }
