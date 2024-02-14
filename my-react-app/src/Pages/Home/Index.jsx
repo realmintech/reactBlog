@@ -4,11 +4,7 @@ export default function Home() {
       <h2> Oh!, we're testing the home routes.</h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus dicta, natus iusto, autem aliquam deleniti ullam nobis quibusdam fugit quaerat repudiandae earum velit accusamus neque qui inventore nemo reprehenderit eveniet.
       Officia consequatur dignissimos non esse harum asperiores velit adipisci minima iusto aspernatur magnam accusamus, placeat earum odit sunt commodi porro dolorum ex nemo! Vitae quia eum, quibusdam beatae rerum libero!
-      Dolorum repudiandae quam esse. Itaque non aspernatur enim labore repellat harum eum? In alias asperiores facilis id vitae necessitatibus eligendi modi sit saepe ipsum, dolor atque nulla quod aperiam consequatur.
-      Optio amet eligendi eos veritatis aliquid nemo dolorem quasi unde eaque deserunt dolores, adipisci minima, consectetur ut! Fugiat sed aspernatur corrupti voluptatem odit velit quisquam at rem nulla. Ad, commodi?
-      Error possimus, dolore cupiditate maxime architecto quia assumenda dolorum ullam doloremque quo, itaque ex dolores. Adipisci amet repellendus earum soluta, nisi, blanditiis, perspiciatis deleniti dignissimos ullam dolorem corporis facere. Minus.
-      Delectus fugit sapiente reiciendis, non porro eveniet autem quo tempora doloribus. Repudiandae id ad pariatur excepturi deserunt eveniet modi, in labore, hic minima vitae, sunt voluptatem quo cum nisi tenetur.
-      Quam maxime quis nihil vero sunt veniam enim repudiandae sint nulla quibusdam ab quidem deleniti totam natus rerum quaerat temporibus labore dolorem, aliquid consectetur animi incidunt odit. Molestiae, ipsam illo?
+      atus rerum quaerat temporibus labore dolorem, aliquid consectetur animi incidunt odit. Molestiae, ipsam illo?
       Quia cupiditate ea incidunt repellat exercitationem delectus qui? Aperiam aspernatur molestiae ab id beatae nulla excepturi sint rem facilis tempore similique maiores, soluta, nobis fuga eveniet consequatur cupiditate corporis voluptatem.
       Officiis aut quam sit, sunt totam repudiandae mollitia ut ducimus nemo quaerat veritatis alias error temporibus odit voluptatem repellendus tempora voluptate, perferendis architecto accusantium nam eaque. Officia, minima repellendus. Aut.
       Recusandae sit maiores, sapiente autem exercitationem nihil voluptatum fugit vel earum consequatur, beatae porro, deserunt fugiat. Quisquam itaque voluptate, praesentium aperiam cum veniam architecto, officia earum mollitia aliquid asperiores id!
