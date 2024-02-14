@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaLinkedin, } from 'react-icons/fa';
 
 export default function Navbar() {
   return (
@@ -25,14 +25,15 @@ export default function Navbar() {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='./components/pages/about/About'>About</Link>
+            <Link to='/about'>About</Link>
           </li>
           <li>
-            <Link to='./components/pages/blogs/Blogs'>Blogs</Link>
+            <Link to='/blogs'>Blogs</Link>
           </li>
           <li>
-            <Link to='./components/pages/contact/Contact'>Contact</Link>
+            <Link to='/contact'>Contact</Link>
           </li>
+          
         </ul>
       </nav> 
     </>
