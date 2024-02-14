@@ -17,9 +17,8 @@ nav a {
 
 nav a:hover {
     color: orangered;
-    border: 2px solid orangered;
-    border-radius: 5px;
-    padding: 7px;
+  
+    
 }
 
 nav ul {
