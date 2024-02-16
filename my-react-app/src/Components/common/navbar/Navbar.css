@@ -1,55 +1,15 @@
-nav {
-    text-align: center;
-    background-color: white;
-    height: 80px;
-    position: sticky;
-    justify-content: space-evenly;
-    top: 0;
-    z-index: 1;
-}
-
-nav a {
-    text-decoration: none;
-    color: black; 
-    font-size: 18px; 
-    margin: 0 15px;
-}
-
-nav a:hover {
-    color: orangered;
-  
-    
-}
-
-nav ul {
-    padding: 20px 50px;
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-}
-
 header {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-.socialIcons {
-    color: orangered;
-    padding-top: 35px;
-}
-
-.headerWord {
-    font-size: 30px;
+    justify-content: space-around;
 }
 
 .searchBtn {
-    color: orangered;
     padding-top: 35px;
 }
 
-#light {
-    color: orangered;
-    flex: end;
-    margin-left: 200px;
+.socialIcons {
+    padding-top: 35px;
 }
+
+

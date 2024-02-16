@@ -1,12 +1,20 @@
 import React from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaLinkedin, } from 'react-icons/fa';
+import Logo from '../../../assets/logo.png'
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { FaFacebook, FaTwitter, FaInstagram, FaMoon, FaLinkedin } from 'react-icons/fa';
 
-export default function Navbar() {
+
+
+export default function CustomNavbar() {
   return (
     <>
-      <header className='header'>
+       <header className='header'>
         <div className='socialIcons'>
           <FaFacebook size={20} />
           <FaTwitter size={20} />
@@ -14,28 +22,47 @@ export default function Navbar() {
           <FaInstagram size={20} />
         </div>
         <div className='headerWord'>
-          <h2 className='letterHeaded'>Let's blog</h2>
+          <img src={Logo} alt="letsBlog" />
         </div>
-        <div className='searchBtn'><FaSearch size={20} /></div>
+        <div className='searchBtn'><FaMoon size={20} /></div>
       </header>
-
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/about'>About</Link>
-          </li>
-          <li>
-            <Link to='/blogs'>Blogs</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact</Link>
-          </li>
-          
-        </ul>
-      </nav> 
+      <Navbar expand="lg" className="bg-body-white" bg='white' sticky="top">
+      <Container >
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/About">About</Nav.Link>
+            <NavDropdown title="blogs" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/Blogs">Single posts</NavDropdown.Item>
+              <NavDropdown.Item href="#">
+                Pages
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#">
+                category
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="/Contact">
+              Contact
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-dark">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     </>
   );
 }
