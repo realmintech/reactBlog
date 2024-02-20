@@ -46,6 +46,19 @@ export class Auth {
   @IsString({ each: true })
   @IsNotEmpty({ each: true })
   role: Role;
+
+  @Prop({ type: String, default: null })
+  resetPasswordToken: string;
+
+  @Prop({ type: Date, default: null })
+  resetPasswordExpires: Date;
+
+  @Prop({ type: String, default: null })
+  confirmationToken: string;
+
+  @Prop({ type: Boolean, default: false })
+  isConfirmed: boolean;
+  
 }
 
 export type AuthDocument = Auth & Document;

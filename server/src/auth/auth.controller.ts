@@ -10,40 +10,21 @@ import {
   Put,
   Req,
   Request,
-  Delete,
-  HttpCode,
   BadRequestException,
-  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiResponse,
-  ApiBadRequestResponse,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
 import { LoginUserDto } from './dto/login-user.dto';
 import { Public } from '../common/decorators/public.decorator';
 import { Auth, Role } from './entities/auth.entity';
-import { RolesGuard } from 'src/common/roles.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 
-@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Public()
   @Post('register')
-  @ApiOperation({ summary: 'Register a new user' })
-  @ApiResponse({
-    status: 201,
-    description: 'User registered successfully',
-    type: Auth,
-  })
   async register(
     @Body() createAuthDto: CreateAuthDto,
   ): Promise<{ user: Auth }> {
@@ -53,10 +34,6 @@ export class AuthController {
 
   @Public()
   @Post('login')
-  @ApiOperation({ summary: 'Log in user' })
-  @ApiBadRequestResponse({ description: 'Invalid request body' })
-  @ApiUnauthorizedResponse({ description: 'Invalid login credentials' })
-  @HttpCode(HttpStatus.OK)
   async login(@Body() loginUserDto: LoginUserDto) {
     if (!loginUserDto) {
       throw new BadRequestException('email and password are required');
@@ -73,22 +50,11 @@ export class AuthController {
   }
 
   @Get('profile')
-  @ApiOperation({ summary: 'Get user profile' })
-  @ApiResponse({
-    status: 200,
-    description: 'User profile retrieved successfully',
-    type: Auth,
-  })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   getProfile(@Request() req) {
     return req['user'];
   }
 
   @Put(':id')
-  @UseGuards(RolesGuard)
-  @ApiOperation({ summary: 'Update user' })
-  @ApiBadRequestResponse({ description: 'Invalid request body' })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @Roles(Role.Admin, Role.Guest)
   async updateUser(
     @Param('id') id: string,
@@ -100,9 +66,6 @@ export class AuthController {
     return this.authService.updateUser(userId, UpdateAuthDto, req.user.role);
   }
 
-  @ApiOperation({ summary: 'Update user' })
-  @ApiBadRequestResponse({ description: 'Invalid request body' })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @Patch('update-password')
   async changePassword(
     @Body('oldPassword') oldPassword: string,
@@ -117,5 +80,32 @@ export class AuthController {
     );
 
     return result;
+  }
+
+  @Post('forgot-password')
+  async forgotPassword(@Body('email') email: string): Promise<void> {
+    await this.authService.forgotPassword(email);
+  }
+
+  @Patch('reset-password/:email/:resetToken')
+  async resetPassword(
+    @Param('email') email: string,
+    @Param('resetToken') resetToken: string,
+    @Body('newPassword') newPassword: string,
+  ): Promise<void> {
+    await this.authService.resetPassword(email, resetToken, newPassword);
+  }
+
+  @Patch('reset-password/:email/:resetToken')
+  async confirmRegistration(
+    @Param('email') email: string,
+    @Param('confirmationToken') confirmationToken: string,
+  ): Promise<any> {
+    const user = await this.authService.confirmRegistration(
+      email,
+      confirmationToken,
+    );
+
+    return { message: 'Registration confirmed successfully', user };
   }
 }

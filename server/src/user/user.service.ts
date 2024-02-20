@@ -64,6 +64,6 @@ export class UserService {
       );
     }
 
-    return this.userModel.findByIdAndRemove(userId);
+    return this.userModel.findByIdAndDelete(userId);
   }
 }
