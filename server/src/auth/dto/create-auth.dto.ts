@@ -1,27 +1,35 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsNotEmpty, MinLength, MaxLength, Matches } from 'class-validator';
 
 export class CreateAuthDto {
-  @ApiProperty({ description: 'Username' })
+  @IsNotEmpty({ message: 'Username should not be empty' })
   readonly username: string;
 
-  @ApiProperty({ description: 'Email address', example: 'user@example.com' })
+  @IsEmail({}, { message: 'Invalid email format' })
   readonly email: string;
 
-  @ApiProperty({ description: 'Password' })
+  @IsNotEmpty({ message: 'Password should not be empty' })
+  @MinLength(8, { message: 'Password must be at least 8 characters long' })
+  @MaxLength(20, { message: 'Password cannot be longer than 20 characters' })
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'Password too weak',
+  })
   readonly password: string;
 
-
-  @ApiProperty({ description: 'confirmPassword' })
+  @IsNotEmpty({ message: 'Confirm Password should not be empty' })
   readonly confirmPassword: string;
 
-
-  @ApiProperty({ description: 'User role' })
   readonly role: string;
 
-  @ApiProperty({ description: 'isLoggedIn' })
-  readonly isLoggedIn:boolean
+  readonly isLoggedIn: boolean;
 
-  @ApiProperty({ description: 'Timestamps' })
   readonly timestamps: Date;
+
+  // These fields are optional and might not need validation
+  readonly resetPasswordToken?: string;
+
+  readonly resetPasswordExpires?: Date;
+
+  readonly confirmationToken?: string;
+
+  readonly isConfirmed?: boolean;
 }
