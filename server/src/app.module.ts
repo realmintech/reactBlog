@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { mongooseConfig } from './database/mongoose.config';
 import { UserModule } from './user/user.module';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UserModule } from './user/user.module';
     mongooseConfig(),
     AuthModule,
     UserModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService],
