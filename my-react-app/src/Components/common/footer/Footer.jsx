@@ -7,18 +7,25 @@ import Logo from '../../../assets/logo.png';
 const Footer = () => {
   return (
     <footer className="bg-dark text-light py-4">
-      <Container>
+      <Container fluid>
         <Row>
           <Col sm={6} md={4} lg={3}>
           <img src={Logo} alt="letsBlog" className='text-white' text="white" />
           </Col>
           <Col sm={6} md={4} lg={3}>
             <strong>SUBCRIPTION</strong>
-            <input type="email" name="email" id="email" placeholder='Your email address' border="none"/>
-            <button type="submit" className='my-3 mx-4 px-3 text-center'>SUBCRIBE</button>
+            <br />
+            <div>
+              <input type="email" name="email" id="email" placeholder='Your email address' border="none"/>
+              <br />
+              <button type="submit" className='my-3 px-5 bg-primary text-white'>SUBCRIBE</button>
+            </div>
           </Col>
           <Col sm={6} md={4} lg={3}>
             <h5>Recent posts</h5>
+            <p>BEAUTY OF NATURE  <br /> <em>July 22, 2015</em> </p>
+            <p>FASHION MODEL SHOOT <br /> <em>July 22, 2015</em></p>
+            <p>GOLDEN SNOW LAND <br /> <em>July 22, 2015</em></p>
           </Col>
           <Col sm={6} md={4} lg={3}>
             <h5>Our company</h5>
