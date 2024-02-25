@@ -1,13 +1,13 @@
 import React from 'react';
 import ImageScroll from '../carousel/Carousel';
-import HomeContent from '../homeContent/HomeContent';
+import BlogCard from '../../components/blogCard/BlogCard';
 
 
 export default function Index() {
   return (
   <>
     <ImageScroll />
-    <HomeContent />
+    <BlogCard />
   </>  
   )
 }
