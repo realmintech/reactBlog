@@ -18,7 +18,7 @@ export default function SingleArticleComponet() {
           Mauris elementum accumsan leo vel tempor. Sit amet cursus nisl
           aliquam.
           <br />
-          <button className='text-white btn btn-success'>Read More</button>
+          <p className='read_more_link'>Read More....</p>
         </p>
       </div>
     </>

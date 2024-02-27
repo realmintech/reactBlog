@@ -1,0 +1,15 @@
+.blurBgImg {
+  background: url("../../assets/image10.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 450px;
+}
+
+.inputWithLongWidth {
+  width: 100%;
+}
+
+.labelBold {
+  font-size: 15px;
+}

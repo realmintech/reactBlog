@@ -1,0 +1,12 @@
+.bgImg {
+  background-image: url("../../assets/image3.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 450px;
+}
+
+.riverImg {
+    width: 100%;
+    height: 450px;
+}

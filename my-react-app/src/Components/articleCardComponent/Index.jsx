@@ -47,7 +47,7 @@ export default function ArticleCard() {
                 <h5 className='article___header'>{item.title}</h5>
                 <hr />
                 <p>{item.description}</p>
-                <button>Read More...</button>
+                <p className='read_more_link'>Read More...</p>
               </div>
             </div>
           ))}
