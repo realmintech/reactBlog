@@ -49,9 +49,7 @@ export default function HomeContent() {
                 dignissim congue. Mauris elementum accumsan leo vel tempor. Sit
                 amet cursus nisl aliquam.
                 <br />
-                <button className="text-white btn btn-success">
-                  Read More
-                </button>
+                <p className="read_more_link">Read More.....</p>
               </p>
             </div>
             <div>
@@ -69,9 +67,7 @@ export default function HomeContent() {
                       <h5>{item.title}</h5>
                       <hr />
                       <p>{item.description}</p>
-                      <p className="text-primary card-borderless">
-                        Read More...
-                      </p>
+                      <p className="read_more_link">Read More...</p>
                     </div>
                   </div>
                 ))}

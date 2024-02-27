@@ -32,3 +32,7 @@
   object-fit: cover;
   width: 100%;
 }
+
+.read_more_link {
+  color: brown;
+}
