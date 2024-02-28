@@ -1,5 +1,5 @@
 import React from "react";
-import CarouselContent from "../../pages/carousel/Carousel";
+import CarouselContent from "../carousel/Carousel";
 import SingleArticleComponet from "../../components/singleArticleComponent/Index";
 import ArticleCard from "../../components/articleCardComponent/Index";
 import AboutMe from "../../components/aboutMeComponent/Index";
