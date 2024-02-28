@@ -4,7 +4,6 @@ import Desert from "../../assets/image5.png";
 export default function CategoryComponent() {
   return (
     <>
-      {" "}
       <div className="imgWithBanner border">
         <img className="img_in_card" src={Desert} alt="forest" />
         <h3>

@@ -43,7 +43,7 @@ export default function ArticleCard() {
           {data.map((item, index) => (
             <div className='col-lg-6' key={index}>
               <div className='forestImg'>
-                <img src={item.imageUrl} alt='forest' />
+                <img src={item.imageUrl} alt='forest' className='blogImg'/>
                 <h5 className='article___header'>{item.title}</h5>
                 <hr />
                 <p>{item.description}</p>
