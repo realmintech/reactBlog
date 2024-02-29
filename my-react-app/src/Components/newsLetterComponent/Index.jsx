@@ -8,7 +8,7 @@ export default function Newsletter() {
         <p className="text-center">SUBCRIBE TO MY NEWLETTER</p>
         <form action="#" className="input-borderless">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Your Email" />
+            <input type="text" class="form-control " placeholder="Your Email" />
             <br />
             <button type="button" class="btn btn-primary">
               SUBCRIBE

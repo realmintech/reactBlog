@@ -1,9 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import Logo from "../../../assets/logo.png";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -13,6 +11,7 @@ import {
   FaInstagram,
   FaMoon,
   FaLinkedin,
+  FaSearch,
 } from "react-icons/fa";
 
 export default function CustomNavbar() {
@@ -51,15 +50,7 @@ export default function CustomNavbar() {
               </NavDropdown>
               <Nav.Link href="/Contact">Contact</Nav.Link>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-dark">Search</Button>
-            </Form>
+            <FaSearch />
           </Navbar.Collapse>
         </Container>
       </Navbar>
