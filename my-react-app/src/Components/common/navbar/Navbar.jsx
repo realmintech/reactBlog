@@ -4,7 +4,6 @@ import Logo from "../../../assets/logo.png";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import {
   FaFacebook,
   FaTwitter,
@@ -42,12 +41,7 @@ export default function CustomNavbar() {
             >
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/About">About</Nav.Link>
-              <NavDropdown title="blogs" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="/Blogs">Single posts</NavDropdown.Item>
-                <NavDropdown.Item href="#">Pages</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">category</NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="/Blogs">Blogs</Nav.Link>
               <Nav.Link href="/Contact">Contact</Nav.Link>
             </Nav>
             <FaSearch />

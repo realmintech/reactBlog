@@ -21,4 +21,14 @@
 
 .img_in_card {
   width: 100%;
+  object-fit: cover;
+}
+
+.newLetterInput {
+  width: 100%;
+  border: none;
+}
+
+.subcribe {
+  width: 100%;
 }

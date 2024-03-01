@@ -1,8 +1,8 @@
 import React from 'react';
 import './Blogs.css';
+import Comment from '../../components/commentSection/Comment'
 import BeautyPic from '../../assets/carousel.webp';
 import ManOnSuit from '../../assets/man_image.webp';
-import Wears from '../../assets/wears.jpg';
 import AboutMe from '../../components/aboutMeComponent/Index';
 import Newsletter from '../../components/newsLetterComponent/Index';
 import { FaShare, FaTag } from 'react-icons/fa';
@@ -18,15 +18,15 @@ import { FaShare, FaTag } from 'react-icons/fa';
 export default function Blogs() {
   return (
     <>
-      <div className='bgImg'></div>
-      <div className='container'>
-        <div className='row'>
-          <div className='col4-lg-8 col-md-8 col-sm-6'>
-            <div className='heading'>
+      <div className="bgImg"></div>
+      <div className="container">
+        <div className="row">
+          <div className="col4-lg-8 col-md-8 col-sm-6">
+            <div className="heading">
               <h3>TOP 10 INDREDIENTS</h3>
               <span>July 12, 2003</span>
             </div>
-            <div className='news'>
+            <div className="news">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                 alias veritatis, quam magnam dignissimos voluptas porro sed
@@ -42,8 +42,8 @@ export default function Blogs() {
                 asperiores! Aspernatur, vel corporis?
               </p>
               {/* style this image properly cuz it looks strecth  */}
-              <img src={BeautyPic} alt='' className='beautyPic' />
-              <em className='picCaption'>Travelling the world</em>
+              <img src={BeautyPic} alt="" className="beautyPic" />
+              <em className="picCaption">Travelling the world</em>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatibus, saepe maxime minus odio temporibus illum placeat
@@ -54,7 +54,7 @@ export default function Blogs() {
                 blanditiis possimus corporis dolore dignissimos suscipit
                 sapiente, eveniet id tempore beatae quam illum.
               </p>
-              <span className='desc'>
+              <span className="desc">
                 GOOD DESIGN IS MAKING SOMETHING INTELLIGIBLE AND MEMORABLE.
                 GREAT DESIGN IS MAKING SOMETHING MEMORABLE AND MEANINGFUL.
               </span>
@@ -62,14 +62,14 @@ export default function Blogs() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
                 eaque deserunt neque nihil non delectus laudantium esse itaque.
               </p>
-              <div className='tagShare'>
-                <div className='btns'>
+              <div className="tagShare">
+                <div className="btns">
                   <FaTag />
-                  <button className='btn'>COOKING</button>
-                  <button className='btn'>FOOD</button>
-                  <button className='btn'>LIFESTYLE</button>
+                  <button className="btn">COOKING</button>
+                  <button className="btn">FOOD</button>
+                  <button className="btn">LIFESTYLE</button>
                 </div>
-                <div className='shareIcon'>
+                <div className="shareIcon">
                   <button>
                     <FaShare />
                     Share
@@ -78,9 +78,9 @@ export default function Blogs() {
               </div>
             </div>
             <div>
-              <p className='highLight'>ART / FOOD / TOP</p>
-              <span className='flexImgWord'>
-                <img src={ManOnSuit} alt='man_on_suit' className='roundedImg' />
+              <p className="highLight">ART / FOOD / TOP</p>
+              <span className="flexImgWord">
+                <img src={ManOnSuit} alt="man_on_suit" className="roundedImg" />
                 <span>
                   <h3>John Phillipe</h3>
                   <p>
@@ -97,40 +97,18 @@ export default function Blogs() {
               </span>
 
               <hr />
-              {/* <======== move this to another component =====> begins */}
-              <p className='trending'>YOU MIGHT ALSO LIKE</p>
-              <div className='row likedImg'>
-                <div className='col'>
-                  <img src={BeautyPic} alt='' />{' '}
-                  {/* style this image properly cuz it looks strecth  (i told you to offen use object-fit property*/}
-                  <h6 className='title'>GOLDEN SNOW LAND</h6>
-                  <em>July 12, 2003</em>
-                </div>
-                <div className='col'>
-                  <img src={ManOnSuit} alt='' />
-                  <h6 className='title'>HUGE WATERFALL</h6>
-                  <em>July 12, 2003</em>
-                </div>
-                <div className='col'>
-                  {/* style this image properly cuz it looks strecth  */}
-                  <img src={Wears} alt='' />
-                  <h6 className='title'>PLAYING SKATEBOARD</h6>
-                  <em>July 12, 2003</em>
-                </div>
-              </div>
-
-              {/* <======== move this to another component =====> ends */}
+              <Comment />
               <hr />
-              <p className='comment'>2 COMMENTS</p>
-              <div className='row'>
-                <div className='col-lg-2'>
+              <p className="comment">2 COMMENTS</p>
+              <div className="row">
+                <div className="col-lg-2">
                   <img
                     src={ManOnSuit}
-                    alt='man_on_suit'
-                    className='roundedImg'
+                    alt="man_on_suit"
+                    className="roundedImg"
                   />
                 </div>
-                <div className='col-lg-10'>
+                <div className="col-lg-10">
                   <h3>John Phillipe</h3>
                   <span>July 12, 2003 at 8:45am </span>
                   <em>Reply</em>
@@ -147,15 +125,15 @@ export default function Blogs() {
                 </div>
               </div>
               <hr />
-              <div className='row'>
-                <div className='col-lg-2'>
+              <div className="row">
+                <div className="col-lg-2">
                   <img
                     src={ManOnSuit}
-                    alt='man_on_suit'
-                    className='roundedImg'
+                    alt="man_on_suit"
+                    className="roundedImg"
                   />
                 </div>
-                <div className='col-lg-10'>
+                <div className="col-lg-10">
                   <h3>John Phillipe</h3>
                   <span>July 12, 2003 at 8:45am </span>
                   <em>Reply</em>
@@ -172,40 +150,40 @@ export default function Blogs() {
                 </div>
               </div>
               <hr />
-              <p className='commentSection'>
+              <p className="commentSection">
                 Your email address will not be published. Required fields are
                 marked *
               </p>
               <h6>COMMENT *</h6>
-              <textarea name='comment' id='' cols='97' rows='10'></textarea>
-              <div className='row namedInput'>
-                <div className='col-lg-4'>
+              <textarea name="comment" id="" cols="97" rows="10" className='textArea'></textarea>
+              <div className="row namedInput">
+                <div className="col-lg-4">
                   <h6>NAME *</h6>
-                  <input type='text' placeholder='NAME*' />
+                  <input type="text" placeholder="NAME*" />
                 </div>
-                <div className='col-lg-4'>
+                <div className="col-lg-4">
                   <h6>EMAIL *</h6>
-                  <input type='text' placeholder='Email*' />
+                  <input type="text" placeholder="Email*" />
                 </div>
-                <div className='col-lg-4'>
+                <div className="col-lg-4">
                   <h6>WEBSITE</h6>
-                  <input type='text' placeholder='Website' />
+                  <input type="text" placeholder="Website" />
                 </div>
               </div>
-              <div className='checkedInput'>
-                <input type='checkbox' name='checked' id='' />
+              <div className="checkedInput">
+                <input type="checkbox" name="checked" id="" />
                 <span>
                   SAVE MY NAME, EMAIL, AND WEBSITE IN THIS BROWSER FOR THE NEXT
                   TIME I COMMENT.
                 </span>
               </div>
-              <button className='btnPost'>POST COMMENT</button>
+              <button className="btnPost">POST COMMENT</button>
             </div>
           </div>
-          <div className='col-lg-4 col-md-4 col-sm-6'>
+          <div className="col-lg-4 col-md-4 col-sm-6">
             <AboutMe />
             <Newsletter />
-            <div className='tagDiv'>
+            <div className="tagDiv">
               <button>BRIDGE</button>
               <button>CULTURE</button>
               <button>FOOD</button>

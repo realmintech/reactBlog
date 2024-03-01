@@ -16,9 +16,9 @@ const Footer = () => {
             <strong>SUBCRIPTION</strong>
             <br />
             <div>
-              <input type="email" name="email" id="email" placeholder='Your email address' border="none"/>
+              <input type="email" name="email" id="email" placeholder='Your email address' border="none" className='subcribeInput'/>
               <br />
-              <button type="submit" className='my-3 px-5 bg-primary text-white'>SUBCRIBE</button>
+              <button type="submit" className='my-3 px-5 bg-primary text-white subcribeBtn'>SUBCRIBE</button>
             </div>
           </Col>
           <Col sm={6} md={4} lg={3}>
