@@ -32,7 +32,11 @@ input {
   width: 100%;
 }
 
-.subcribeBtn {
+.footer_subcribe {
+  background-color: rgb(228, 207, 207);
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
   width: 100%;
-  padding: 0 50px;
+  border: none;
 }

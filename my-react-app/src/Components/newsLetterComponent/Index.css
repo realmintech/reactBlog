@@ -29,6 +29,11 @@
   border: none;
 }
 
-.subcribe {
+.new_letter-button {
+  background-color: rgb(228, 207, 207);
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
   width: 100%;
+  border: none;
 }
