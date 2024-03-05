@@ -6,6 +6,7 @@ import Logo from '../../../assets/footerLogo.png';
 
 const Footer = () => {
   return (
+    <>
     <footer className="bg-dark text-light py-4">
       <Container fluid>
         <Row>
@@ -74,6 +75,7 @@ const Footer = () => {
         </Row>
       </Container>
     </footer>
+  </>
   );
 }
 
