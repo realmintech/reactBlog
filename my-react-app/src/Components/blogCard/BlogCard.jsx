@@ -48,8 +48,7 @@ export default function HomeContent() {
                 dolor sit amet, consectetur Nulla fringilla purus at leo
                 dignissim congue. Mauris elementum accumsan leo vel tempor. Sit
                 amet cursus nisl aliquam.
-                <br />
-                <p className="read_more_link">Read More.....</p>
+                <a href="/blog/1">wastech....</a>
               </p>
             </div>
             <div>

@@ -6,6 +6,7 @@ import ManOnSuit from '../../assets/man_image.webp';
 import AboutMe from '../../components/aboutMeComponent/Index';
 import Newsletter from '../../components/newsLetterComponent/Index';
 import { FaShare, FaTag } from 'react-icons/fa';
+import AllBlogPost from '../../components/allBlogPosts/AllBlogPost';
 
 // rename this to singlePostPage or create anoter page and name it singlePostPage then copy and past all this code into it
 
@@ -97,6 +98,7 @@ export default function Blogs() {
               </span>
 
               <hr />
+              <AllBlogPost />
               <Comment />
               <hr />
               <p className="comment">2 COMMENTS</p>

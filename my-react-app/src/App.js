@@ -8,14 +8,15 @@ import Footer from './components/common/footer/Footer';
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route exact path='/' Component={Home} />
-          <Route path='/about' Component={About} />
-          <Route path='/blogs' Component={Blogs} />
-          <Route path='/contact' Component={Contact} />
+          <Route exact path="/" Component={Home} />
+          <Route path="/about" Component={About} />
+          <Route path="/blogs" Component={Blogs} />
+          <Route path="/contact" Component={Contact} />
+          <Route path="/blog/1" Component={Blogs} />
         </Routes>
         <Footer />
       </BrowserRouter>
