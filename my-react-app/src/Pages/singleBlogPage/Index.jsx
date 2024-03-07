@@ -1,12 +1,12 @@
 import React from 'react';
-import './Blogs.css';
+import './Index.css';
 import Comment from '../../components/commentSection/Comment'
 import BeautyPic from '../../assets/carousel.webp';
 import ManOnSuit from '../../assets/man_image.webp';
 import AboutMe from '../../components/aboutMeComponent/Index';
 import Newsletter from '../../components/newsLetterComponent/Index';
 import { FaShare, FaTag } from 'react-icons/fa';
-import AllBlogPost from '../../components/allBlogPosts/AllBlogPost';
+// import AllBlogPost from '../../components/allBlogPosts/AllBlogPost';
 
 // rename this to singlePostPage or create anoter page and name it singlePostPage then copy and past all this code into it
 
@@ -16,7 +16,7 @@ import AllBlogPost from '../../components/allBlogPosts/AllBlogPost';
 
 // a blog Page should contain all the list of articlers with pagination method nor the description of the article like what you have here
 
-export default function Blogs() {
+export default function SingleBlogPost() {
   return (
     <>
       <div className="bgImg"></div>
@@ -42,7 +42,6 @@ export default function Blogs() {
                 praesentium commodi recusandae harum repellat dolorem
                 asperiores! Aspernatur, vel corporis?
               </p>
-              {/* style this image properly cuz it looks strecth  */}
               <img src={BeautyPic} alt="" className="beautyPic" />
               <em className="picCaption">Travelling the world</em>
               <p>
@@ -63,14 +62,14 @@ export default function Blogs() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
                 eaque deserunt neque nihil non delectus laudantium esse itaque.
               </p>
-              <div className="tagShare">
-                <div className="btns">
+              <div className="tagShare row">
+                <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
                   <button className="btn">COOKING</button>
                   <button className="btn">FOOD</button>
                   <button className="btn">LIFESTYLE</button>
                 </div>
-                <div className="shareIcon">
+                <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
                   <button>
                     <FaShare />
                     Share
@@ -98,7 +97,6 @@ export default function Blogs() {
               </span>
 
               <hr />
-              <AllBlogPost />
               <Comment />
               <hr />
               <p className="comment">2 COMMENTS</p>

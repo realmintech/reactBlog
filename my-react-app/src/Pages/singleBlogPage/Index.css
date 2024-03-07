@@ -44,11 +44,6 @@ button:hover {
   color: gray;
 }
 
-.tagShare {
-  display: flex;
-  justify-content: space-between;
-}
-
 .tagShare button {
   background-color: rgba(139, 135, 135, 0.514);
   color: white;
@@ -59,7 +54,7 @@ button:hover {
 }
 
 .roundedImg {
-  width: 120px;
+  width: 100%;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;

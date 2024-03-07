@@ -1,5 +1,11 @@
 .category {
-    border: 1px solid gray;
-    padding: 15px;
-    border-radius: 3px;
+  border: 1px solid #e1e1e1;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.category p {
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 5px;
+  line-height: 50px;
 }
