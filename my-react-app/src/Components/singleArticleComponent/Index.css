@@ -1,5 +1,6 @@
 .beautyPic {
   width: 100%;
+  object-fit: cover;
 }
 
 .read_more_link {

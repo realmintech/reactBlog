@@ -15,9 +15,9 @@ export default function App() {
         <Routes>
           <Route exact path="/" Component={Home} />
           <Route path="/about" Component={About} />
-          <Route path="/blogs" Component={Blogs} />
-          <Route path="/contact" Component={Contact} />
           <Route path="/blog/1" Component={Blog} />
+          <Route path="/contact" Component={Contact} />
+          <Route path="/Blogs" Component={Blogs} />
         </Routes>
         <Footer />
       </BrowserRouter>

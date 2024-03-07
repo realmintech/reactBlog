@@ -41,9 +41,9 @@ export default function CustomNavbar() {
             >
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/About">About</Nav.Link>
-              <Nav.Link href="/Blogs">Blogs</Nav.Link>
+              <Nav.Link href="/blog/1">Blogs</Nav.Link>
               <Nav.Link href="/Contact">Contact</Nav.Link>
-              <Nav.Link href="/blog/1">Single Blog Page</Nav.Link>
+              <Nav.Link href="/Blogs">SingleBlogPage</Nav.Link>
             </Nav>
             <FaSearch />
           </Navbar.Collapse>

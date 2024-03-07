@@ -36,22 +36,24 @@ export default function Index() {
       title: "CITY CENTER BRIDGE",
       date: "July 25, 2015",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
+    }
   ];
   return (
     <>
-        {data.map((item, index) => (
-      <div className="row blogs" key={index}>
-            <div className="col-lg-4">
-              <img src={item.image} alt="" className="bloging mt-3" />
-            </div>
-            <div className="col-lg-8 mt-4">
-              <h5>{item.title}</h5>
-              <em>{item.date}</em>
-              <p>{item.desc}</p>
+      {data.map((item, index) => (
+        <div className="row blogs" key={index}>
+          <div className="col-lg-4">
+            <img src={item.image} alt="" className="bloging my-4" />
           </div>
-      </div>
-        ))}
+          <div className="col-lg-8 mt-5">
+            <h5>
+              <a className="text-decoration-none text-dark" href="/Blogs">{item.title}</a>
+            </h5>
+            <em className="date">{item.date}</em>
+            <p>{item.desc}</p>
+          </div>
+        </div>
+      ))}
     </>
   );
 }

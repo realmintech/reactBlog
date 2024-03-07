@@ -47,7 +47,7 @@ export default function Index() {
       </div>
       <div className="container">
         <div className="row ">
-          <div className="col-12 col-sm-6 col-md-6 col-lg-8">
+          <div className="col-sm-6 col-md-6 col-lg-8">
             <SingleArticleComponet />
             <div>
               <h3 className="text-center pt-4">ART / LIFESTYLE</h3>

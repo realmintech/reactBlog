@@ -1,5 +1,9 @@
 .bloging {
     width: 100%;
-    height: 250px;
+    height: 220px;
     object-fit: cover;
+}
+
+.date {
+    color: brown;
 }
