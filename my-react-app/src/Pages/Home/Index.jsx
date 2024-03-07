@@ -55,7 +55,7 @@ export default function Index() {
               <div className="row">
                 {data.map((item, index) => (
                   <div className="col-lg-6" key={index}>
-                    <ArticleCard item={item}/>
+                    <ArticleCard item={item} />
                   </div>
                 ))}
               </div>

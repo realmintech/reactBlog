@@ -2,6 +2,7 @@
     width: 100%;
     height: 220px;
     object-fit: cover;
+    letter-spacing: 1px;
 }
 
 .date {

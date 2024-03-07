@@ -10,9 +10,9 @@ export default function ArticleCard(props) {
           <h5 className="article___header">{item.title}</h5>
           <hr />
           <p>{item.description}</p>
-          <h5>
+          <strong>
           <a className="read_more_link text-decoration-none" href="/Blogs">READ MORE...</a>
-          </h5>
+          </strong>
         </div>
       </div>
     </>
