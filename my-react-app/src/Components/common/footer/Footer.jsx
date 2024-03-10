@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -68,8 +69,7 @@ const Footer = () => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <hr />
+          <Col className='footerLine'>
             <p>&copy; 2024 Let's Blog. All rights reserved.</p>
           </Col>
         </Row>

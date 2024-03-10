@@ -39,7 +39,7 @@ export default function ContactPage() {
               MESSAGE*
             </label>
             <br />
-            <textarea
+            <textarea className="dropMsg"
               name="msg"
               id=""
               cols="97"

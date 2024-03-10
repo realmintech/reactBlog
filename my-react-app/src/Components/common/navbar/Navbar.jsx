@@ -18,9 +18,9 @@ export default function CustomNavbar() {
     <>
       <header className="header">
         <div className="socialIcons ">
-          <FaFacebook size={20} />
-          <FaTwitter size={20} />
-          <FaLinkedin size={20} />
+          <FaFacebook style={{ marginRight: "10px", fontSize: "25px" }} />
+          <FaTwitter style={{ marginRight: "10px", fontSize: "25px" }} />
+          <FaLinkedin style={{ marginRight: "10px", fontSize: "25px" }} />
           <FaInstagram size={20} />
         </div>
         <div className="headerWord">

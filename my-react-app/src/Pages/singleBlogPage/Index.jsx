@@ -1,20 +1,11 @@
-import React from 'react';
-import './Index.css';
-import Comment from '../../components/commentSection/Comment'
-import BeautyPic from '../../assets/carousel.webp';
-import ManOnSuit from '../../assets/man_image.webp';
-import AboutMe from '../../components/aboutMeComponent/Index';
-import Newsletter from '../../components/newsLetterComponent/Index';
-import { FaShare, FaTag } from 'react-icons/fa';
-// import AllBlogPost from '../../components/allBlogPosts/AllBlogPost';
-
-// rename this to singlePostPage or create anoter page and name it singlePostPage then copy and past all this code into it
-
-// remove dropdown list from navigation bar items
-
-//make sure your design looks like exactly what we have on the template i.e (work more on your css)
-
-// a blog Page should contain all the list of articlers with pagination method nor the description of the article like what you have here
+import React from "react";
+import "./Index.css";
+import Comment from "../../components/commentSection/Comment";
+import BeautyPic from "../../assets/carousel.webp";
+import ManOnSuit from "../../assets/man_image.webp";
+import AboutMe from "../../components/aboutMeComponent/Index";
+import Newsletter from "../../components/newsLetterComponent/Index";
+import { FaShare, FaTag } from "react-icons/fa";
 
 export default function SingleBlogPost() {
   return (
@@ -43,7 +34,12 @@ export default function SingleBlogPost() {
                 asperiores! Aspernatur, vel corporis?
               </p>
               <img src={BeautyPic} alt="" className="beautyPic" />
-              <em className="picCaption">Travelling the world</em>
+              <em
+                className="picCaption"
+                style={{ margin: "10px 280px", display: "inline-block" }}
+              >
+                Travelling the world
+              </em>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatibus, saepe maxime minus odio temporibus illum placeat
@@ -63,13 +59,13 @@ export default function SingleBlogPost() {
                 eaque deserunt neque nihil non delectus laudantium esse itaque.
               </p>
               <div className="tagShare row">
-                <div className="btns col-lg-8 col-md-8 col-sm-8">
+                <div className="btns col-lg-8">
                   <FaTag />
                   <button className="btn">COOKING</button>
                   <button className="btn">FOOD</button>
                   <button className="btn">LIFESTYLE</button>
                 </div>
-                <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
+                <div className="shareIcon col-lg-4">
                   <button>
                     <FaShare />
                     Share
@@ -78,10 +74,18 @@ export default function SingleBlogPost() {
               </div>
             </div>
             <div>
-              <p className="highLight">ART / FOOD / TOP</p>
-              <span className="flexImgWord">
-                <img src={ManOnSuit} alt="man_on_suit" className="roundedImg" />
-                <span>
+              <p className="highLight">
+                <span> ART / FOOD / TOP</span>
+              </p>
+              <span className="flexImgWord ">
+                <div className="col-lg-2">
+                  <img
+                    src={ManOnSuit}
+                    alt="man_on_suit"
+                    className="roundedImg"
+                  />
+                </div>
+                <span className="col-lg-10">
                   <h3>John Phillipe</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -95,11 +99,16 @@ export default function SingleBlogPost() {
                   </p>
                 </span>
               </span>
-
-              <hr />
               <Comment />
-              <hr />
-              <p className="comment">2 COMMENTS</p>
+              <p
+                className="comment"
+                style={{
+                  borderTop: "1px solid rgba(139,135,135,0.514)",
+                  paddingTop: "30px",
+                }}
+              >
+                2 COMMENTS
+              </p>
               <div className="row">
                 <div className="col-lg-2">
                   <img
@@ -155,7 +164,13 @@ export default function SingleBlogPost() {
                 marked *
               </p>
               <h6>COMMENT *</h6>
-              <textarea name="comment" id="" cols="97" rows="10" className='textArea'></textarea>
+              <textarea
+                name="comment"
+                id=""
+                cols="97"
+                rows="10"
+                className="textArea"
+              ></textarea>
               <div className="row namedInput">
                 <div className="col-lg-4">
                   <h6>NAME *</h6>

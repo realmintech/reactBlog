@@ -17,5 +17,17 @@
 }
 
 .imgWithBanner {
+  border-radius: 5px;
   width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.imgWithBanner h3 {
+  position: absolute;
+  top: 15%;
+  right: 0;
+  padding: 15px;
+  margin-right: 85px;
+  background: rgba(15, 10, 10, 0.2);
 }

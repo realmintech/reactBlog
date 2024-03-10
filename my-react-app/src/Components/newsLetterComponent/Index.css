@@ -1,28 +1,3 @@
-.imgWithBanner {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 320px;
-  height: 250px;
-  position: relative;
-  margin: 10px;
-  padding: 20px;
-}
-
-.imgWithBanner h3 {
-  position: absolute;
-  top: 70px;
-  right: 0;
-  width: 150px;
-  padding: 10px;
-  margin-right: 50px;
-  background: rgba(68, 66, 66, 0.5);
-  background: rgba(15, 10, 10, 0.2);
-}
-
-.img_in_card {
-  width: 100%;
-  object-fit: cover;
-}
 
 .newLetterInput {
   width: 100%;

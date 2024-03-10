@@ -23,9 +23,9 @@ export default function Newsletter() {
       </div>
       <div className="socialMedia border mt-3 p-5 text-center mb-4">
         <p>FOLLOW ME ON </p>
-        <FaFacebook fontSize={25} />
-        <FaTwitter fontSize={25} />
-        <FaInstagram fontSize={25} />
+        <FaFacebook style={{marginRight: '10px', fontSize: '25px'}} />
+        <FaTwitter style={{marginRight: '10px', fontSize: '25px' }} />
+        <FaInstagram fontSize={25} style={{marginRight: '10px' }} />
         <FaYoutube fontSize={25} />
       </div>
     </>

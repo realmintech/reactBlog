@@ -51,17 +51,15 @@ button:hover {
 
 .highLight {
   text-align: center;
+  letter-spacing: 2px;
+  position: relative;
 }
 
 .roundedImg {
-  width: 100%;
+  width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.flexImgWord {
-  display: flex;
 }
 
 .flexImgWord img {
@@ -105,3 +103,13 @@ button:hover {
   background-color: gray;
   color: white;
 }
+
+/* .highLight::before {
+  content: '';
+  border-bottom: 1px solid #141212;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  z-index: 0;
+} */
