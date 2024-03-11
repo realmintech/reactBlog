@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './pages/about/About';
-import Blogs from './pages/singleBlogPage/Index';
-import Blog from "./pages/blogs/Index";
+import Blog from './pages/Blog/Index';
+import Blogs from "./pages/blogs/Index";
 import Contact from './pages/contact/Contact';
 import Home from './pages/home/Index';
 import Navbar from './components/common/navbar/Navbar';
@@ -15,9 +15,9 @@ export default function App() {
         <Routes>
           <Route exact path="/" Component={Home} />
           <Route path="/about" Component={About} />
-          <Route path="/blog/1" Component={Blog} />
-          <Route path="/contact" Component={Contact} />
           <Route path="/Blogs" Component={Blogs} />
+          <Route path="/contact" Component={Contact} />
+          <Route path="/blog/1" Component={Blog} />
         </Routes>
         <Footer />
       </BrowserRouter>
