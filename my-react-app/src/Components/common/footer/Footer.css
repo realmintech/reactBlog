@@ -1,3 +1,21 @@
 .footerLine {
   border-top: 1px solid white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
+
+.footerLine a , .footer_links li a{
+  text-decoration: none;
+  padding: 0 10px;
+  color: white;
+}
+
+.logo {
+  width: 100%;
+}
+
+
+
+
+
