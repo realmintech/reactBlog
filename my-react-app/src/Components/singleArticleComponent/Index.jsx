@@ -7,9 +7,7 @@ export default function SingleArticleComponet() {
       <div className="firstSection">
         <h3 className="text-center pt-4">BEAUTY OF NATURE</h3>
         <p className="text-center">
-          <hr />
-          <em>July-12-2024</em>
-          <hr />
+          <p className='today_date'>July-12-2024</p>
         </p>
         <img src={BeautyPic} alt="lady" className="beautyPic mt-5" />
         <p>

@@ -12,30 +12,35 @@ export default function Index() {
     {
       imageUrl: Forest,
       title: "FOREST MODEL SHOOT",
+      date: "July 12, 2003",
       description:
         "Lorem ipsum dolor sit amet doloremque harum. Ipsum.consectetur veritatis sequi suscipit. Sunt aliquid dictaveritatis reiciendis maxime omnis atque a cum perspiciatis animi.",
     },
     {
       imageUrl: Forest,
       title: "FOREST MODEL SHOOT",
+      date: "July 12, 2003",
       description:
         "Lorem ipsum dolor sit amet doloremque harum. Ipsum.consectetur veritatis sequi suscipit. Sunt aliquid dictaveritatis reiciendis maxime omnis atque a cum perspiciatis animi.",
     },
     {
       imageUrl: Forest,
       title: "FOREST MODEL SHOOT",
+      date: "July 12, 2003",
       description:
         "Lorem ipsum dolor sit amet doloremque harum. Ipsum.consectetur veritatis sequi suscipit. Sunt aliquid dictaveritatis reiciendis maxime omnis atque a cum perspiciatis animi.",
     },
     {
       imageUrl: Forest,
       title: "FOREST MODEL SHOOT",
+      date: "July 12, 2003",
       description:
         "Lorem ipsum dolor sit amet doloremque harum. Ipsum.consectetur veritatis sequi suscipit. Sunt aliquid dictaveritatis reiciendis maxime omnis atque a cum perspiciatis animi.",
     },
     {
       imageUrl: Forest,
       title: "FOREST MODEL SHOOT",
+      date: "July 12, 2003",
       description:
         "Lorem ipsum dolor sit amet doloremque harum. Ipsum.consectetur veritatis sequi suscipit. Sunt aliquid dictaveritatis reiciendis maxime omnis atque a cum perspiciatis animi.",
     },
@@ -50,11 +55,10 @@ export default function Index() {
           <div className="col-sm-6 col-md-6 col-lg-8">
             <SingleArticleComponet />
             <div>
-              <h3 className="text-center pt-4">ART / LIFESTYLE</h3>
-              <hr />
+              <h5 className="text-center p-4" style={{borderBottom: '1px solid gray'}}>ART / LIFESTYLE</h5>
               <div className="row">
                 {data.map((item, index) => (
-                  <div className="col-lg-6" key={index}>
+                  <div className="col-lg-6 mt-5" key={index}>
                     <ArticleCard item={item} />
                   </div>
                 ))}
