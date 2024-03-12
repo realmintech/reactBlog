@@ -1,9 +1,9 @@
-import React from 'react';
-import './Footer.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Logo from '../../../assets/footerLogo.png';
+import React from "react";
+import "./Footer.css";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Logo from "../../../assets/footerLogo.png";
 
 const Footer = () => {
   return (
@@ -70,10 +70,10 @@ const Footer = () => {
           </Row>
           <Row>
             <Col className="footerLine">
-              <div className='copy_right'>
+              <div className="copy_right">
                 <p>&copy; 2024 Let's Blog. All rights reserved.</p>
               </div>
-              <div className='footer_link'>
+              <div className="footer_link">
                 <a href="/">Home</a>
                 <a href="/About">About</a>
                 <a href="/Blogs">Blog</a>
@@ -85,6 +85,6 @@ const Footer = () => {
       </footer>
     </>
   );
-}
+};
 
 export default Footer;

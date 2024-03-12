@@ -58,7 +58,7 @@ export default function Index() {
               <h5 className="text-center p-4" style={{borderBottom: '1px solid gray'}}>ART / LIFESTYLE</h5>
               <div className="row">
                 {data.map((item, index) => (
-                  <div className="col-lg-6 mt-5" key={index}>
+                  <div className="col-lg-6 m-5" key={index}>
                     <ArticleCard item={item} />
                   </div>
                 ))}

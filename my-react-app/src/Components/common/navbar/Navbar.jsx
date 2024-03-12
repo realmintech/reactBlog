@@ -23,12 +23,12 @@ export default function CustomNavbar() {
           <FaLinkedin style={{ marginRight: "10px", fontSize: "25px" }} />
           <FaInstagram size={20} />
         </div>
-          <div className="headerWord">
-            <img src={Logo} alt="letsBlog" className="lets_blog" />
-          </div>
-          <div className="moon_btn">
-            <FaMoon size={20} />
-          </div>
+        <div className="headerWord">
+          <img src={Logo} alt="letsBlog" className="lets_blog" />
+        </div>
+        <div className="moon_btn">
+          <FaMoon size={20} />
+        </div>
       </header>
       <Navbar expand="lg" className="bg-body-white" bg="white" sticky="top">
         <Container>
@@ -45,6 +45,9 @@ export default function CustomNavbar() {
               <Nav.Link href="/Contact">Contact</Nav.Link>
               <Nav.Link href="/blog/1">Blog</Nav.Link>
             </Nav>
+            <button className="btn" style={{backgroundColor: 'navy'}}>
+              <a href="/Login" style={{textDecoration: 'none', color: 'white'}}>Login</a>
+            </button>
             <FaSearch />
           </Navbar.Collapse>
         </Container>

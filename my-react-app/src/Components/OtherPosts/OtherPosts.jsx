@@ -25,7 +25,7 @@ export default function OtherPosts() {
   ];
   return (
     <>
-      <p className="trending ">YOU MIGHT ALSO LIKE</p>
+      <p className="trending m-5">YOU MIGHT ALSO LIKE</p>
       <div className="row likedImg mb-5">
           {data.map((item,index)=>(
             <div className="col-sm-6 col-md-4 col-lg-4" key={index}>

@@ -1,0 +1,7 @@
+:root {
+  --shadow-color: -11px 9px 21px -7px rgba(105,97,97,0.88);
+}
+body {
+  line-height: 2em;
+  font-size: 15px;
+}
