@@ -22,7 +22,6 @@ export default function Login() {
             <div className="mb-2">
               <label htmlFor="password">Password</label>
               <FaLock />
-              <br />
               <input
                 type="password"
                 name="password"
@@ -39,7 +38,7 @@ export default function Login() {
               <label htmlFor="Remember me">Remember me</label>
             </div>
             <div className="d-grid">
-              <button className="btn btn-primary" style={{ width: "100%"}}>
+              <button className="btn btn-primary" style={{ width: "100%" }}>
                 <a
                   href="/"
                   className="text-white"

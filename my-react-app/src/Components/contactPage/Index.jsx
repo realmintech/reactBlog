@@ -9,7 +9,7 @@ export default function ContactPage() {
       <div className="blurBgImg"></div>
       <div className="container ">
         <div className="row">
-          <div className="col-sm-6 col-md-6 col-lg-8">
+          <div className="col-sm-6 col-md-6 col-lg-6">
             <p className="mt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
               delectus iste deserunt sunt repudiandae sapiente asperiores ad.

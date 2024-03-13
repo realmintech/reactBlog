@@ -1,5 +1,5 @@
 import React from 'react';
-import './OtherPosts.css';
+import './YouMightAlsoLikeComponent.css';
 import Wears from "../../assets/wears.jpg";
 import BeautyPic from "../../assets/carousel.webp";
 import ManOnSuit from "../../assets/man_image.webp";

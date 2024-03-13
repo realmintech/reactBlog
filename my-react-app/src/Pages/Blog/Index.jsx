@@ -4,7 +4,7 @@ import BeautyPic from "../../assets/carousel.webp";
 import ManOnSuit from "../../assets/man_image.webp";
 import AboutMe from "../../components/aboutMeComponent/Index";
 import Newsletter from "../../components/newsLetterComponent/Index";
-import OtherPosts from "../../components/OtherPosts/OtherPosts";
+import OtherPosts from "../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent";
 import Comment from '../../components/commentSection/Index';
 import { FaShare, FaTag } from "react-icons/fa";
 
@@ -27,7 +27,7 @@ export default function SingleBlogPost() {
       <div className="bgImg"></div>
       <div className="container">
         <div className="row">
-          <div className="col4-lg-8 col-md-8 col-sm-6">
+          <div className="col4-lg-8 col-md-8 col-sm-8">
             <div className="heading">
               <h3>TOP 10 INDREDIENTS</h3>
               <p className="title_date">July 12, 2003</p>
@@ -68,13 +68,13 @@ export default function SingleBlogPost() {
                 eaque deserunt neque nihil non delectus laudantium esse itaque.
               </p>
               <div className="tagShare row">
-                <div className="btns col-lg-8">
+                <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
                   <button className="btn">COOKING</button>
                   <button className="btn">FOOD</button>
                   <button className="btn">LIFESTYLE</button>
                 </div>
-                <div className="shareIcon col-lg-4">
+                <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
                   <button>
                     <FaShare />
                     Share
@@ -87,14 +87,14 @@ export default function SingleBlogPost() {
                 <span> ART / FOOD / TOP</span>
               </p>
               <span className="flexImgWord row">
-                <div className="col-lg-2">
+                <div className="col-lg-2 col-md-2 col-sm-2">
                   <img
                     src={ManOnSuit}
                     alt="man_on_suit"
                     className="roundedImg"
                   />
                 </div>
-                <span className="col-lg-10">
+                <span className="col-lg-10 col-md-10 col-sm-10">
                   <h3>John Phillipe</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -116,7 +116,7 @@ export default function SingleBlogPost() {
               </p>
               {data.map((item, index) => (
                 <div className="flexImgWord row" key={index}>
-                  <Comment item={item}/>
+                  <Comment item={item} />
                 </div>
               ))}
               <p className="commentSection">
@@ -132,15 +132,15 @@ export default function SingleBlogPost() {
                 className="textArea"
               ></textarea>
               <div className="row namedInput">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>NAME *</h6>
                   <input type="text" placeholder="NAME*" />
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>EMAIL *</h6>
                   <input type="text" placeholder="Email*" />
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>WEBSITE</h6>
                   <input type="text" placeholder="Website" />
                 </div>
