@@ -1,18 +1,18 @@
 import React from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import "./Login.css";
 
 export default function Login() {
   return (
     <>
-      <div className="login_template d-flex justify-content-center align-items-center vh-100 bg-secondary">
+      <div
+        className="login_template justify-content-center align-items-center vh-100"
+        style={{ width: "40%", margin: "auto", marginTop: '100px' }}
+      >
         <div className="form_container bg-white p-5 ">
           <form>
             <h3 className="text-center">Login</h3>
             <div className="mb-2">
               <label htmlFor="">Email</label>
-              <span>
-                <FaEnvelope />
-              </span>
               <input
                 type="email"
                 placeholder="Enter Email"
@@ -21,7 +21,6 @@ export default function Login() {
             </div>
             <div className="mb-2">
               <label htmlFor="password">Password</label>
-              <FaLock />
               <input
                 type="password"
                 name="password"
@@ -30,15 +29,11 @@ export default function Login() {
                 placeholder="Password"
               />
             </div>
-            <div className="mb-2">
-              <input
-                type="checkbox"
-                className="custom-control custom-checkbox"
-              />
-              <label htmlFor="Remember me">Remember me</label>
-            </div>
             <div className="d-grid">
-              <button className="btn btn-primary" style={{ width: "100%" }}>
+              <button
+                className="btn"
+                style={{ width: "100%", backgroundColor: "navy" }}
+              >
                 <a
                   href="/"
                   className="text-white"
@@ -48,7 +43,7 @@ export default function Login() {
                 </a>
               </button>
             </div>
-            <p>
+            <p className="text-center" >
               Don't have an account? <a href="/Register">Register</a>
             </p>
           </form>

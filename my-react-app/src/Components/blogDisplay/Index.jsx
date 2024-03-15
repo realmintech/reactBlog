@@ -5,10 +5,10 @@ export default function Index(props) {
   const { item } = props;
   return (
     <>
-      <div className="col-lg-4">
+      <div className="col-lg-4 col-md-4 col-sm-4">
         <img src={item.image} alt="" className="bloging my-4" />
       </div>
-      <div className="col-lg-8 mt-5">
+      <div className="col-lg-8 col-md-8 col-sm-8 mt-5">
         <h5>
           <a className="text-decoration-none text-dark" href="/Blogs">
             {item.title}

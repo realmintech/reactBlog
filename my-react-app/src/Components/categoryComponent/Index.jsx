@@ -7,7 +7,7 @@ export default function CategoryComponent() {
       <div className="imgWithBanner border">
         <img className="img_in_card" src={Desert} alt="forest" />
         <h3>
-          BANNER ADS <br /> 300 * 250
+          BANNER ADS <p className='mx-3'> 300 * 250</p>
         </h3>
       </div>
       <div className="category">

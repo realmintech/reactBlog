@@ -5,10 +5,10 @@ export default function Comment(props) {
   const { item } = props;
   return (
     <>
-      <div className="col-lg-2">
+      <div className="col-lg-2 col-md-2 col-sm-2">
         <img src={item.image} alt="man_on_suit" className="roundedImg" />
       </div>
-      <div className="col-lg-10">
+      <div className="col-lg-10 col-md-10 col-sm-10">
         <h3 className="writer">{item.writer}</h3>
         <span className="admin">{item.admin}</span>
         <span>{item.date}</span>

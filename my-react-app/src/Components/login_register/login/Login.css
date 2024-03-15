@@ -4,3 +4,9 @@
     border-radius: 20px;
 }
 
+
+@media (max-width: '500px') {
+  .login_template {
+    width: 50%;
+  }
+}
