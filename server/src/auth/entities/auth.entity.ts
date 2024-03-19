@@ -58,7 +58,6 @@ export class Auth {
 
   @Prop({ type: Boolean, default: false })
   isConfirmed: boolean;
-  
 }
 
 export type AuthDocument = Auth & Document;

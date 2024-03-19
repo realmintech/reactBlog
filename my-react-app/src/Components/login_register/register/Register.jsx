@@ -1,7 +1,26 @@
-import React from "react";
-import '../login/Login.css';
+import React, { useState } from "react";
+import "../login/Login.css";
+import Axios from "axios";
 
 export default function Register() {
+  const url = "http://localhost:8080/auth/register";
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const submitUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Axios.post(url, {
+        username,
+        password,
+        email,
+      });
+      console.log('this is response', response)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <>
       <div
@@ -12,25 +31,21 @@ export default function Register() {
           <form>
             <h3 className="text-center">Register</h3>
             <div className="mb-2">
-              <label htmlFor="fname">First name</label>
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
-                placeholder="First name"
-              />
-            </div>
-            <div className="mb-2">
-              <label htmlFor="lname">Last name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Last name"
+                placeholder="User name"
               />
             </div>
             <div className="mb-2">
               <label htmlFor="">Email</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email"
                 className="form-control"
               />
@@ -39,8 +54,8 @@ export default function Register() {
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                name="password"
-                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
                 placeholder="Password"
               />
@@ -48,15 +63,10 @@ export default function Register() {
             <div className="d-grid">
               <button
                 className="btn"
+                onClick={submitUser}
                 style={{ width: "100%", backgroundColor: "navy" }}
               >
-                <a
-                  href="/Login"
-                  className="text-white"
-                  style={{ textDecoration: "none" }}
-                >
-                  Register
-                </a>
+                Register
               </button>
             </div>
             <p className="text-center">
