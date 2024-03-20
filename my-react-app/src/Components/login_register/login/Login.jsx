@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./Login.css";
 
 export default function Login() {
-  const url = "http://localhost:8080/auth/login";
+  const url = "http://localhost:3000/auth/login";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = async (e) => {
