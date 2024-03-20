@@ -1,5 +1,7 @@
 .read_more_link {
-  color: rgb(214, 147, 21);
+  color: #be9656;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   font-size: 12px;
 }
 
@@ -9,5 +11,13 @@
 }
 
 .article___header {
+  margin-top: 15px;
   letter-spacing: 1px;
+  text-align: center;
+}
+
+.today_date {
+  text-align: center;
+  color: #be9656;
+  letter-spacing: 2px;
 }

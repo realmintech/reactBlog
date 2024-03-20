@@ -8,11 +8,10 @@ export default function ArticleCard(props) {
         <div className="forestImg">
           <img src={item.imageUrl} alt="forest" className="blogImg" />
           <h5 className="article___header">{item.title}</h5>
+          <p className="today_date">{item.date}</p>
           <hr />
           <p>{item.description}</p>
-          <strong>
-          <a className="read_more_link text-decoration-none" href="/Blogs">READ MORE...</a>
-          </strong>
+          <a className="read_more_link text-decoration-none" href="/blog/1">READ MORE...</a>
         </div>
       </div>
     </>

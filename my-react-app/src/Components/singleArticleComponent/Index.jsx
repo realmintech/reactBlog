@@ -6,22 +6,19 @@ export default function SingleArticleComponet() {
     <>
       <div className="firstSection">
         <h3 className="text-center pt-4">BEAUTY OF NATURE</h3>
-        <p className="text-center">
-          <hr />
-          <em>July-12-2024</em>
-          <hr />
-        </p>
+        <div className="text-center">
+          <p className='today_date'>July-12-2024</p>
+        </div>
         <img src={BeautyPic} alt="lady" className="beautyPic mt-5" />
         <p>
           Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit
           amet, consectetur Nulla fringilla purus at leo dignissim congue.
           Mauris elementum accumsan leo vel tempor. Sit amet cursus nisl
           aliquam.
-          <br />
+        </p>
           <a className="read_more_link text-decoration-none" href="/Blogs">
             Read More...
           </a>
-        </p>
       </div>
     </>
   );

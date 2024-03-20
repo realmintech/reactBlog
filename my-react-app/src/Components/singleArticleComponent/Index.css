@@ -4,7 +4,14 @@
 }
 
 .read_more_link {
-  color: brown;
+  color: #be9656;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
+.today_date {
+  font-style: italic;
+  color: #be9656;
+  letter-spacing: 2px;
+}
 

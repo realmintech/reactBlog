@@ -1,22 +1,36 @@
 import React from "react";
 import "./Index.css";
-import Comment from "../../components/commentSection/Comment";
 import BeautyPic from "../../assets/carousel.webp";
 import ManOnSuit from "../../assets/man_image.webp";
 import AboutMe from "../../components/aboutMeComponent/Index";
 import Newsletter from "../../components/newsLetterComponent/Index";
+import OtherPosts from "../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent";
+import Comment from '../../components/commentSection/Index';
 import { FaShare, FaTag } from "react-icons/fa";
 
 export default function SingleBlogPost() {
+  const data = [
+    {
+      image: ManOnSuit,
+      writer: "John Phillipe",
+      date: "July 25, 2015 at 8:45am",
+      reply: "reply",
+      admin: "Admin",
+      desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dicta?
+            Nam adipisci eveniet cupiditate delectus, asperiores quo odio sed
+            amet provident voluptate nostrum quis veritatis nisi. Repudiandae
+            quod autem fugiat.`,
+    },
+  ];
   return (
     <>
       <div className="bgImg"></div>
       <div className="container">
         <div className="row">
-          <div className="col4-lg-8 col-md-8 col-sm-6">
+          <div className="col4-lg-8 col-md-8 col-sm-8">
             <div className="heading">
               <h3>TOP 10 INDREDIENTS</h3>
-              <span>July 12, 2003</span>
+              <p className="title_date">July 12, 2003</p>
             </div>
             <div className="news">
               <p>
@@ -34,12 +48,7 @@ export default function SingleBlogPost() {
                 asperiores! Aspernatur, vel corporis?
               </p>
               <img src={BeautyPic} alt="" className="beautyPic" />
-              <em
-                className="picCaption"
-                style={{ margin: "10px 280px", display: "inline-block" }}
-              >
-                Travelling the world
-              </em>
+              <p className="picCaption">Travelling the world</p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatibus, saepe maxime minus odio temporibus illum placeat
@@ -59,13 +68,13 @@ export default function SingleBlogPost() {
                 eaque deserunt neque nihil non delectus laudantium esse itaque.
               </p>
               <div className="tagShare row">
-                <div className="btns col-lg-8">
+                <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
                   <button className="btn">COOKING</button>
                   <button className="btn">FOOD</button>
                   <button className="btn">LIFESTYLE</button>
                 </div>
-                <div className="shareIcon col-lg-4">
+                <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
                   <button>
                     <FaShare />
                     Share
@@ -77,29 +86,25 @@ export default function SingleBlogPost() {
               <p className="highLight">
                 <span> ART / FOOD / TOP</span>
               </p>
-              <span className="flexImgWord ">
-                <div className="col-lg-2">
+              <span className="flexImgWord row">
+                <div className="col-lg-2 col-md-2 col-sm-2">
                   <img
                     src={ManOnSuit}
                     alt="man_on_suit"
                     className="roundedImg"
                   />
                 </div>
-                <span className="col-lg-10">
+                <span className="col-lg-10 col-md-10 col-sm-10">
                   <h3>John Phillipe</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quo, dicta? Nam adipisci eveniet cupiditate delectus,
                     asperiores quo odio sed amet provident voluptate nostrum
                     quis veritatis nisi. Repudiandae quod autem fugiat. Minima
-                    esse fugiat culpa eos doloribus. Vel voluptatum ipsum totam
-                    hic magni. Nam doloribus dicta vel quam quisquam tenetur
-                    assumenda laboriosam corporis nemo! Hic quod aspernatur amet
-                    modi maxime itaque.
                   </p>
                 </span>
               </span>
-              <Comment />
+              <OtherPosts />
               <p
                 className="comment"
                 style={{
@@ -109,56 +114,11 @@ export default function SingleBlogPost() {
               >
                 2 COMMENTS
               </p>
-              <div className="row">
-                <div className="col-lg-2">
-                  <img
-                    src={ManOnSuit}
-                    alt="man_on_suit"
-                    className="roundedImg"
-                  />
+              {data.map((item, index) => (
+                <div className="flexImgWord row" key={index}>
+                  <Comment item={item} />
                 </div>
-                <div className="col-lg-10">
-                  <h3>John Phillipe</h3>
-                  <span>July 12, 2003 at 8:45am </span>
-                  <em>Reply</em>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quo, dicta? Nam adipisci eveniet cupiditate delectus,
-                    asperiores quo odio sed amet provident voluptate nostrum
-                    quis veritatis nisi. Repudiandae quod autem fugiat. Minima
-                    esse fugiat culpa eos doloribus. Vel voluptatum ipsum totam
-                    hic magni. Nam doloribus dicta vel quam quisquam tenetur
-                    assumenda laboriosam corporis nemo! Hic quod aspernatur amet
-                    modi maxime itaque.
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="row">
-                <div className="col-lg-2">
-                  <img
-                    src={ManOnSuit}
-                    alt="man_on_suit"
-                    className="roundedImg"
-                  />
-                </div>
-                <div className="col-lg-10">
-                  <h3>John Phillipe</h3>
-                  <span>July 12, 2003 at 8:45am </span>
-                  <em>Reply</em>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quo, dicta? Nam adipisci eveniet cupiditate delectus,
-                    asperiores quo odio sed amet provident voluptate nostrum
-                    quis veritatis nisi. Repudiandae quod autem fugiat. Minima
-                    esse fugiat culpa eos doloribus. Vel voluptatum ipsum totam
-                    hic magni. Nam doloribus dicta vel quam quisquam tenetur
-                    assumenda laboriosam corporis nemo! Hic quod aspernatur amet
-                    modi maxime itaque.
-                  </p>
-                </div>
-              </div>
-              <hr />
+              ))}
               <p className="commentSection">
                 Your email address will not be published. Required fields are
                 marked *
@@ -172,15 +132,15 @@ export default function SingleBlogPost() {
                 className="textArea"
               ></textarea>
               <div className="row namedInput">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>NAME *</h6>
                   <input type="text" placeholder="NAME*" />
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>EMAIL *</h6>
                   <input type="text" placeholder="Email*" />
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <h6>WEBSITE</h6>
                   <input type="text" placeholder="Website" />
                 </div>
@@ -200,14 +160,14 @@ export default function SingleBlogPost() {
             <Newsletter />
             <div className="tagDiv">
               <button>BRIDGE</button>
-              <button>CULTURE</button>
-              <button>FOOD</button>
-              <button>FAMILY</button>
-              <button>CITY</button>
-              <button>LIFESTYLE</button>
               <button>PHOTOGRAPH</button>
-              <button>PORTRAIT</button>
+              <button>FOOD</button>
+              <button>CULTURE</button>
+              <button>FAMILY</button>
+              <button>LIFESTYLE</button>
+              <button>CITY</button>
               <button>SPORT</button>
+              <button>PORTRAIT</button>
               <button>TRAVEL</button>
             </div>
           </div>

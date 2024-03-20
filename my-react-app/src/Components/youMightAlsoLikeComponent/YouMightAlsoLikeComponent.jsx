@@ -1,11 +1,11 @@
 import React from 'react';
-import './Comment.css';
+import './YouMightAlsoLikeComponent.css';
 import Wears from "../../assets/wears.jpg";
 import BeautyPic from "../../assets/carousel.webp";
 import ManOnSuit from "../../assets/man_image.webp";
 
 
-export default function Comment() {
+export default function OtherPosts() {
   const data = [
     {
       image_url: Wears,
@@ -25,7 +25,7 @@ export default function Comment() {
   ];
   return (
     <>
-      <p className="trending ">YOU MIGHT ALSO LIKE</p>
+      <p className="trending m-5">YOU MIGHT ALSO LIKE</p>
       <div className="row likedImg mb-5">
           {data.map((item,index)=>(
             <div className="col-sm-6 col-md-4 col-lg-4" key={index}>

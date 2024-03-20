@@ -17,16 +17,16 @@ export default function CustomNavbar() {
   return (
     <>
       <header className="header">
-        <div className="socialIcons ">
+        <div className="socialIcons">
           <FaFacebook style={{ marginRight: "10px", fontSize: "25px" }} />
           <FaTwitter style={{ marginRight: "10px", fontSize: "25px" }} />
           <FaLinkedin style={{ marginRight: "10px", fontSize: "25px" }} />
           <FaInstagram size={20} />
         </div>
         <div className="headerWord">
-          <img src={Logo} alt="letsBlog" />
+          <img src={Logo} alt="letsBlog" className="lets_blog" />
         </div>
-        <div className="searchBtn">
+        <div className="moon_btn">
           <FaMoon size={20} />
         </div>
       </header>
@@ -41,10 +41,13 @@ export default function CustomNavbar() {
             >
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/About">About</Nav.Link>
-              <Nav.Link href="/blog/1">Blogs</Nav.Link>
+              <Nav.Link href="/Blogs">Blogs</Nav.Link>
               <Nav.Link href="/Contact">Contact</Nav.Link>
-              <Nav.Link href="/Blogs">SingleBlogPage</Nav.Link>
+              <Nav.Link href="/blog/1">Blog</Nav.Link>
             </Nav>
+            <button className="btn" style={{backgroundColor: 'navy'}}>
+              <a href="/Login" style={{textDecoration: 'none', color: 'white'}}>Login</a>
+            </button>
             <FaSearch />
           </Navbar.Collapse>
         </Container>

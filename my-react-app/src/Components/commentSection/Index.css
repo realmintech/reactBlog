@@ -1,0 +1,23 @@
+.roundedImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.flexImgWord {
+  border-bottom: 1px solid grey;
+  margin-top: 20px;
+}
+
+.flexImgWord img {
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.reply,
+.admin {
+  padding: 0 10px;
+  font-size: 17px;
+  font-style: italic;
+}
