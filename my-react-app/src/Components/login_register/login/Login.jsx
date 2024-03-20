@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import Axios from 'axios';
+import Axios from "axios";
 import "./Login.css";
 
 export default function Login() {
-  const url ='';
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const url = "http://localhost:8080/auth/login";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const login = async (e) => {
     e.preventDefault();
     try {
       const response = await Axios.post(url, {
-        email, password
-      })
-      console.log(response)
+        email,
+        password
+      });
+      console.log(response);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   return (
     <>
       <div
@@ -31,7 +32,7 @@ export default function Login() {
               <input
                 type="email"
                 value={email}
-                onChange={(e)=> setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email"
                 className="form-control"
               />
@@ -41,7 +42,7 @@ export default function Login() {
               <input
                 type="password"
                 value={password}
-                onChange={(e)=> setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
                 placeholder="Password"
               />
@@ -49,10 +50,10 @@ export default function Login() {
             <div className="d-grid">
               <button
                 className="btn"
-                onClick={login} 
+                onClick={login}
                 style={{ width: "100%", backgroundColor: "navy" }}
               >
-                  Login
+                Login
               </button>
             </div>
             <p className="text-center">

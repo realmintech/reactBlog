@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "../login/Login.css";
 import Axios from "axios";
+import Success from "../../toast/Toast";
+import Warning from "../../toast/Warning";
 
 export default function Register() {
   const url = "http://localhost:8080/auth/register";
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isRegister, setIsRegister] = useState(false);
   const submitUser = async (e) => {
     e.preventDefault();
     try {
@@ -15,9 +18,14 @@ export default function Register() {
         password,
         email,
       });
-      console.log('this is response', response)
+      if (response.status === 200) {
+        console.log("You have successfully logged in");
+      } else {
+        console.log("There is error in your input");
+      }
+      console.log("this is response", response);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -61,9 +69,11 @@ export default function Register() {
               />
             </div>
             <div className="d-grid">
+              {isRegister ? <Success /> : <Warning />}
               <button
                 className="btn"
                 onClick={submitUser}
+                onSubmit={() => setIsRegister(true)}
                 style={{ width: "100%", backgroundColor: "navy" }}
               >
                 Register
