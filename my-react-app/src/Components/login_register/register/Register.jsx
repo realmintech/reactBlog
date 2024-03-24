@@ -1,38 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../login/Login.css";
-import Axios from "axios";
+import { useDispatch } from "react-redux";
+import { register } from "../../../actions/userActions";
 
 export default function Register() {
-  const url = "http://localhost:3000/auth/register";
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const submitUser = async (e) => {
+  const dispatch = useDispatch();
+
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    try {
-      await Axios.post(url, {
-        username,
-        password,
-        email,
-        confirmPassword,
-      });
-      setMessage("Registration Successful");
-    } catch (error) {
-      setMessage(error?.response?.data?.message || "Error occurred");
-      // console.log(error?.response?.data?.message);
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+    } else {
+      dispatch(register(email, username, password, confirmPassword));
     }
   };
-    useEffect(() => {
-      let timeout;
-      if (message) {
-        timeout = setTimeout(() => {
-          setMessage("");
-        }, 30000); 
-      }
-      return () => clearTimeout(timeout);
-    }, [message]);
+
+  // useEffect(() => {
+  //   let timeout;
+  //   if (message) {
+  //     timeout = setTimeout(() => {
+  //       setMessage("");
+  //     }, 30000);
+  //   }
+  //   return () => clearTimeout(timeout);
+  // }, [message]);
 
   return (
     <>
@@ -41,22 +37,6 @@ export default function Register() {
         style={{ width: "40%", margin: "auto", marginTop: "100px" }}
       >
         <div className="form_container bg-white p-5 ">
-          {message && (
-            <div
-              className={`alert ${
-                message.startsWith(Error) ? "alert-danger" : "alert-success"
-              }`}
-              role="alert"
-            >
-              {message}
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-              ></button>
-            </div>
-          )}
           <form>
             <h3 className="text-center">Register</h3>
             <div className="mb-2">
@@ -99,10 +79,10 @@ export default function Register() {
                 placeholder="Password"
               />
             </div>
-            <div className="d-grid">
+            <div className="d-grid" >
               <button
                 className="btn"
-                onClick={submitUser}
+                onClick={submitHandler}
                 style={{
                   width: "100%",
                   backgroundColor: "navy",

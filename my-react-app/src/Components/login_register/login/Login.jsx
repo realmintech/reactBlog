@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import { useDispatch } from "react-redux";
 import "./Login.css";
+import { login } from "../../../actions/userActions";
 
 export default function Login() {
-  const url = "http://localhost:3000/auth/login";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const login = async (e) => {
+
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    try {
-      const response = await Axios.post(url, {
-        email,
-        password
-      });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(login(email, password));
   };
+
   return (
     <>
       <div
@@ -50,8 +46,12 @@ export default function Login() {
             <div className="d-grid">
               <button
                 className="btn"
-                onClick={login}
-                style={{ width: "100%", backgroundColor: "navy" }}
+                onClick={submitHandler}
+                style={{
+                  width: "100%",
+                  backgroundColor: "navy",
+                  color: "white",
+                }}
               >
                 Login
               </button>
