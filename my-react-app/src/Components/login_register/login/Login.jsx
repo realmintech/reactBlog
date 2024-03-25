@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Login.css";
 import { login } from "../../../actions/userActions";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export default function Login() {
     <>
       <div
         className="login_template justify-content-center align-items-center vh-100"
-        style={{ width: "40%", margin: "auto", marginTop: "100px" }}
+        style= {{ width: "40%", margin: "auto", marginTop: "100px" }}
       >
         <div className="form_container bg-white p-5 ">
           <form>
@@ -53,6 +54,7 @@ export default function Login() {
                   color: "white",
                 }}
               >
+                <Navigate to='/login' />
                 Login
               </button>
             </div>
