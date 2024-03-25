@@ -1,25 +1,34 @@
 import React, { useState } from "react";
 import "../login/Login.css";
-import Axios from "axios";
+import { useDispatch } from "react-redux";
+import { register } from "../../../actions/userActions";
 
 export default function Register() {
-  const url = "http://localhost:8080/auth/register";
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submitUser = async (e) => {
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const dispatch = useDispatch();
+
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    try {
-      const response = await Axios.post(url, {
-        username,
-        password,
-        email,
-      });
-      console.log('this is response', response)
-    } catch (error) {
-      console.log(error)
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+    } else {
+      dispatch(register(email, username, password, confirmPassword));
     }
   };
+
+  // useEffect(() => {
+  //   let timeout;
+  //   if (message) {
+  //     timeout = setTimeout(() => {
+  //       setMessage("");
+  //     }, 30000);
+  //   }
+  //   return () => clearTimeout(timeout);
+  // }, [message]);
 
   return (
     <>
@@ -60,11 +69,25 @@ export default function Register() {
                 placeholder="Password"
               />
             </div>
-            <div className="d-grid">
+            <div className="mb-2">
+              <label htmlFor="password">Confirm Password</label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="form-control"
+                placeholder="Password"
+              />
+            </div>
+            <div className="d-grid" >
               <button
                 className="btn"
-                onClick={submitUser}
-                style={{ width: "100%", backgroundColor: "navy" }}
+                onClick={submitHandler}
+                style={{
+                  width: "100%",
+                  backgroundColor: "navy",
+                  color: "white",
+                }}
               >
                 Register
               </button>

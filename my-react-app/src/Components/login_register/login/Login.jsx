@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
-import './Login.css';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import "./Login.css";
+import { login } from "../../../actions/userActions";
 
 export default function Login() {
-  const url = '';
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const login = async (e) => {
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    try {
-      const response = await Axios.post(url, {
-        email,
-        password,
-      });
-      setSuccess('Registration Successful');
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-      setSuccess(error?.response?.data?.message || 'Error occur');
-    }
+    dispatch(login(email, password));
   };
+
   return (
     <>
       <div
@@ -37,8 +29,8 @@ export default function Login() {
                 type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder='Enter Email'
-                className='form-control'
+                placeholder="Enter Email"
+                className="form-control"
               />
             </div>
             <div className='mb-2'>
@@ -47,15 +39,19 @@ export default function Login() {
                 type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='form-control'
-                placeholder='Password'
+                className="form-control"
+                placeholder="Password"
               />
             </div>
             <div className='d-grid'>
               <button
-                className='btn'
-                onClick={login}
-                style={{ width: '100%', backgroundColor: 'navy' }}
+                className="btn"
+                onClick={submitHandler}
+                style={{
+                  width: "100%",
+                  backgroundColor: "navy",
+                  color: "white",
+                }}
               >
                 Login
               </button>

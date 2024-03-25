@@ -6,10 +6,10 @@ export default function Success() {
       <div
         aria-live="polite"
         aria-atomic="true"
-        class="d-flex justify-content-center align-items-center w-100"
+        className="d-flex justify-content-center align-items-center w-100"
       >
         <div
-          class="toast"
+          className="toast"
           role="alert"
           aria-live="assertive"
           aria-atomic="true"
@@ -18,12 +18,12 @@ export default function Success() {
             <strong class="me-auto">Dear Blooger</strong>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="toast"
               aria-label="Close"
             ></button>
           </div>
-          <div class="toast-body">You have successfully loggedIn</div>
+          <div className="toast-body">You have successfully loggedIn</div>
         </div>
       </div>
     </>
