@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../login/Login.css";
 import { useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom';
 import { register } from "../../../actions/userActions";
 
 export default function Register() {
@@ -8,6 +9,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [ message, setMessage] = useState();
   const dispatch = useDispatch();
 
 
@@ -20,15 +22,15 @@ export default function Register() {
     }
   };
 
-  // useEffect(() => {
-  //   let timeout;
-  //   if (message) {
-  //     timeout = setTimeout(() => {
-  //       setMessage("");
-  //     }, 30000);
-  //   }
-  //   return () => clearTimeout(timeout);
-  // }, [message]);
+  useEffect(() => {
+    let timeout;
+    if (message) {
+      timeout = setTimeout(() => {
+        setMessage("");
+      }, 30000);
+    }
+    return () => clearTimeout(timeout);
+  }, [message]);
 
   return (
     <>
@@ -37,6 +39,7 @@ export default function Register() {
         style={{ width: "40%", margin: "auto", marginTop: "100px" }}
       >
         <div className="form_container bg-white p-5 ">
+          {message && alert}
           <form>
             <h3 className="text-center">Register</h3>
             <div className="mb-2">
@@ -79,7 +82,7 @@ export default function Register() {
                 placeholder="Password"
               />
             </div>
-            <div className="d-grid" >
+            <div className="d-grid">
               <button
                 className="btn"
                 onClick={submitHandler}
@@ -91,6 +94,7 @@ export default function Register() {
               >
                 Register
               </button>
+                <Navigate to="/login" />
             </div>
             <p className="text-center">
               Already have an account? <a href="/Login">Login</a>
