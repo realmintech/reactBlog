@@ -59,11 +59,11 @@ export class AuthService {
     await createdUser.save();
 
     // Send confirmation email
-    await this.emailService.sendEmail(
-      'confirmation',
-      createdUser.email,
-      confirmationToken,
-    );
+    // await this.emailService.sendEmail(
+    //   'confirmation',
+    //   createdUser.email,
+    //   confirmationToken,
+    // );
 
     return createdUser;
   }
