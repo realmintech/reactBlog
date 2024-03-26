@@ -47,7 +47,7 @@ export const register =
         password,
         confirmPassword,
       });
-      console.log("Success:", response.data);
+      // console.log("Success:", response.data);
       dispatch({
         type: USER_REGISTRATION_SUCCESS,
         payload: response.data,
@@ -60,6 +60,6 @@ export const register =
             ? error.response.data.message
             : error.message,
       });
-      console.log("this is error msg:", error.response.data.message);
+      // console.log("this is error msg:", error.response.data.message);
     }
   };

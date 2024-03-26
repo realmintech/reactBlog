@@ -8,6 +8,7 @@ import Navbar from "./components/common/navbar/Navbar";
 import Footer from "./components/common/footer/Footer";
 import Login from "./components/login_register/login/Login";
 import Register from "./components/login_register/register/Register";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 export default function App() {
     const Layout = () => {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element: <Register />,
+  },
+  {
+    path: "/Dashboard",
+    element: <Dashboard />,
   },
 ]);
 return (

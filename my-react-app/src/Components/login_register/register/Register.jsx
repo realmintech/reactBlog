@@ -16,7 +16,7 @@ export default function Register() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
+      console.log(response.data);
     } else {
       dispatch(register(email, username, password, confirmPassword));
     }
@@ -39,8 +39,22 @@ export default function Register() {
         style={{ width: "40%", margin: "auto", marginTop: "100px" }}
       >
         <div className="form_container bg-white p-5 ">
-          {message && alert}
           <form>
+            <div
+              className={`alert ${
+                Response.data ? "alert-success" : "alert-danger"
+              } alert-dismissible fade show`}
+              role="alert"
+              >
+              {Response.data}
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              >
+              </button>
+            </div>
             <h3 className="text-center">Register</h3>
             <div className="mb-2">
               <label htmlFor="username">Username</label>
@@ -94,7 +108,7 @@ export default function Register() {
               >
                 Register
               </button>
-                <Navigate to="/login" />
+              <Navigate to="" />
             </div>
             <p className="text-center">
               Already have an account? <a href="/Login">Login</a>
