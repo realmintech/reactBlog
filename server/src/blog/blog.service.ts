@@ -1,26 +1,154 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { UpdateBlogDto } from './dto/update-blog.dto';
+import { Blog } from './entities/blog.entity';
+import { JwtPayload } from '../auth/interfaces/jwt-payload.interface';
+import slugify from 'slugify';
+import {
+  Category,
+  CategoryDocument,
+} from '../category/entities/category.entity';
 
 @Injectable()
 export class BlogService {
-  create(createBlogDto: CreateBlogDto) {
-    return 'This action adds a new blog';
+  constructor(
+    @InjectModel('Blog') private readonly blogModel: Model<Blog>,
+    @InjectModel(Category.name)
+    private readonly categoryModel: Model<CategoryDocument>,
+  ) {}
+
+  async create(createBlogDto: CreateBlogDto, user: JwtPayload): Promise<Blog> {
+    const createdBlog = new this.blogModel({
+      ...createBlogDto,
+      author: user._id,
+    });
+    return createdBlog.save();
   }
 
-  findAll() {
-    return `This action returns all blog`;
+  async findAll(page: number = 1, limit: number = 10) {
+    const skip = (page - 1) * limit;
+    const total = await this.blogModel.countDocuments();
+    const blogs = await this.blogModel.find().skip(skip).limit(limit).exec();
+
+    return {
+      data: blogs,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalPosts: total,
+    };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} blog`;
+  async getPublishedPosts(page: number = 1, limit: number = 10) {
+    const skip = (page - 1) * limit;
+    const total = await this.blogModel.countDocuments();
+    const blogs = await this.blogModel
+      .find({ isPublished: true })
+      .skip(skip)
+      .limit(limit)
+      .exec();
+
+    return {
+      data: blogs,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalPosts: total,
+    };
   }
 
-  update(id: number, updateBlogDto: UpdateBlogDto) {
-    return `This action updates a #${id} blog`;
+  async findFeaturedPosts(): Promise<Blog[]> {
+    return this.blogModel
+      .find({ isFeatured: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} blog`;
+  async findByIdCategoryAndSlug(
+    id: string,
+    category: string,
+    slug: string,
+  ): Promise<Blog> {
+    return await this.blogModel
+      .findOne({
+        _id: id,
+        category: category,
+        slug: slug,
+      })
+      .populate('category', 'name')
+      .exec();
+  }
+
+  async getPostById(postId: string): Promise<Blog> {
+    const post = await this.blogModel.findById(postId).exec();
+    return post;
+  }
+
+  async findSimilarBlogs(blog: Blog): Promise<Blog[]> {
+    const similarBlogs = await this.blogModel
+      .find({
+        category: blog.category,
+        _id: { $ne: blog._id },
+      })
+      .sort({ createdAt: -1 })
+      .limit(3)
+      .exec();
+
+    return similarBlogs;
+  }
+
+  async getBlogsByAuthor(authorId: string): Promise<Blog[]> {
+    const blogs = await this.blogModel.find({ author: authorId }).exec();
+    return blogs;
+  }
+
+  async findByCategory(categoryName: string): Promise<Blog[]> {
+    return this.blogModel.find({ category: categoryName }).exec();
+  }
+
+  async getAllTags(): Promise<{ name: string; count: number }[]> {
+    const tags = await this.blogModel.aggregate([
+      { $unwind: '$tags' },
+      { $group: { _id: '$tags', count: { $sum: 1 } } },
+      { $project: { _id: 0, name: '$_id', count: 1 } },
+      { $sort: { count: -1 } },
+    ]);
+    return tags;
+  }
+
+  async getPostsByTag(tag: string): Promise<Blog[]> {
+    const posts = await this.blogModel.find({ tags: tag }).exec();
+    return posts;
+  }
+
+  async updatePost(
+    id: string,
+    updatePostDto: Partial<UpdateBlogDto>,
+  ): Promise<Blog> {
+    const options = { new: true };
+
+    if (updatePostDto.title) {
+      updatePostDto.slug = slugify(updatePostDto.title, { lower: true });
+    }
+
+    return this.blogModel.findByIdAndUpdate(id, updatePostDto, options).exec();
+  }
+
+  async search(query: string): Promise<Blog[]> {
+    const results = await this.blogModel
+      .find({
+        $or: [
+          { title: { $regex: query, $options: 'i' } },
+          { description: { $regex: query, $options: 'i' } },
+          { tag: { $regex: query, $options: 'i' } },
+        ],
+      })
+      .exec();
+    return results;
+  }
+
+  async deletePost(id: string): Promise<void> {
+    await this.blogModel.findByIdAndDelete(id).exec();
   }
 }
