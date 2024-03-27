@@ -54,7 +54,7 @@ export default function Login() {
                   color: "white",
                 }}
               >
-                <Navigate to='/login' />
+                <Navigate to='' />
                 Login
               </button>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../login/Login.css";
-import { useDispatch } from "react-redux";
-import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { register } from "../../../actions/userActions";
 
 export default function Register() {
@@ -9,28 +9,26 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [ message, setMessage] = useState();
+  const [showAlert, setShowAlert] = useState(false); // State to control visibility of the alert
   const dispatch = useDispatch();
 
+  const userRegister = useSelector((state) => state.userRegistration);
+  console.log("User Registration info:", userRegister.error);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      console.log(response.data);
-    } else {
-      dispatch(register(email, username, password, confirmPassword));
-    }
+    dispatch(register(email, username, password, confirmPassword));
   };
 
   useEffect(() => {
-    let timeout;
-    if (message) {
-      timeout = setTimeout(() => {
-        setMessage("");
-      }, 30000);
+    if (userRegister.error) {
+      setShowAlert(true);
     }
-    return () => clearTimeout(timeout);
-  }, [message]);
+  }, [userRegister.error]);
+
+  const closeAlert = () => {
+    setShowAlert(false); 
+  };
 
   return (
     <>
@@ -40,22 +38,24 @@ export default function Register() {
       >
         <div className="form_container bg-white p-5 ">
           <form>
-            <div
-              className={`alert ${
-                Response.data ? "alert-success" : "alert-danger"
-              } alert-dismissible fade show`}
-              role="alert"
-              >
-              {Response.data}
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-              >
-              </button>
-            </div>
             <h3 className="text-center">Register</h3>
+            {showAlert && (
+              <div
+                className={`alert ${
+                  userRegister.error ? "alert-danger" : "alert-success"
+                } alert-dismissible fade show`}
+                role="alert"
+              >
+                {userRegister.error}
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeAlert}
+                  aria-label="Close"
+                ></button>
+              </div>
+            )}
+
             <div className="mb-2">
               <label htmlFor="username">Username</label>
               <input
@@ -65,36 +65,36 @@ export default function Register() {
                 className="form-control"
                 placeholder="User name"
               />
-            </div>
-            <div className="mb-2">
-              <label htmlFor="">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Email"
-                className="form-control"
-              />
-            </div>
-            <div className="mb-2">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-control"
-                placeholder="Password"
-              />
-            </div>
-            <div className="mb-2">
-              <label htmlFor="password">Confirm Password</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="form-control"
-                placeholder="Password"
-              />
+              <div className="mb-2">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                  placeholder="Email"
+                />
+              </div>
+              <div className="mb-2">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="mb-2">
+                <label htmlFor="Confirm Password">Confirm Password</label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="form-control"
+                  placeholder="Confirm Password"
+                />
+              </div>
             </div>
             <div className="d-grid">
               <button

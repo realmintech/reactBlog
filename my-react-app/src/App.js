@@ -9,6 +9,7 @@ import Footer from "./components/common/footer/Footer";
 import Login from "./components/login_register/login/Login";
 import Register from "./components/login_register/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
+import PostForm from "./components/postsForm/PostForm";
 
 export default function App() {
     const Layout = () => {
@@ -43,19 +44,23 @@ const router = createBrowserRouter([
         path: "/Blog/1",
         element: <Blog />,
       },
+      {
+        path: "/Login",
+        element: <Login />,
+      },
+      {
+        path: "/Register",
+        element: <Register />,
+      },
     ],
-  },
-  {
-    path: "/Login",
-    element: <Login />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
   },
   {
     path: "/Dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/Posts",
+    element: <PostForm />,
   },
 ]);
 return (

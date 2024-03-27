@@ -4,6 +4,7 @@ import {
   USER_LOGIN_SUCCESS,
   USER_REGISTRATION_SUCCESS,
   USER_REGISTRATION_FAIL,
+  ADMIN_POST_BLOG,
 } from "../constants/userConstants";
 
 
@@ -26,6 +27,15 @@ export const userRegistrationReducer = (state = {}, action) => {
       return { userInfo: action.payload };
     case USER_REGISTRATION_FAIL:
       return { error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postBlog = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_POST_BLOG:
+      return { userInfo: action.payload };
     default:
       return state;
   }
