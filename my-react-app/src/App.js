@@ -1,4 +1,8 @@
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  Outlet,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import About from "./pages/about/About";
 import Blog from "./pages/Blog/Index";
 import Blogs from "./pages/blogs/Index";
@@ -12,60 +16,62 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import PostForm from "./components/postsForm/PostForm";
 
 export default function App() {
-    const Layout = () => {
-      return <>
-      <Navbar />
-      <Outlet />
-      <Footer />
+  const Layout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+        <Footer />
       </>
-    }
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/About",
-        element: <About />,
-      },
-      {
-        path: "/Blogs",
-        element: <Blogs />,
-      },
-      {
-        path: "/Contact",
-        element: <Contact />,
-      },
-      {
-        path: "/Blog/1",
-        element: <Blog />,
-      },
-      {
-        path: "/Login",
-        element: <Login />,
-      },
-      {
-        path: "/Register",
-        element: <Register />,
-      },
-    ],
-  },
-  {
-    path: "/Dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "/Posts",
-    element: <PostForm />,
-  },
-]);
-return (
-  <div>
-    <RouterProvider router={router}></RouterProvider>
-  </div>
-)
+    );
+  };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/About",
+          element: <About />,
+        },
+        {
+          path: "/Blogs",
+          element: <Blogs />,
+        },
+        {
+          path: "/Contact",
+          element: <Contact />,
+        },
+        {
+          path: "/Blog/1",
+          element: <Blog />,
+        },
+        {
+          path: "/Login",
+          element: <Login />,
+        },
+        {
+          path: "/Register",
+          element: <Register />,
+        },
+      ],
+    },
+    {
+      path: "/Dashboard",
+      element: <Dashboard />,
+    },
+    {
+      path: "/Posts",
+      element: <PostForm />,
+    },
+  ]);
+  return (
+    <div>
+      <RouterProvider router={router}></RouterProvider>
+    </div>
+  );
 }
