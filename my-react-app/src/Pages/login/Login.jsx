@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Login.css";
-import { login } from "../../../actions/userActions";
+import { login } from "../../actions/userActions";
 import { Navigate } from "react-router-dom";
 
 export default function Login() {
@@ -18,8 +18,8 @@ export default function Login() {
   return (
     <>
       <div
-        className="login_template justify-content-center align-items-center vh-100"
-        style= {{ width: "40%", margin: "auto", marginTop: "100px" }}
+        className="container login_template justify-content-center align-items-center vh-100"
+        style= {{ margin: "auto", marginTop: "100px" }}
       >
         <div className='form_container bg-white p-5 '>
           <form>
@@ -59,7 +59,7 @@ export default function Login() {
               </button>
             </div>
             <p className='text-center'>
-              Don't have an account? <a href='/Register'>Register</a>
+              Don't have an account? <a href='/register'>Register</a>
             </p>
           </form>
          

@@ -1,0 +1,21 @@
+.login_template {
+  width: 40%;
+  margin: auto;
+  margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .login_template {
+    width: 80%;
+    margin: auto;
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login_template {
+    width: 80%;
+    margin: auto;
+    margin-top: 70px;
+  }
+}

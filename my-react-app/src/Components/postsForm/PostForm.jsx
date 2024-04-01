@@ -3,22 +3,28 @@ import React from "react";
 export default function PostForm() {
   return (
     <>
-      <form action="" className="m-3">
+      <form action="" className="m-3 container">
         <h5 className="m-3">Add blog</h5>
         <div className="m-3">
-          <input type="text" placeholder="Title" />
+          <input type="text" placeholder="Title" className="form-control" />
         </div>
         <div className="m-3">
-          <input type="file" src="" alt="" placeholder="Chose image" />
+          <input
+            type="file"
+            src=""
+            alt=""
+            className="form-control"
+            placeholder="Chose image"
+          />
         </div>
         <div className="m-3">
-            <label htmlFor="" className="m-1">Category</label>
-          <select name="options" id="">
-            <option value="">Education</option>
-            <option value="">Lifestyle</option>
-            <option value="">Technology</option>
-            <option value="">Art</option>
-            <option value="">Food</option>
+          <select name="options" id="" className="form-select">
+            <option selected>Category</option>
+            <option value="1">Education</option>
+            <option value="2">Lifestyle</option>
+            <option value="3">Technology</option>
+            <option value="4">Art</option>
+            <option value="5">Food</option>
           </select>
         </div>
         <textarea
@@ -26,11 +32,15 @@ export default function PostForm() {
           id=""
           cols="70"
           rows="10"
-          className="m-3"
+          className="m-3 form-control"
           placeholder="Description"
         ></textarea>
         <div>
-          <button type="submit" className="m-3" style={{width:'40%', background: 'navy', color: 'white'}}>
+          <button
+            type="submit"
+            className="m-3 btn"
+            style={{ width: '100%', background: 'navy', color: 'white' }}
+          >
             Submit
           </button>
         </div>

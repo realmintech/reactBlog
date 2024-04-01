@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "../login/Login.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import { register } from "../../../actions/userActions";
+import React, { useState, useEffect } from 'react';
+import './Register.css';
+import { useDispatch, useSelector } from 'react-redux';
+// import { Navigate } from 'react-router-dom';
+import { register } from '../../actions/userActions';
 
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showAlert, setShowAlert] = useState(false); // State to control visibility of the alert
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegistration);
-  console.log("User Registration info:", userRegister.error);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -27,14 +26,13 @@ export default function Register() {
   }, [userRegister.error]);
 
   const closeAlert = () => {
-    setShowAlert(false); 
+    setShowAlert(false);
   };
 
   return (
     <>
       <div
-        className="login_template justify-content-center align-items-center vh-100"
-        style={{ width: "40%", margin: "auto", marginTop: "100px" }}
+        className="container login_template justify-content-center align-items-center vh-100"
       >
         <div className="form_container bg-white p-5 ">
           <form>
@@ -42,11 +40,13 @@ export default function Register() {
             {showAlert && (
               <div
                 className={`alert ${
-                  userRegister.error ? "alert-danger" : "alert-success"
+                  userRegister.error ? 'alert-danger' : 'alert-success'
                 } alert-dismissible fade show`}
                 role="alert"
               >
-                {userRegister.error}
+                {userRegister.error
+                  ? userRegister.error
+                  : 'You have successfully registered'}
                 <button
                   type="button"
                   className="btn-close"
@@ -101,17 +101,17 @@ export default function Register() {
                 className="btn"
                 onClick={submitHandler}
                 style={{
-                  width: "100%",
-                  backgroundColor: "navy",
-                  color: "white",
+                  width: '100%',
+                  backgroundColor: 'navy',
+                  color: 'white',
                 }}
               >
                 Register
               </button>
-              <Navigate to="" />
+              {/* <Navigate to="" /> */}
             </div>
             <p className="text-center">
-              Already have an account? <a href="/Login">Login</a>
+              Already have an account? <a href="/login">Login</a>
             </p>
           </form>
         </div>
