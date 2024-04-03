@@ -18,23 +18,54 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog/1" element={<Blog />} />
+          <Route
+            path="/"
+            element={
+              <LayoutWithNavbarAndFooter>
+                <Home />
+              </LayoutWithNavbarAndFooter>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <LayoutWithNavbarAndFooter>
+                <About />
+              </LayoutWithNavbarAndFooter>
+            }
+          />
+          <Route
+            path="/blogs"
+            element={
+              <LayoutWithNavbarAndFooter>
+                <Blogs />
+              </LayoutWithNavbarAndFooter>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <LayoutWithNavbarAndFooter>
+                <Contact />
+              </LayoutWithNavbarAndFooter>
+            }
+          />
+          <Route
+            path="/blog/1"
+            element={
+              <LayoutWithNavbarAndFooter>
+                <Blog />
+              </LayoutWithNavbarAndFooter>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-        </Routes>
-        <Footer />
-        <Routes>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="sidebar" element={<Sidebar />} />
-            <Route path="blogInfo" element={<BlogInfo />} />
             <Route path="post" element={<PostForm />} />
+            <Route path="sideBar" element={<Sidebar />} />
             <Route path="edit_post" element={<EditPost />} />
+            <Route path="blogInfo" element={<BlogInfo />} />
           </Route>
         </Routes>
       </div>
@@ -42,4 +73,13 @@ export default function App() {
   );
 }
 
+function LayoutWithNavbarAndFooter({ children }) {
+  return (
+    <div>
+      <Navbar />
+      {children}
+      <Footer />
+    </div>
+  );
+}
 
