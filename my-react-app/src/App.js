@@ -12,6 +12,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import PostForm from './components/postsForm/PostForm';
 import Sidebar from './components/sidebar/Sidebar';
 import BlogInfo from './components/blogInfo/BlogInfo';
+import EditPost from './components/edit_post/EditPost';
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="sidebar" element={<Sidebar />} />
             <Route path="blogInfo" element={<BlogInfo />} />
             <Route path="post" element={<PostForm />} />
+            <Route path="edit_post" element={<EditPost />} />
           </Route>
         </Routes>
       </div>

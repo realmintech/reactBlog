@@ -1,6 +1,5 @@
-import React from "react";
-import { FaRegEye, FaHeart } from "react-icons/fa";
-
+import React from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export default function BlogInfo() {
   return (
@@ -8,6 +7,40 @@ export default function BlogInfo() {
       <div>
         <div>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div className="container m-4">
+              <div className="row">
+                <div className="col-lg-4 col-md-4 col-sm-4">
+                  <div className="cards">
+                    <div class="card bg-primary text-white">
+                      <div class="card-body text-center">
+                        <h5 class="card-title">Blogs</h5>
+                        <h6 class="card-subtitle mb-2">Number of blogs</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-4 col-sm-4">
+                  <div className="cards">
+                    <div class="card bg-success text-white">
+                      <div class="card-body text-center">
+                        <h5 class="card-title">Users</h5>
+                        <h6 class="card-subtitle mb-2">Number of User</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-4 col-sm-4">
+                  <div className="cards">
+                    <div class="card bg-danger text-white">
+                      <div class="card-body text-center">
+                        <h5 class="card-title">Post</h5>
+                        <h6 class="card-subtitle mb-2">Number of Posts</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div>
               <h3>Popular Post</h3>
               <table className="table table-hover table-border">
@@ -18,8 +51,6 @@ export default function BlogInfo() {
                     <th>Category</th>
                     <th>Date created</th>
                     <th>Action btn</th>
-                    <th>Likes</th>
-                    <th>Views</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -29,13 +60,8 @@ export default function BlogInfo() {
                     <td>Technical</td>
                     <td>June, 12 2013</td>
                     <td>
-                      <button className="btn btn-primary">Delete</button>
-                    </td>
-                    <td>
-                      24 <FaHeart />
-                    </td>
-                    <td>
-                      312 <FaRegEye />
+                      <FaEdit />
+                      <FaTrash />
                     </td>
                   </tr>
                   <tr>
@@ -44,13 +70,8 @@ export default function BlogInfo() {
                     <td>Technical</td>
                     <td>June, 12 2013</td>
                     <td>
-                      <button className="btn btn-primary">Delete</button>
-                    </td>
-                    <td>
-                      24 <FaHeart />
-                    </td>
-                    <td>
-                      312 <FaRegEye />
+                      <FaEdit />
+                      <FaTrash />
                     </td>
                   </tr>
                   <tr>
@@ -59,13 +80,8 @@ export default function BlogInfo() {
                     <td>Technical</td>
                     <td>June, 12 2013</td>
                     <td>
-                      <button className="btn btn-primary">Delete</button>
-                    </td>
-                    <td>
-                      24 <FaHeart />
-                    </td>
-                    <td>
-                      312 <FaRegEye />
+                      <FaEdit />
+                      <FaTrash />
                     </td>
                   </tr>
                   <tr>
@@ -74,13 +90,8 @@ export default function BlogInfo() {
                     <td>Technical</td>
                     <td>June, 12 2013</td>
                     <td>
-                      <button className="btn btn-primary">Delete</button>
-                    </td>
-                    <td>
-                      24 <FaHeart />
-                    </td>
-                    <td>
-                      312 <FaRegEye />
+                      <FaEdit />
+                      <FaTrash />
                     </td>
                   </tr>
                   <tr>
@@ -89,13 +100,8 @@ export default function BlogInfo() {
                     <td>Technical</td>
                     <td>June, 12 2013</td>
                     <td>
-                      <button className="btn btn-primary">Delete</button>
-                    </td>
-                    <td>
-                      24 <FaHeart />
-                    </td>
-                    <td>
-                      312 <FaRegEye />
+                      <FaEdit />
+                      <FaTrash />
                     </td>
                   </tr>
                 </tbody>
