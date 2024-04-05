@@ -10,13 +10,14 @@ export default function Sidebar() {
             <div className="sidebar-sticky" style={{ height: '100%' }}>
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link active" href="/">
+                  <a className="nav-link" href="/">
                     <FaHome /> Home
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/dashboard/blogInfo">
-                    <FaWindows /> Dashboard
+                    <FaWindows />
+                    <span>Dashboard </span>
                   </a>
                 </li>
                 <li className="nav-item">

@@ -30,11 +30,28 @@ export default function EditPost() {
         <textarea
           name=""
           id=""
-          cols="70"
+          cols="60"
           rows="10"
           className="m-3 form-control"
           placeholder="Description"
         ></textarea>
+        <div>
+          <p>Time stamp: </p>
+          <label htmlFor="">isFeatured</label>
+          <input
+            type="checkbox"
+            name="isFeatured"
+            id=""
+            placeholder="isFeatured"
+          />
+          <label htmlFor="">isPublished</label>
+          <input
+            type="checkbox"
+            name="isPublished"
+            id=""
+            placeholder="isPublished"
+          />
+        </div>
         <div>
           <button
             type="submit"
