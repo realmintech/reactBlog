@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaBlog, FaEdit, FaPodcast, FaRegEye, FaTrash, FaUser } from 'react-icons/fa';
 
-export default function BlogInfo() {
+export default function DashboardContent() {
   return (
     <>
       <div>
@@ -20,7 +20,7 @@ export default function BlogInfo() {
                         <h6 class="card-subtitle mb-2">
                           <span>
                             <FaBlog />
-                          </span>{' '}
+                          </span>
                           126
                         </h6>
                       </div>
@@ -34,8 +34,8 @@ export default function BlogInfo() {
                         <h5 class="card-title">Users</h5>
                         <h6 class="card-subtitle mb-2">
                           <span>
-                            <FaUser />{' '}
-                          </span>{' '}
+                            <FaUser />
+                          </span>
                           23
                         </h6>
                       </div>
@@ -58,7 +58,7 @@ export default function BlogInfo() {
               </div>
             </div>
             <div className="card">
-              <h3>Popular Post</h3>
+              <h3 className='m-3'>Popular Post</h3>
               <table className="table table-hover table-border p-4">
                 <thead>
                   <tr>

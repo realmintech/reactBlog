@@ -3,7 +3,7 @@ import React from 'react';
 export default function PostForm() {
   return (
     <>
-      <form action="" className="m-3 container card">
+      <form action="" className="mt-3 container card">
         <h5 className="m-3">Add blog</h5>
         <div className="m-3">
           <input type="text" placeholder="Title" className="form-control" />

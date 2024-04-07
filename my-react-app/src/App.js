@@ -11,8 +11,8 @@ import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
 import PostForm from './components/postsForm/PostForm';
 import Sidebar from './components/sidebar/Sidebar';
-import BlogInfo from './components/blogInfo/BlogInfo';
-import EditPost from './components/edit_post/EditPost';
+import Category from './components/category/Category';
+import DashboardContent from './components/dashboardContent/DashboardContent';
 
 export default function App() {
   return (
@@ -64,8 +64,8 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="post" element={<PostForm />} />
             <Route path="sideBar" element={<Sidebar />} />
-            <Route path="edit_post" element={<EditPost />} />
-            <Route path="blogInfo" element={<BlogInfo />} />
+            <Route path="category" element={<Category />} />
+            <Route path="dashboardContent" element={<DashboardContent />} />
           </Route>
         </Routes>
       </div>
