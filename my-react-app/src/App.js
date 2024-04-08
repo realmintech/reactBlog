@@ -12,6 +12,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import PostForm from './components/postsForm/PostForm';
 import Sidebar from './components/sidebar/Sidebar';
 import Category from './components/category/Category';
+import ViewPost from './components/viewPost/ViewPost';
 import DashboardContent from './components/dashboardContent/DashboardContent';
 
 export default function App() {
@@ -65,6 +66,7 @@ export default function App() {
             <Route path="post" element={<PostForm />} />
             <Route path="sideBar" element={<Sidebar />} />
             <Route path="category" element={<Category />} />
+            <Route path="viewPost" element={<ViewPost />} />
             <Route path="dashboardContent" element={<DashboardContent />} />
           </Route>
         </Routes>

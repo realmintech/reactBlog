@@ -49,7 +49,7 @@ export default function DashboardContent() {
                         <h5 class="card-title">Post</h5>
                         <h6 class="card-subtitle mb-2">
                           <FaPodcast />
-                           40
+                          40
                         </h6>
                       </div>
                     </div>
@@ -57,12 +57,18 @@ export default function DashboardContent() {
                 </div>
               </div>
             </div>
-            <div className="card">
-              <h3 className='m-3'>Popular Post</h3>
+            <div
+              className="card"
+              style={{
+                boxShadow:
+                  'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset',
+              }}
+            >
+              <h3 className="m-3">Popular Post</h3>
               <table className="table table-hover table-border p-4">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Index</th>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Date created</th>
@@ -79,6 +85,7 @@ export default function DashboardContent() {
                       <FaEdit
                         style={{ fontSize: '1.25rem' }}
                         className="text-primary"
+                        href="/dashboard/viewPost"
                       />
                       <FaTrash
                         style={{ fontSize: '1.25rem' }}
