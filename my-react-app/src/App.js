@@ -9,11 +9,12 @@ import Footer from './components/common/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
-import PostForm from './components/postsForm/PostForm';
 import Sidebar from './components/sidebar/Sidebar';
-import Category from './components/category/Category';
+import Category from './pages/category/Category';
 import ViewPost from './components/viewPost/ViewPost';
-import DashboardContent from './components/dashboardContent/DashboardContent';
+import DashboardContent from './pages/dashboardContent/DashboardContent';
+import CreatePost from './pages/createPost/CreatePost';
+import Posts from './pages/posts/Posts';
 
 export default function App() {
   return (
@@ -63,11 +64,12 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="post" element={<PostForm />} />
+            <Route index element={<DashboardContent />} />
+            <Route path="create_post" element={<CreatePost />} />
             <Route path="sideBar" element={<Sidebar />} />
             <Route path="category" element={<Category />} />
+            <Route path="posts" element={<Posts />} />
             <Route path="viewPost" element={<ViewPost />} />
-            <Route path="dashboardContent" element={<DashboardContent />} />
           </Route>
         </Routes>
       </div>
