@@ -28,7 +28,7 @@ export default function DashboardContent() {
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4">
-                  <div className="cards">
+                  <div className="cards" style={{boxShadow: 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset'}}>
                     <div class="card bg-success text-white">
                       <div class="card-body text-center">
                         <h5 class="card-title">Users</h5>
