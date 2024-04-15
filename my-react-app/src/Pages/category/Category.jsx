@@ -2,6 +2,38 @@ import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export default function Category() {
+  const data = [
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+    {
+      category: 'Technical',
+      author: 'Mariam',
+      date_created: 'June 12, 2013',
+    },
+  ];
   return (
     <>
       <form action="" className="mt-3 container card">
@@ -29,11 +61,12 @@ export default function Category() {
               </tr>
             </thead>
             <tbody>
+              {data.map((item, index)=>(
               <tr>
-                <td>1</td>
-                <td>Technical</td>
-                <td>Mariam</td>
-                <td>June, 12 2013</td>
+                <td key={index}>{index}</td>
+                <td>{item.category}</td>
+                <td>{item.author}</td>
+                <td>{item.date_created}</td>
                 <td>
                   <FaEdit
                     style={{ fontSize: '1.25rem' }}
@@ -45,70 +78,7 @@ export default function Category() {
                   />
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>Technical</td>
-                <td>Mariam</td>
-                <td>June, 12 2013</td>
-                <td>
-                  <FaEdit
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-primary"
-                  />
-                  <FaTrash
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-danger mx-2"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Technical</td>
-                <td>Mariam</td>
-                <td>June, 12 2013</td>
-                <td>
-                  <FaEdit
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-primary"
-                  />
-                  <FaTrash
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-danger mx-2"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Technical</td>
-                <td>Mariam</td>
-                <td>June, 12 2013</td>
-                <td>
-                  <FaEdit
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-primary"
-                  />
-                  <FaTrash
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-danger mx-2"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Technical</td>
-                <td>Mariam</td>
-                <td>June, 12 2013</td>
-                <td>
-                  <FaEdit
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-primary"
-                  />
-                  <FaTrash
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-danger mx-2"
-                  />
-                </td>
-              </tr>
+              ))}
             </tbody>
           </table>
         </div>

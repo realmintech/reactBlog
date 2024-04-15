@@ -27,6 +27,28 @@ export default function CreatePost() {
             <option value="5">Food</option>
           </select>
         </div>
+        <div className="m-3 row">
+          <div className="col-lg-6">
+            <label htmlFor="">isFeatured</label>
+            <input
+              type="checkbox"
+              name="isFeatured"
+              className="mx-3"
+              id=""
+              placeholder="isFeatured"
+            />
+          </div>
+          <div className="col-lg-6">
+            <label htmlFor="">isPublished</label>
+            <input
+              type="checkbox"
+              name="isPublished"
+              id=""
+              className="mx-3"
+              placeholder="isPublished"
+            />
+          </div>
+        </div>
         <textarea
           name=""
           id=""
@@ -36,26 +58,7 @@ export default function CreatePost() {
           style={{ borderRadius: '10px', border: '1px solid gray' }}
           placeholder="Description"
         ></textarea>
-        <div>
-          <div className='m-3'>
-            <p>Time stamp: </p>
-            <label htmlFor="">isFeatured</label>
-            <input
-              type="checkbox"
-              name="isFeatured"
-              id=""
-              placeholder="isFeatured"
-            />
-            <br />
-            <label htmlFor="">isPublished</label>
-            <input
-              type="checkbox"
-              name="isPublished"
-              id=""
-              placeholder="isPublished"
-            />
-          </div>
-        </div>
+        <div></div>
         <div>
           <button
             type="submit"

@@ -6,7 +6,7 @@ import { categoryReducer } from "./reducers/categoryReducer";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegistration: userRegistrationReducer,
-  categoryReducer: categoryReducer,
+  category: categoryReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

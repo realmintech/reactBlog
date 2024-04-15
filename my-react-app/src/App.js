@@ -11,7 +11,7 @@ import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
 import Sidebar from './components/sidebar/Sidebar';
 import Category from './pages/category/Category';
-import ViewPost from './components/viewPost/ViewPost';
+// import ViewPost from './components/viewPost/ViewPost';
 import DashboardContent from './pages/dashboardContent/DashboardContent';
 import CreatePost from './pages/createPost/CreatePost';
 import Posts from './pages/posts/Posts';
@@ -69,7 +69,7 @@ export default function App() {
             <Route path="sideBar" element={<Sidebar />} />
             <Route path="category" element={<Category />} />
             <Route path="posts" element={<Posts />} />
-            <Route path="viewPost" element={<ViewPost />} />
+            {/* <Route path="viewPost" element={<ViewPost />} /> */}
           </Route>
         </Routes>
       </div>
@@ -86,4 +86,3 @@ function LayoutWithNavbarAndFooter({ children }) {
     </div>
   );
 }
-

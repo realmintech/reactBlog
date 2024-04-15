@@ -2,6 +2,39 @@ import React from 'react';
 import { FaBlog, FaEdit, FaPodcast, FaRegEye, FaTrash, FaUser } from 'react-icons/fa';
 
 export default function DashboardContent() {
+  const data = [
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+    {
+      title: 'Technology',
+      Category: 'Technical',
+      date_created: 'June 23, 2013',
+    },
+  ];
   return (
     <>
       <div>
@@ -76,11 +109,12 @@ export default function DashboardContent() {
                   </tr>
                 </thead>
                 <tbody>
+                  {data.map((item,index)=>(
                   <tr>
-                    <td>1</td>
-                    <td>Technology</td>
-                    <td>Technical</td>
-                    <td>June, 12 2013</td>
+                    <td key={index}>{index}</td>
+                    <td>{item.title}</td>
+                    <td>{item.Category}</td>
+                    <td>{item.date_created}</td>
                     <td>
                       <FaEdit
                         style={{ fontSize: '1.25rem' }}
@@ -97,86 +131,7 @@ export default function DashboardContent() {
                       />
                     </td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Technology</td>
-                    <td>Technical</td>
-                    <td>June, 12 2013</td>
-                    <td>
-                      <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-primary"
-                      />
-                      <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-danger mx-2"
-                      />
-                      <FaRegEye
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-success"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Technology</td>
-                    <td>Technical</td>
-                    <td>June, 12 2013</td>
-                    <td>
-                      <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-primary"
-                      />
-                      <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-danger mx-2"
-                      />
-                      <FaRegEye
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-success"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Technology</td>
-                    <td>Technical</td>
-                    <td>June, 12 2013</td>
-                    <td>
-                      <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-primary"
-                      />
-                      <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-danger mx-2"
-                      />
-                      <FaRegEye
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-success"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Technology</td>
-                    <td>Technical</td>
-                    <td>June, 12 2013</td>
-                    <td>
-                      <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-primary"
-                      />
-                      <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-danger mx-2"
-                      />
-                      <FaRegEye
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-success"
-                      />
-                    </td>
-                  </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
