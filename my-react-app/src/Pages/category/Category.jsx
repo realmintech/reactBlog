@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import {categoryAction} from '../../actions/categoryAction'
+
 
 export default function Category() {
+  const [name, setName] = useState('');
+  const dispatch = useDispatch();
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  console.log(name);
+
+    dispatch(categoryAction( name ));
+  };
+
+
   const data = [
     {
       category: 'Technical',
@@ -34,15 +50,23 @@ export default function Category() {
       date_created: 'June 12, 2013',
     },
   ];
+
   return (
     <>
-      <form action="" className="mt-3 container card">
+      <form className="mt-3 container card" >
         <h5 className="m-3">Category page</h5>
         <div className="">
-          <input type="text" placeholder="Category" className="form-control" />
+          <input
+            type="text"
+            value={name}
+            placeholder="Category"
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+          />
           <button
             type="submit"
             className="btn"
+            onClick={handleSubmit}
             style={{ width: '99%', background: 'navy', color: 'white' }}
           >
             Submit
@@ -61,23 +85,23 @@ export default function Category() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index)=>(
-              <tr>
-                <td key={index}>{index}</td>
-                <td>{item.category}</td>
-                <td>{item.author}</td>
-                <td>{item.date_created}</td>
-                <td>
-                  <FaEdit
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-primary"
-                  />
-                  <FaTrash
-                    style={{ fontSize: '1.25rem' }}
-                    className="text-danger mx-2"
-                  />
-                </td>
-              </tr>
+              {data && data.map((item, index) => (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>{item.category}</td>
+                  <td>{item.author}</td>
+                  <td>{item.date_created}</td>
+                  <td>
+                    <FaEdit
+                      style={{ fontSize: '1.25rem' }}
+                      className="text-primary"
+                    />
+                    <FaTrash
+                      style={{ fontSize: '1.25rem' }}
+                      className="text-danger mx-2"
+                    />
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>

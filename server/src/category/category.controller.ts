@@ -35,7 +35,7 @@ export class CategoryController {
    */
   @Post()
   @UseGuards(RolesGuard)
-  @Roles(Role.Admin, Role.Guest)
+  // @Roles(Role.Admin, Role.Guest)
   async create(
     @Body() createCategoryDto: CreateCategoryDto,
     @Request() req,
