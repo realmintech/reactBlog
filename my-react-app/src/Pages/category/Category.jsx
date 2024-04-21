@@ -1,59 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
-import {categoryAction} from '../../actions/categoryAction'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { categoryAction, getCategory } from '../../actions/categoryAction';
 
 export default function Category() {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { userInfo } = userLogin;
+  const d = useSelector((state) => state.category);
+  console.log('this is data', d);
+  const data = [{name: 'ade',
+  category: 'food',
+author: 'tade',
+createdAt: 'Jan 34 '
+}]
+
+  // Fetch categories on component mount
+useEffect(() => {
+  dispatch(getCategory());
+}, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  console.log(name);
-
-    dispatch(categoryAction( name ));
+    dispatch(categoryAction(name));
   };
-
-
-  const data = [
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-    {
-      category: 'Technical',
-      author: 'Mariam',
-      date_created: 'June 12, 2013',
-    },
-  ];
 
   return (
     <>
-      <form className="mt-3 container card" >
+      <form className="mt-3 container card">
         <h5 className="m-3">Category page</h5>
         <div className="">
           <input
@@ -85,12 +58,12 @@ export default function Category() {
               </tr>
             </thead>
             <tbody>
-              {data && data.map((item, index) => (
+              {data.map((item, index) => (
                 <tr key={index}>
-                  <td>{index}</td>
-                  <td>{item.category}</td>
+                  <td>{item.name}</td>
+                  <td>{item.name}</td>
                   <td>{item.author}</td>
-                  <td>{item.date_created}</td>
+                  <td>{item.createdAt}</td>
                   <td>
                     <FaEdit
                       style={{ fontSize: '1.25rem' }}

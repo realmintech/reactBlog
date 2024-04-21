@@ -2,6 +2,8 @@ import axios from 'axios';
 import {
   CATEGORY_ACTION,
   CATEGORY_ACTION_FAILED,
+  GET_CATEGORY_FAILED,
+  GET_CATEGORY_SUCCESS
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -34,6 +36,7 @@ export const categoryAction = (name) => async (dispatch) => {
       type: CATEGORY_ACTION,
       payload: response.data,
     });
+    getCategory()
     console.log(response.data);
   } catch (error) {
     console.log(error);
@@ -46,3 +49,26 @@ export const categoryAction = (name) => async (dispatch) => {
     });
   }
 };
+
+export const getCategory = async (dispatch) => {
+   try {
+    const res = await axios.get(
+      'http://localhost:3000/category',
+    );
+    dispatch({
+      type: GET_CATEGORY_SUCCESS,
+      payload: res.data,
+    })
+   console.log('message',res.data);
+   return res.data
+  } catch (error) {
+    dispatch({
+      type: GET_CATEGORY_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,
+    });
+    console.log('This is get failed:',error.response.data.message);
+  }
+}
