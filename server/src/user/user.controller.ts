@@ -42,7 +42,7 @@ export class UserController {
   }
 
   @Delete(':userId')
-  @Roles(Role.Admin)
+  // @Roles(Role.Admin)
   async deleteUser(@Request() req, @Param('userId') userId: string) {
     const deletedUser = await this.userService.deleteUser(
       userId,

@@ -18,7 +18,6 @@ export class CategoryService {
       ...createCategoryDto,
       author: authorId,
     });
-    console.log('this is a message:',createdCategory)
     return createdCategory.save();
   }
 

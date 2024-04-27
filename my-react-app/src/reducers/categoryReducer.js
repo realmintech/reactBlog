@@ -1,8 +1,10 @@
 import {
   CATEGORY_ACTION,
   CATEGORY_ACTION_FAILED,
-  GET_CATEGORY_FAILED,
-  GET_CATEGORY_SUCCESS,
+  FETCH_CATEGORY_FAILED,
+  FETCH_CATEGORY_SUCCESS,
+  DELETE_CATEGORY_SUCCESS,
+  DELETE_CATEGORY_FAILED,
 } from '../constants/userConstants';
 
 export const categoryReducer = (state = {}, action) => {
@@ -11,18 +13,23 @@ export const categoryReducer = (state = {}, action) => {
       return { category: action.payload };
     case CATEGORY_ACTION_FAILED:
       return { error: action.payload };
-    default:
-      return state;
-  }
-};
 
-export const categoryGetReducer = (state = {}, action) => {
-  switch (action.type) {
-    case GET_CATEGORY_SUCCESS:
+    case FETCH_CATEGORY_SUCCESS:
       return { category: action.payload };
-    case GET_CATEGORY_FAILED:
+    case FETCH_CATEGORY_FAILED:
+      return { error: action.payload };
+
+    case DELETE_CATEGORY_SUCCESS:
+      return {
+        category: state.category.filter(
+          (category) => category._id !== action.payload
+        ),
+      };
+      
+
+    case DELETE_CATEGORY_FAILED:
       return { error: action.payload };
     default:
       return state;
   }
-}
+};

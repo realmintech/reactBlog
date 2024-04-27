@@ -91,7 +91,7 @@ export class CategoryController {
    * @returns {Promise<{ message: string }>} A message indicating whether the category was successfully deleted
    * @throws {NotFoundException} If no category with the specified ID is found
    */
-  @Public()
+  
   @Delete(':id')
   async deleteCategory(@Param('id') id: string) {
     const category = await this.categoryService.deleteCategory(id);

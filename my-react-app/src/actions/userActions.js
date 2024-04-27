@@ -5,7 +5,18 @@ import {
   USER_LOGIN_SUCCESS,
   USER_REGISTRATION_SUCCESS,
   USER_REGISTRATION_FAIL,
+  FETCH_USER_BY_ID_SUCCESS,
+  FETCH_USER_BY_ID_FAILURE,
 } from '../constants/userConstants';
+
+const getTokenString = localStorage.getItem('userInfo');
+let authToken;
+try {
+  const userInfo = JSON.parse(getTokenString);
+  authToken = userInfo?.token.token;
+} catch (error) {
+  console.error('Error parsing adminInfo:', error);
+}
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -61,3 +72,27 @@ export const register =
       });
     }
   };
+
+export const fetchUserById = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/users/${userId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    const user = response.data;
+    dispatch({
+      type: FETCH_USER_BY_ID_SUCCESS,
+      payload: user,
+    });
+
+    return user;
+  } catch (error) {
+    dispatch({
+      type: FETCH_USER_BY_ID_FAILURE,
+      payload: error.response?.data || 'Failed to fetch user',
+    });
+  }
+};

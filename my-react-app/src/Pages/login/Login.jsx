@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./Login.css";
-import { login } from "../../actions/userActions";
-import { Navigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './Login.css';
+import { login } from '../../actions/userActions';
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useDispatch();
 
@@ -17,20 +17,22 @@ export default function Login() {
     dispatch(login(email, password));
   };
   useEffect(() => {
+    try {
       if (userLogin.error) {
         setShowAlert(true);
       }
-    }, [userLogin.error]);
+    } catch (error) {}
+  }, [userLogin.error]);
 
-    const closeAlert = () => {
-      setShowAlert(false);
-    };
+  const closeAlert = () => {
+    setShowAlert(false);
+  };
 
   return (
     <>
       <div
-        className="container login_template justify-content-center align-items-center vh-100"
-        style= {{ margin: "auto", marginTop: "100px" }}
+        className='container login_template justify-content-center align-items-center vh-100'
+        style={{ margin: 'auto', marginTop: '100px' }}
       >
         <div className='form_container bg-white p-5 '>
           <form>
@@ -40,16 +42,16 @@ export default function Login() {
                 className={`alert ${
                   userLogin.error ? 'alert-danger' : 'alert-success'
                 } alert-dismissible fade show`}
-                role="alert"
+                role='alert'
               >
                 {userLogin.error
                   ? userLogin.error
                   : 'You have logged in successfully'}
                 <button
-                  type="button"
-                  className="btn-close"
+                  type='button'
+                  className='btn-close'
                   onClick={closeAlert}
-                  aria-label="Close"
+                  aria-label='Close'
                 ></button>
               </div>
             )}
@@ -59,8 +61,8 @@ export default function Login() {
                 type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Email"
-                className="form-control"
+                placeholder='Enter Email'
+                className='form-control'
               />
             </div>
             <div className='mb-2'>
@@ -69,18 +71,18 @@ export default function Login() {
                 type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="form-control"
-                placeholder="Password"
+                className='form-control'
+                placeholder='Password'
               />
             </div>
             <div className='d-grid'>
               <button
-                className="btn"
+                className='btn'
                 onClick={submitHandler}
                 style={{
-                  width: "100%",
-                  backgroundColor: "navy",
-                  color: "white",
+                  width: '100%',
+                  backgroundColor: 'navy',
+                  color: 'white',
                 }}
               >
                 <Navigate to='' />
@@ -91,7 +93,6 @@ export default function Login() {
               Don't have an account? <a href='/register'>Register</a>
             </p>
           </form>
-         
         </div>
       </div>
     </>
