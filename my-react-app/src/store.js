@@ -1,10 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
 import { userLoginReducer, userRegistrationReducer } from "./reducers/userReducers";
+import { categoryReducer } from "./reducers/categoryReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegistration: userRegistrationReducer,
+  category: categoryReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -23,4 +25,3 @@ const store = createStore(
 );
 
 export default store;
-

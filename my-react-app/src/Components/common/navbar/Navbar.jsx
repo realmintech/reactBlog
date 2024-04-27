@@ -10,7 +10,6 @@ import {
   FaInstagram,
   FaMoon,
   FaLinkedin,
-  FaSearch,
 } from "react-icons/fa";
 
 export default function CustomNavbar() {
@@ -18,9 +17,9 @@ export default function CustomNavbar() {
     <>
       <header className="header">
         <div className="socialIcons">
-          <FaFacebook style={{ marginRight: "10px", fontSize: "25px" }} />
-          <FaTwitter style={{ marginRight: "10px", fontSize: "25px" }} />
-          <FaLinkedin style={{ marginRight: "10px", fontSize: "25px" }} />
+          <FaFacebook style={{ marginRight: '10px', fontSize: '25px' }} />
+          <FaTwitter style={{ marginRight: '10px', fontSize: '25px' }} />
+          <FaLinkedin style={{ marginRight: '10px', fontSize: '25px' }} />
           <FaInstagram size={20} />
         </div>
         <div className="headerWord">
@@ -36,19 +35,31 @@ export default function CustomNavbar() {
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: '100px' }}
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/About">About</Nav.Link>
-              <Nav.Link href="/Blogs">Blogs</Nav.Link>
-              <Nav.Link href="/Contact">Contact</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link href="/blogs">Blogs</Nav.Link>
+              <Nav.Link href="/contact">Contact</Nav.Link>
               <Nav.Link href="/blog/1">Blog</Nav.Link>
             </Nav>
-            <button className="btn" style={{backgroundColor: 'navy'}}>
-              <a href="/Login" style={{textDecoration: 'none', color: 'white'}}>Login</a>
+            <button className="btn" style={{ backgroundColor: 'navy' }}>
+              <a
+                href="/Login"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                Login
+              </a>
             </button>
-            <FaSearch />
+            <button className="btn" style={{ backgroundColor: 'navy' }}>
+              <a
+                href="/Register"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                Register
+              </a>
+            </button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
