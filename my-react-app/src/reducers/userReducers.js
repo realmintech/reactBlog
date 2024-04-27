@@ -4,17 +4,18 @@ import {
   USER_LOGIN_SUCCESS,
   USER_REGISTRATION_SUCCESS,
   USER_REGISTRATION_FAIL,
-} from "../constants/userConstants";
-
+  FETCH_USER_BY_ID_SUCCESS,
+  FETCH_USER_BY_ID_FAILURE,
+} from '../constants/userConstants';
 
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_LOGIN_REQUEST:
-      return { loading: true };
+  
     case USER_LOGIN_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return {  userInfo: action.payload };
     case USER_LOGIN_FAIL:
-      return { loading: false, error: action.payload };
+      return {  error: action.payload };
+
     default:
       return state;
   }
@@ -31,3 +32,22 @@ export const userRegistrationReducer = (state = {}, action) => {
   }
 };
 
+export const singleUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FETCH_USER_BY_ID_SUCCESS:
+      return {
+        ...state,
+        user: action.payload,
+        error: null,
+      };
+
+    case FETCH_USER_BY_ID_FAILURE:
+      return {
+        ...state,
+        user: null,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
