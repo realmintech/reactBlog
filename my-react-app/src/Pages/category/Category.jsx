@@ -36,33 +36,32 @@ export default function Category() {
     e.preventDefault();
     dispatch(categoryAction(name));
     dispatch(getCategory());
-
   };
 
   return (
     <>
-      <form className='mt-3 container card'>
-        <h5 className='m-3'>Category page</h5>
-        <div className=''>
+      <form className="mt-3 container card">
+        <h5 className="m-3">Category page</h5>
+        <div className="">
           <input
-            type='text'
+            type="text"
             value={name}
-            placeholder='Category'
+            placeholder="Category"
             onChange={(e) => setName(e.target.value)}
-            className='form-control'
+            className="form-control"
           />
           <button
-            type='submit'
-            className='btn'
+            type="submit"
+            className="btn"
             onClick={handleSubmit}
             style={{ width: '99%', background: 'navy', color: 'white' }}
           >
             Submit
           </button>
         </div>
-        <div className='card my-5'>
-          <h3 className='m-3'>Category</h3>
-          <table className='table table-hover table-border p-4'>
+        <div className="card my-5">
+          <h3 className="m-3">Category</h3>
+          <table className="table table-hover table-border p-4">
             <thead>
               <tr>
                 <th>Category</th>
@@ -83,11 +82,11 @@ export default function Category() {
                     <td>
                       <FaEdit
                         style={{ fontSize: '1.25rem' }}
-                        className='text-primary'
+                        className="text-primary"
                       />
                       <FaTrash
                         style={{ fontSize: '1.25rem' }}
-                        className='text-danger mx-2'
+                        className="text-danger mx-2"
                         onClick={() => handleDeleteCategory(item._id)}
                       />
                     </td>
