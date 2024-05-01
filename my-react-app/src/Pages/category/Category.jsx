@@ -6,11 +6,15 @@ import { fetchUserById } from '../../actions/userActions';
 import {
   categoryAction,
   deleteCategory,
+  editCategory,
   getCategory,
 } from '../../actions/categoryAction';
 
 export default function Category() {
   const [name, setName] = useState('');
+  const [modal, setModal] = useState(false);
+  const [editItemId, setEditItemId] = useState('');
+  const [editName, setEditName] = useState('');
   const dispatch = useDispatch();
   const data = useSelector((state) => state.category);
   const user = useSelector((state) => state.singleUser.user);
@@ -19,9 +23,6 @@ export default function Category() {
     dispatch(getCategory());
   }, [dispatch]);
 
-  const handleDeleteCategory = (categoryId) => {
-    dispatch(deleteCategory(categoryId));
-  };
   useEffect(() => {
     if (data && Array.isArray(data.category)) {
       data.category.forEach((item) => {
@@ -32,9 +33,25 @@ export default function Category() {
     }
   }, [dispatch, data, user]);
 
+  const handleDeleteCategory = (categoryId) => {
+    dispatch(deleteCategory(categoryId));
+  };
+
+  const handleEdit = (itemId, itemName) => {
+    setEditItemId(itemId);
+    setEditName(itemName);
+    setModal(true);
+  };
+
+  const handleSaveChanges = () => {
+    dispatch(editCategory(editItemId, editName));
+    setModal(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(categoryAction(name));
+    setName('');
     dispatch(getCategory());
   };
 
@@ -67,6 +84,7 @@ export default function Category() {
                 <th>Category</th>
                 <th>Author</th>
                 <th>Date created</th>
+                <th>Date updated</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -79,13 +97,15 @@ export default function Category() {
                       {user && user._id === item.author ? user.username : ''}
                     </td>
                     <td>{moment(item.createdAt).format('llll')}</td>
+                    <td>{moment(item.updatedAt).format('llll')}</td>
                     <td>
                       <FaEdit
-                        style={{ fontSize: '1.25rem' }}
+                        style={{ fontSize: '1.25rem', cursor: 'pointer' }}
                         className="text-primary"
+                        onClick={() => handleEdit(item._id, item.name)}
                       />
                       <FaTrash
-                        style={{ fontSize: '1.25rem' }}
+                        style={{ fontSize: '1.25rem', cursor: 'pointer' }}
                         className="text-danger mx-2"
                         onClick={() => handleDeleteCategory(item._id)}
                       />
@@ -96,6 +116,52 @@ export default function Category() {
           </table>
         </div>
       </form>
+
+      {modal && (
+        <div className="modal fade show" style={{ display: 'block' }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Category</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setModal(false)}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <input
+                  type="text"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="form-control"
+                />
+                <input
+                  type="hidden"
+                  value={editItemId}
+                  className="form-control"
+                />
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setModal(false)}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleSaveChanges}
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

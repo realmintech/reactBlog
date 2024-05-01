@@ -6,6 +6,8 @@ import {
   FETCH_CATEGORY_SUCCESS,
   DELETE_CATEGORY_SUCCESS,
   DELETE_CATEGORY_FAILED,
+  EDIT_CATEGORY_SUCCESS,
+  EDIT_CATEGORY_FAILED,
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -96,3 +98,35 @@ export const deleteCategory = (categoryId) => async (dispatch) => {
     });
   }
 };
+
+export const editCategory = (categoryId, name) => async (dispatch) => {
+  try {
+    let response = await axios.patch(
+      `http://localhost:3000/category/${categoryId}`,
+      { name },
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: EDIT_CATEGORY_SUCCESS,
+      payload: response.data, 
+    });
+   console.log('response data',response.data)
+    dispatch(getCategory());
+  } catch (error) {
+    dispatch(getCategory());
+
+    dispatch({
+      type: EDIT_CATEGORY_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+

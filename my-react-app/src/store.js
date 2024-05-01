@@ -5,7 +5,7 @@ import {
   userRegistrationReducer,
   singleUserReducer,
 } from './reducers/userReducers';
-import { categoryReducer } from './reducers/categoryReducer';
+import { categoryReducer} from './reducers/categoryReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
