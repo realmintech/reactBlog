@@ -84,7 +84,6 @@ export default function Category() {
                 <th>Category</th>
                 <th>Author</th>
                 <th>Date created</th>
-                <th>Date updated</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -97,16 +96,14 @@ export default function Category() {
                       {user && user._id === item.author ? user.username : ''}
                     </td>
                     <td>{moment(item.createdAt).format('llll')}</td>
-                    <td>{moment(item.updatedAt).format('llll')}</td>
                     <td>
                       <FaEdit
-                        style={{ fontSize: '1.25rem', cursor: 'pointer' }}
-                        className="text-primary"
+                        style={{ fontSize: '1.25rem', cursor: 'pointer', color: 'navy' }}
                         onClick={() => handleEdit(item._id, item.name)}
                       />
                       <FaTrash
-                        style={{ fontSize: '1.25rem', cursor: 'pointer' }}
-                        className="text-danger mx-2"
+                        style={{ fontSize: '1.25rem', cursor: 'pointer', color: 'red' }}
+                        className="mx-2"
                         onClick={() => handleDeleteCategory(item._id)}
                       />
                     </td>
@@ -145,14 +142,8 @@ export default function Category() {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
-                  onClick={() => setModal(false)}
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
+                  className="btn"
+                  style={{color: 'white', backgroundColor: 'navy'}}
                   onClick={handleSaveChanges}
                 >
                   Save changes
