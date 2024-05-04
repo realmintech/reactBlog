@@ -6,12 +6,15 @@ let authToken;
 try {
   const userInfo = JSON.parse(getTokenString);
   authToken = userInfo?.token.token;
+  console.log('Get token:', getTokenString)
 } catch (error) {
   console.error('Error parsing adminInfo:', error);
 }
+
 export const createBlog =
   (title, imageUrl, category, tags, isFeatured, isPublished, description) =>
   async (dispatch) => {
+    console.log('This is title:', title);
     try {
       const response = await axios.post(
         'http://localhost:3000/blogs',
@@ -31,7 +34,6 @@ export const createBlog =
           },
         }
       );
-      dispatch(createBlog());
       dispatch({
         type: ADMIN_POST_BLOG,
         payload: response.data,
@@ -44,5 +46,9 @@ export const createBlog =
             ? error.response.data.message
             : error.message,
       });
+      console.log(
+        'error message:',
+        error.response ? error.response.data.message : error.message
+      );
     }
   };

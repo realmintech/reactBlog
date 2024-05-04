@@ -37,22 +37,15 @@ export class BlogController {
   @Post()
   @UseGuards(RolesGuard)
   @Roles(Role.Admin)
-  @UseInterceptors(FileInterceptor('imageUrl'))
   async create(
-    @UploadedFile() file: Express.Multer.File,
     @Body() createBlogDto: CreateBlogDto,
     @Request() req,
   ): Promise<Blog> {
     try {
-      createBlogDto.imageUrl = file.path;
-
       const savedBlogPost = await this.blogService.create(
         createBlogDto,
         req.user,
       );
-      savedBlogPost.imageUrl = `${req.protocol}://${req.get('host')}/${
-        savedBlogPost.imageUrl
-      }`;
 
       return savedBlogPost;
     } catch (error) {

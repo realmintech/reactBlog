@@ -4,34 +4,40 @@ import { getCategory } from '../../actions/categoryAction';
 import { createBlog } from '../../actions/createPostAction';
 
 export default function CreatePost() {
-  const [title, setTitle] = useState('')
-  const [image, setImage] = useState('');
+  const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [category, setCategory] = useState('');
   const [tag, setTag] = useState('');
-  const [isFeatured, setIsFeatured] = useState(false)
-  const [isPublished, setIsPublished] = useState(false)
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
+
   const data = useSelector((state) => state.category);
-  let formData = new FormData();
-  const onfileChange = (e) => {
-   if(e.target && e.target.files) {
-    formData.append('file', e.target.files)
-   }
-  }
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    let done = dispatch(createBlog(title,image,category,tag,isFeatured, isPublished,description))
-    console.log(done)
-  }
-  
+
+    dispatch(
+      createBlog(
+        title,
+        imageUrl,
+        category,
+        tag,
+        isFeatured,
+        isPublished,
+        description
+      )
+    );
+  };
+
   return (
     <>
-      <form action="" className="mt-3 container card">
+      <form onSubmit={handleSubmitPost} className="mt-3 container card">
         <h5 className="m-3">Add blog</h5>
         <div className="m-3">
           <input
@@ -44,26 +50,24 @@ export default function CreatePost() {
         </div>
         <div className="m-3">
           <input
-            type="file"
-            src=""
-            alt=""
-            onChange={onfileChange}
-            value={image}
-            onChangeCapture={(e) => setImage(e.target.value)}
+            type="text"
             className="form-control"
-            placeholder="Chose image"
+            placeholder="Image URL"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
         <div className="my-3 mx-1 row">
           <div className="col-lg-6">
-            <select name="options" id="" className="form-select">
-              {Array.isArray(data.category) &&
+            <select
+              name="options"
+              className="form-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {data.category &&
                 data.category.map((item) => (
-                  <option
-                    key={item}
-                    value={category}
-                    onSelect={(e) => setCategory(e.target.value)}
-                  >
+                  <option key={item._id} value={item._id}>
                     {item.name}
                   </option>
                 ))}
@@ -76,40 +80,33 @@ export default function CreatePost() {
               value={tag}
               onChange={(e) => setTag(e.target.value)}
               className="form-control"
-              data-role="tagsinput"
               placeholder="Tags"
             />
           </div>
         </div>
         <div className="m-3 row">
           <div className="col-lg-6">
-            <label htmlFor="">isFeatured</label>
+            <label htmlFor="isFeatured">isFeatured</label>
             <input
               type="checkbox"
               name="isFeatured"
+              checked={isFeatured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
               className="mx-3"
-              id=""
-              value={isFeatured}
-              onClick={(e) => setIsFeatured(e.target.value)}
-              placeholder="isFeatured"
             />
           </div>
           <div className="col-lg-6">
-            <label htmlFor="">isPublished</label>
+            <label htmlFor="isPublished">isPublished</label>
             <input
               type="checkbox"
               name="isPublished"
-              id=""
-              value={isPublished}
-              onClick={(e) => setIsPublished(e.target.value)}
+              checked={isPublished}
+              onChange={(e) => setIsPublished(e.target.checked)}
               className="mx-3"
-              placeholder="isPublished"
             />
           </div>
         </div>
         <textarea
-          name=""
-          id=""
           cols="8"
           rows="10"
           className="m-3"
@@ -121,9 +118,9 @@ export default function CreatePost() {
         <div></div>
         <div>
           <button
+            type="submit"
             className="m-3 btn"
             style={{ width: '97%', background: 'navy', color: 'white' }}
-            onClick={handleSubmitPost}
           >
             Submit
           </button>
