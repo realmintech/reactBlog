@@ -1,85 +1,22 @@
 import React from 'react';
-import { FaEdit, FaTrash, FaRegEye  } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { FaEdit, FaTrash, FaRegEye } from 'react-icons/fa';
 
 export default function Posts() {
-  const data = [
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
+  const [data, setData] = useState([]);
 
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
+  const getPosts = async () => {
+    const data = await axios.get('http://localhost:3000/blogs');
+    const response = data?.data
+    setData(response);
+    console.log('THis is a new data',response)
+    return response;
+  };
 
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-    {
-      title: 'technology',
-      author: 'mariam',
-      category: 'technical',
-      date_created: 'June 12, 2024',
-    },
-  ];
+  useEffect(() => {                                 
+    getPosts();
+  }, []);
   return (
     <>
       <div className="card my-3">
@@ -96,13 +33,13 @@ export default function Posts() {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
-              <tr>
-                <td key={index}>{index}</td>
+            {data?.data?.map((item, index) => (
+              <tr key={item._id}>
+                <td>{index + 1}</td>
                 <td>{item.title}</td>
-                <td>{item.author}</td>
+                <td>{item.description}</td>
                 <td>{item.category}</td>
-                <td>{item.date_created}</td>
+                <td>{item.timestamp}</td>
                 <td>
                   <FaEdit
                     style={{ fontSize: '1.25rem' }}

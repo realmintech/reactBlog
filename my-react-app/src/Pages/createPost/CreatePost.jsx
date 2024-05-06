@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategory } from '../../actions/categoryAction';
-import { createBlog } from '../../actions/createPostAction';
+import { createBlog, getBlog } from '../../actions/createPostAction';
 
 export default function CreatePost() {
   const [title, setTitle] = useState('');
@@ -21,7 +21,6 @@ export default function CreatePost() {
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-
     dispatch(
       createBlog(
         title,
@@ -33,6 +32,7 @@ export default function CreatePost() {
         description
       )
     );
+    dispatch(getBlog())
   };
 
   return (
