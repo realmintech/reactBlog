@@ -5,13 +5,15 @@ import {
   userRegistrationReducer,
   singleUserReducer,
 } from './reducers/userReducers';
-import { categoryReducer} from './reducers/categoryReducer';
+import { categoryReducer } from './reducers/categoryReducer';
+import { createPostReducer } from './reducers/createPostReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegistration: userRegistrationReducer,
   category: categoryReducer,
   singleUser: singleUserReducer,
+  createPost: createPostReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

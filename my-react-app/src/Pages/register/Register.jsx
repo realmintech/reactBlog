@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Register.css';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Navigate } from 'react-router-dom';
 import { register } from '../../actions/userActions';
 
 export default function Register() {

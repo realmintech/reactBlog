@@ -98,11 +98,19 @@ export default function Category() {
                     <td>{moment(item.createdAt).format('llll')}</td>
                     <td>
                       <FaEdit
-                        style={{ fontSize: '1.25rem', cursor: 'pointer', color: 'navy' }}
+                        style={{
+                          fontSize: '1.25rem',
+                          cursor: 'pointer',
+                          color: 'navy',
+                        }}
                         onClick={() => handleEdit(item._id, item.name)}
                       />
                       <FaTrash
-                        style={{ fontSize: '1.25rem', cursor: 'pointer', color: 'red' }}
+                        style={{
+                          fontSize: '1.25rem',
+                          cursor: 'pointer',
+                          color: 'red',
+                        }}
                         className="mx-2"
                         onClick={() => handleDeleteCategory(item._id)}
                       />
@@ -143,7 +151,7 @@ export default function Category() {
                 <button
                   type="button"
                   className="btn"
-                  style={{color: 'white', backgroundColor: 'navy'}}
+                  style={{ color: 'white', backgroundColor: 'navy' }}
                   onClick={handleSaveChanges}
                 >
                   Save changes
