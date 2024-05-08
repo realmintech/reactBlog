@@ -1,61 +1,87 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { fetchUserById } from '../../actions/userActions';
 import { FaEdit, FaTrash, FaRegEye } from 'react-icons/fa';
 import { deleteBlog, getBlog } from '../../actions/createPostAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { editBlog } from '../../actions/createPostAction';
-
+import { HttpStatusCode } from 'axios';
 
 export default function Posts() {
-  const [modal, setModal] = useState(false)
-  const [editId, setEditId] = useState()
-  const [editName, setEditName] = useState()
+  const [toast, setToast] = useState(false)
+  const [modal, setModal] = useState(false);
+  const [editId, setEditId] = useState();
+  const [editName, setEditName] = useState();
   const [editTitle, setEditTitle] = useState();
   const [editDescription, setEditDescription] = useState();
-  const [editImage, setEditImage] = useState()
+  const [editImage, setEditImage] = useState();
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.createPost);
-  const user = useSelector((state) => state.singleUser.user);
-  const results = data.userInfo
-
-  useEffect(() => {
-    if (data && Array.isArray(data.category)) {
-      data.category.forEach((item) => {
-        if (!user || user._id !== item.author) {
-          dispatch(fetchUserById(item.author));
-        }
-      });
-    }
-  }, [dispatch, data, user]);
+  const user = useSelector((state) => state.userLogin.userInfo.token.user);
+  const results = data.userInfo;
+  // console.log('results show:' ,results)
 
   useEffect(() => {
     dispatch(getBlog());
   }, [dispatch]);
 
-  const handleDelete =(itemId)=>{
-    dispatch(deleteBlog(itemId))
-  }
+    useEffect(() => {
+      if (toast) {
+        const timeout = setTimeout(() => {
+          setToast(false);
+        }, 3000); 
+        return () => clearTimeout(timeout);
+      }
+    }, [toast]);
 
-  const handleEdit =(editId,editName,editTitle,editDescription,editImage) =>{
-   setEditId(editId);
-   setEditTitle(editTitle);
-   setEditName(editName)
-   setEditDescription(editDescription)
-   setEditImage(editImage)
-   setModal(true)
-  }
+  const handleDelete = (itemId) => {
+    dispatch(deleteBlog(itemId)).then(() => {;
+    dispatch(getBlog())
+    setToast(true)
+    })
+  };
 
-  const handleSaveChanges =() =>{
-    dispatch(editBlog(editDescription,editName,editImage,editTitle))
-    setModal(false)
-  }
+  const handleEdit = (
+    editId,
+    editName,
+    editTitle,
+    editDescription,
+    editImage
+  ) => {
+    setEditId(editId);
+    setEditTitle(editTitle);
+    setEditName(editName);
+    setEditDescription(editDescription);
+    setEditImage(editImage);
+    setModal(true);
+  };
+
+  const handleSaveChanges = () => {
+    dispatch(editBlog(editDescription, editName, editImage, editTitle));
+    setModal(false);
+  };
 
   return (
     <>
       <div className="card my-3">
         <h3 className="m-3">Posts</h3>
+      {toast && (
+        <div
+          className="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          {HttpStatusCode === 200 && 'Blog post deleted successfully'
+            ? 'Not allowed'
+            : 'Blog post deleted successfully'}
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            onClick={() => setToast(false)}
+          ></button>
+        </div>
+      )}
         <table className="table table-hover table-border p-4 card-body my-3">
           <thead>
             <tr>
@@ -73,17 +99,22 @@ export default function Posts() {
                 <tr key={item._id}>
                   <td>{index + 1}</td>
                   <td>{item.title}</td>
-                  <td>
-                    {user && user._id === item.author ? user.username : ''}
-                  </td>
-                  <td>{item.name}</td>
+                  <td>{user.username}</td>
+                  <td>{item.category}</td>
                   <td>{moment(item.timestamp).format('llll')}</td>
                   <td>
                     <FaEdit
                       style={{ fontSize: '1.25rem' }}
                       className="text-primary"
                       href="/dashboard/viewPost"
-                      onClick={() => handleEdit(item._id,item.title,item.name,item.description)}
+                      onClick={() =>
+                        handleEdit(
+                          item._id,
+                          item.title,
+                          item.name,
+                          item.description
+                        )
+                      }
                     />
                     <FaTrash
                       style={{ fontSize: '1.25rem' }}
@@ -100,6 +131,7 @@ export default function Posts() {
           </tbody>
         </table>
       </div>
+
       {modal && (
         <div className="modal fade show" style={{ display: 'block' }}>
           <div className="modal-dialog">
@@ -119,11 +151,7 @@ export default function Posts() {
                   onChange={(e) => setEditName(e.target.value)}
                   className="form-control"
                 />
-                <input
-                  type="hidden"
-                  value={editId}
-                  className="form-control"
-                />
+                <input type="hidden" value={editId} className="form-control" />
                 <input
                   type="file"
                   value={editImage}

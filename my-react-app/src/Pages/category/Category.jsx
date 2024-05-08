@@ -19,6 +19,7 @@ export default function Category() {
   const data = useSelector((state) => state.category);
   const user = useSelector((state) => state.singleUser.user);
 
+
   useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
@@ -32,6 +33,7 @@ export default function Category() {
       });
     }
   }, [dispatch, data, user]);
+
 
   const handleDeleteCategory = (categoryId) => {
     dispatch(deleteCategory(categoryId));
