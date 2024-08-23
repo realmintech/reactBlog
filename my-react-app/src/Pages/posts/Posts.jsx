@@ -5,6 +5,7 @@ import { deleteBlog, getBlog } from '../../actions/createPostAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { editBlog } from '../../actions/createPostAction';
 import { HttpStatusCode } from 'axios';
+import { fetchUserById } from '../../actions/userActions';
 
 export default function Posts() {
   const [toast, setToast] = useState(false)
@@ -17,13 +18,13 @@ export default function Posts() {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.createPost);
-  const user = useSelector((state) => state.userLogin.userInfo.token.user);
+  const user = useSelector((state) => state.userInfo);
   const results = data.userInfo;
-  // console.log('results show:' ,results)
 
   useEffect(() => {
     dispatch(getBlog());
   }, [dispatch]);
+  
 
     useEffect(() => {
       if (toast) {
@@ -35,20 +36,15 @@ export default function Posts() {
     }, [toast]);
 
   const handleDelete = (itemId) => {
-    dispatch(deleteBlog(itemId)).then(() => {;
+    dispatch(deleteBlog(itemId)).then(() => {
     dispatch(getBlog())
     setToast(true)
     })
   };
 
-  const handleEdit = (
-    editId,
-    editName,
-    editTitle,
-    editDescription,
-    editImage
-  ) => {
-    setEditId(editId);
+  const handleEdit = async (postId,category,slug) => {
+    const response = await fetchUserById(postId, category, slug);
+    setEditId(response._id);
     setEditTitle(editTitle);
     setEditName(editName);
     setEditDescription(editDescription);
@@ -110,9 +106,6 @@ export default function Posts() {
                       onClick={() =>
                         handleEdit(
                           item._id,
-                          item.title,
-                          item.name,
-                          item.description
                         )
                       }
                     />
@@ -153,7 +146,8 @@ export default function Posts() {
                 />
                 <input type="hidden" value={editId} className="form-control" />
                 <input
-                  type="file"
+                  type="text"
+                  placeholder='Input image URL here'
                   value={editImage}
                   onChange={(e) => setEditImage(e.target.value)}
                   className="form-control"

@@ -63,7 +63,9 @@ export const createBlog =
 
 export const getBlog = () => async (dispatch) => {
   try {
-    const response = await axios.get('http://localhost:3000/blogs');
+    const response = await axios.get(
+      `http://localhost:3000/blogs/`
+    );
     dispatch({
       type: GET_BLOG_SUCCESS,
       payload: response.data?.data,

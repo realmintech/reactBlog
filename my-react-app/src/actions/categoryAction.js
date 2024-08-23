@@ -107,7 +107,7 @@ export const editCategory = (categoryId, name) => async (dispatch) => {
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
-        },
+        }
       }
     );
 
