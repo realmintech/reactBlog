@@ -24,6 +24,7 @@ export class BlogService {
       ...createBlogDto,
       author: user._id,
     });
+    console.log('=====>createdBlog<========', createdBlog);
     return createdBlog.save();
   }
 
