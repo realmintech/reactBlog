@@ -1,60 +1,117 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategory } from '../../actions/categoryAction';
+import { createBlog, getBlog } from '../../actions/createPostAction';
 
 export default function CreatePost() {
+  const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [category, setCategory] = useState('');
+  const [tag, setTag] = useState('');
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
+  const [description, setDescription] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategory());
+  }, [dispatch]);
+
+  const data = useSelector((state) => state.category);
+
+  const handleSubmitPost = (e) => {
+    e.preventDefault();
+    dispatch(
+      createBlog(
+        title,
+        imageUrl,
+        category,
+        tag,
+        isFeatured,
+        isPublished,
+        description
+      )
+    );
+    dispatch(getBlog())
+  };
+
   return (
     <>
-      <form action="" className="mt-3 container card">
+      <form onSubmit={handleSubmitPost} className="mt-3 container card">
         <h5 className="m-3">Add blog</h5>
         <div className="m-3">
-          <input type="text" placeholder="Title" className="form-control" />
-        </div>
-        <div className="m-3">
           <input
-            type="file"
-            src=""
-            alt=""
+            type="text"
+            placeholder="Title"
             className="form-control"
-            placeholder="Chose image"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="m-3">
-          <select name="options" id="" className="form-select">
-            <option selected>Category</option>
-            <option value="1">Education</option>
-            <option value="2">Lifestyle</option>
-            <option value="3">Technology</option>
-            <option value="4">Art</option>
-            <option value="5">Food</option>
-          </select>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Image URL"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+        <div className="my-3 mx-1 row">
+          <div className="col-lg-6">
+            <select
+              name="options"
+              className="form-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {data.category &&
+                data.category.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div className="col-lg-6">
+            <input
+              type="text"
+              id="tags-input"
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+              className="form-control"
+              placeholder="Tags"
+            />
+          </div>
         </div>
         <div className="m-3 row">
           <div className="col-lg-6">
-            <label htmlFor="">isFeatured</label>
+            <label htmlFor="isFeatured">isFeatured</label>
             <input
               type="checkbox"
               name="isFeatured"
+              checked={isFeatured}
+              onChange={(e) => setIsFeatured(e.target.checked)}
               className="mx-3"
-              id=""
-              placeholder="isFeatured"
             />
           </div>
           <div className="col-lg-6">
-            <label htmlFor="">isPublished</label>
+            <label htmlFor="isPublished">isPublished</label>
             <input
               type="checkbox"
               name="isPublished"
-              id=""
+              checked={isPublished}
+              onChange={(e) => setIsPublished(e.target.checked)}
               className="mx-3"
-              placeholder="isPublished"
             />
           </div>
         </div>
         <textarea
-          name=""
-          id=""
           cols="8"
           rows="10"
           className="m-3"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           style={{ borderRadius: '10px', border: '1px solid gray' }}
           placeholder="Description"
         ></textarea>

@@ -1,5 +1,12 @@
 import React from 'react';
-import { FaBlog, FaEdit, FaPodcast, FaRegEye, FaTrash, FaUser } from 'react-icons/fa';
+import {
+  FaBlog,
+  FaEdit,
+  FaPodcast,
+  FaRegEye,
+  FaTrash,
+  FaUser,
+} from 'react-icons/fa';
 
 export default function DashboardContent() {
   const data = [
@@ -48,9 +55,9 @@ export default function DashboardContent() {
                 <div className="col-lg-4 col-md-4 col-sm-4">
                   <div className="cards">
                     <div class="card bg-primary text-white">
-                      <div class="card-body text-center">
-                        <h5 class="card-title">Blogs</h5>
-                        <h6 class="card-subtitle mb-2">
+                      <div className="card-body text-center">
+                        <h5 className="card-title">Blogs</h5>
+                        <h6 className="card-subtitle mb-2">
                           <span>
                             <FaBlog />
                           </span>
@@ -61,11 +68,17 @@ export default function DashboardContent() {
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4">
-                  <div className="cards" style={{boxShadow: 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset'}}>
-                    <div class="card bg-success text-white">
-                      <div class="card-body text-center">
-                        <h5 class="card-title">Users</h5>
-                        <h6 class="card-subtitle mb-2">
+                  <div
+                    className="cards"
+                    style={{
+                      boxShadow:
+                        'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset',
+                    }}
+                  >
+                    <div className="card bg-success text-white">
+                      <div className="card-body text-center">
+                        <h5 className="card-title">Users</h5>
+                        <h6 className="card-subtitle mb-2">
                           <span>
                             <FaUser />
                           </span>
@@ -77,10 +90,10 @@ export default function DashboardContent() {
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4">
                   <div className="cards">
-                    <div class="card bg-danger text-white">
-                      <div class="card-body text-center">
-                        <h5 class="card-title">Post</h5>
-                        <h6 class="card-subtitle mb-2">
+                    <div className="card bg-danger text-white">
+                      <div className="card-body text-center">
+                        <h5 className="card-title">Post</h5>
+                        <h6 className="card-subtitle mb-2">
                           <FaPodcast />
                           40
                         </h6>
@@ -109,28 +122,28 @@ export default function DashboardContent() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item,index)=>(
-                  <tr>
-                    <td key={index}>{index}</td>
-                    <td>{item.title}</td>
-                    <td>{item.Category}</td>
-                    <td>{item.date_created}</td>
-                    <td>
-                      <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-primary"
-                        href="/dashboard/viewPost"
-                      />
-                      <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-danger mx-2"
-                      />
-                      <FaRegEye
-                        style={{ fontSize: '1.25rem' }}
-                        className="text-success"
-                      />
-                    </td>
-                  </tr>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index}</td>
+                      <td>{item.title}</td>
+                      <td>{item.Category}</td>
+                      <td>{item.date_created}</td>
+                      <td>
+                        <FaEdit
+                          style={{ fontSize: '1.25rem' }}
+                          className="text-primary"
+                          href="/dashboard/viewPost"
+                        />
+                        <FaTrash
+                          style={{ fontSize: '1.25rem' }}
+                          className="text-danger mx-2"
+                        />
+                        <FaRegEye
+                          style={{ fontSize: '1.25rem' }}
+                          className="text-success"
+                        />
+                      </td>
+                    </tr>
                   ))}
                 </tbody>
               </table>

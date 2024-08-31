@@ -6,22 +6,24 @@ import { fetchUserById } from '../../actions/userActions';
 import {
   categoryAction,
   deleteCategory,
+  editCategory,
   getCategory,
 } from '../../actions/categoryAction';
 
 export default function Category() {
   const [name, setName] = useState('');
+  const [modal, setModal] = useState(false);
+  const [editItemId, setEditItemId] = useState('');
+  const [editName, setEditName] = useState('');
   const dispatch = useDispatch();
   const data = useSelector((state) => state.category);
   const user = useSelector((state) => state.singleUser.user);
+
 
   useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
 
-  const handleDeleteCategory = (categoryId) => {
-    dispatch(deleteCategory(categoryId));
-  };
   useEffect(() => {
     if (data && Array.isArray(data.category)) {
       data.category.forEach((item) => {
@@ -32,37 +34,53 @@ export default function Category() {
     }
   }, [dispatch, data, user]);
 
+
+  const handleDeleteCategory = (categoryId) => {
+    dispatch(deleteCategory(categoryId));
+  };
+
+  const handleEdit = (itemId, itemName) => {
+    setEditItemId(itemId);
+    setEditName(itemName);
+    setModal(true);
+  };
+
+  const handleSaveChanges = () => {
+    dispatch(editCategory(editItemId, editName));
+    setModal(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(categoryAction(name));
+    setName('');
     dispatch(getCategory());
-
   };
 
   return (
     <>
-      <form className='mt-3 container card'>
-        <h5 className='m-3'>Category page</h5>
-        <div className=''>
+      <form className="mt-3 container card">
+        <h5 className="m-3">Category page</h5>
+        <div className="">
           <input
-            type='text'
+            type="text"
             value={name}
-            placeholder='Category'
+            placeholder="Category"
             onChange={(e) => setName(e.target.value)}
-            className='form-control'
+            className="form-control"
           />
           <button
-            type='submit'
-            className='btn'
+            type="submit"
+            className="btn"
             onClick={handleSubmit}
             style={{ width: '99%', background: 'navy', color: 'white' }}
           >
             Submit
           </button>
         </div>
-        <div className='card my-5'>
-          <h3 className='m-3'>Category</h3>
-          <table className='table table-hover table-border p-4'>
+        <div className="card my-5">
+          <h3 className="m-3">Category</h3>
+          <table className="table table-hover table-border p-4">
             <thead>
               <tr>
                 <th>Category</th>
@@ -82,12 +100,20 @@ export default function Category() {
                     <td>{moment(item.createdAt).format('llll')}</td>
                     <td>
                       <FaEdit
-                        style={{ fontSize: '1.25rem' }}
-                        className='text-primary'
+                        style={{
+                          fontSize: '1.25rem',
+                          cursor: 'pointer',
+                          color: 'navy',
+                        }}
+                        onClick={() => handleEdit(item._id, item.name)}
                       />
                       <FaTrash
-                        style={{ fontSize: '1.25rem' }}
-                        className='text-danger mx-2'
+                        style={{
+                          fontSize: '1.25rem',
+                          cursor: 'pointer',
+                          color: 'red',
+                        }}
+                        className="mx-2"
                         onClick={() => handleDeleteCategory(item._id)}
                       />
                     </td>
@@ -97,6 +123,46 @@ export default function Category() {
           </table>
         </div>
       </form>
+
+      {modal && (
+        <div className="modal fade show" style={{ display: 'block' }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Category</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setModal(false)}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <input
+                  type="text"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="form-control"
+                />
+                <input
+                  type="hidden"
+                  value={editItemId}
+                  className="form-control"
+                />
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn"
+                  style={{ color: 'white', backgroundColor: 'navy' }}
+                  onClick={handleSaveChanges}
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
