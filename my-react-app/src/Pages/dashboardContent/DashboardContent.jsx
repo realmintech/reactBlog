@@ -54,7 +54,7 @@ export default function DashboardContent() {
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-4">
                   <div className="cards">
-                    <div class="card bg-primary text-white">
+                    <div className="card bg-primary text-white">
                       <div className="card-body text-center">
                         <h5 className="card-title">Blogs</h5>
                         <h6 className="card-subtitle mb-2">

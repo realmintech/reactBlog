@@ -95,7 +95,7 @@ export default function Posts() {
                 <tr key={item._id}>
                   <td>{index + 1}</td>
                   <td>{item.title}</td>
-                  <td>{user.username}</td>
+                  <td>{user?.username}</td>
                   <td>{item.category}</td>
                   <td>{moment(item.timestamp).format('llll')}</td>
                   <td>

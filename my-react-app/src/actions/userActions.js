@@ -18,7 +18,7 @@ try {
   console.error('Error parsing adminInfo:', error);
 }
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password, navigate) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -38,6 +38,13 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
     localStorage.setItem('userInfo', JSON.stringify(data));
+    if (data?.token?.user?.role === 'admin') {
+      navigate('/dashboard');
+    } else {
+      setTimeout(() => {
+        navigate('/access-denied');
+      }, 100);
+    }
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,

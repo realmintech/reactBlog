@@ -32,38 +32,41 @@ export default function CreatePost() {
         description
       )
     );
-    dispatch(getBlog())
+    dispatch(getBlog());
   };
 
   return (
     <>
-      <form onSubmit={handleSubmitPost} className="mt-3 container card">
-        <h5 className="m-3">Add blog</h5>
-        <div className="m-3">
+      <form onSubmit={handleSubmitPost} className='mt-3 container card'>
+        <h5 className='m-3'>Add blog</h5>
+        <div className='m-3'>
           <input
-            type="text"
-            placeholder="Title"
-            className="form-control"
+            type='text'
+            placeholder='Title'
+            className='form-control'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="m-3">
+        <div className='m-3'>
           <input
-            type="text"
-            className="form-control"
-            placeholder="Image URL"
+            type='text'
+            className='form-control'
+            placeholder='Image URL'
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
-        <div className="my-3 mx-1 row">
-          <div className="col-lg-6">
+        <div className='my-3 mx-1 row'>
+          <div className='col-lg-6'>
             <select
-              name="options"
-              className="form-select"
+              name='options'
+              className='form-select'
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => {
+              
+                setCategory(e.target.value);
+              }}
             >
               {data.category &&
                 data.category.map((item) => (
@@ -73,53 +76,53 @@ export default function CreatePost() {
                 ))}
             </select>
           </div>
-          <div className="col-lg-6">
+          <div className='col-lg-6'>
             <input
-              type="text"
-              id="tags-input"
+              type='text'
+              id='tags-input'
               value={tag}
               onChange={(e) => setTag(e.target.value)}
-              className="form-control"
-              placeholder="Tags"
+              className='form-control'
+              placeholder='Tags'
             />
           </div>
         </div>
-        <div className="m-3 row">
-          <div className="col-lg-6">
-            <label htmlFor="isFeatured">isFeatured</label>
+        <div className='m-3 row'>
+          <div className='col-lg-6'>
+            <label htmlFor='isFeatured'>isFeatured</label>
             <input
-              type="checkbox"
-              name="isFeatured"
+              type='checkbox'
+              name='isFeatured'
               checked={isFeatured}
               onChange={(e) => setIsFeatured(e.target.checked)}
-              className="mx-3"
+              className='mx-3'
             />
           </div>
-          <div className="col-lg-6">
-            <label htmlFor="isPublished">isPublished</label>
+          <div className='col-lg-6'>
+            <label htmlFor='isPublished'>isPublished</label>
             <input
-              type="checkbox"
-              name="isPublished"
+              type='checkbox'
+              name='isPublished'
               checked={isPublished}
               onChange={(e) => setIsPublished(e.target.checked)}
-              className="mx-3"
+              className='mx-3'
             />
           </div>
         </div>
         <textarea
-          cols="8"
-          rows="10"
-          className="m-3"
+          cols='8'
+          rows='10'
+          className='m-3'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           style={{ borderRadius: '10px', border: '1px solid gray' }}
-          placeholder="Description"
+          placeholder='Description'
         ></textarea>
         <div></div>
         <div>
           <button
-            type="submit"
-            className="m-3 btn"
+            type='submit'
+            className='m-3 btn'
             style={{ width: '97%', background: 'navy', color: 'white' }}
           >
             Submit

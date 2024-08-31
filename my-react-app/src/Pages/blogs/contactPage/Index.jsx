@@ -1,7 +1,7 @@
 import React from "react";
 import "./Index.css";
-import AboutMe from "../aboutMeComponent/Index";
-import Newsletter from "../newsLetterComponent/Index";
+import AboutMe from "../../../components/aboutMeComponent/Index";
+import Newsletter from "../../../components/newsLetterComponent/Index";
 
 export default function ContactPage() {
   return (
