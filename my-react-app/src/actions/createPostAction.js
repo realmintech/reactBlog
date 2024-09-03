@@ -8,6 +8,8 @@ import {
   DELETE_BLOG_FAILED,
   EDIT_BLOG_SUCCESS,
   EDIT_BLOG_FAILED,
+  GET_FEATURED_BLOG_SUCCESS,
+  GET_FEATURED_BLOG_FAILED,
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -25,7 +27,7 @@ export const createBlog =
     try {
       console.log('imageUrl', imageUrl, 'category', category);
       const response = await axios.post(
-        'http://localhost:3000/blogs',
+        'http://localhost:8080/blogs',
         {
           title,
           imageUrl,
@@ -81,9 +83,29 @@ export const getBlog = () => async (dispatch) => {
   }
 };
 
+  export const getFeaturedBlogs = () => async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/blogs/featured`);
+      dispatch({
+        type: GET_FEATURED_BLOG_SUCCESS,
+        payload: response.data?.data,
+      });
+      console.log('response is here:',response.data?.data)
+      return response.data?.data;
+    } catch (error) {
+      dispatch({
+        type: GET_FEATURED_BLOG_FAILED,
+        payload:
+          error.response && error.response.data
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
 export const deleteBlog = (itemId) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:3000/blogs/${itemId}`, {
+    await axios.delete(`http://localhost:8080/blogs/${itemId}`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -109,8 +131,8 @@ export const editBlog =
   async (dispatch) => {
     try {
       let response = await axios.patch(
-        `http://localhost:3000/category/${editId}`,
-        { editDescription, editName, editImage, editTitle },
+        `http://localhost:8080/category/${editId}`,
+        { editDescription, editName, editImage, editTitle, editId },
         {
           headers: {
             Authorization: `Bearer ${authToken}`,

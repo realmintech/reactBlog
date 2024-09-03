@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FaBlog,
   FaEdit,
@@ -7,41 +7,120 @@ import {
   FaTrash,
   FaUser,
 } from 'react-icons/fa';
+import './DashboardContent.css';
+const itemsPerPage = 5;
+
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  return (
+    <div className="pagination">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      {Array.from({ length: totalPages }, (_, index) => (
+        <button
+          key={index + 1}
+          onClick={() => onPageChange(index + 1)}
+          className={currentPage === index + 1 ? 'active' : ''}
+        >
+          {index + 1}
+        </button>
+      ))}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
+    </div>
+  );
+};
 
 export default function DashboardContent() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const data = [
     {
       title: 'Technology',
       Category: 'Technical',
       date_created: 'June 23, 2013',
     },
+    { title: 'Science', Category: 'Research', date_created: 'July 15, 2014' },
+    { title: 'Health', Category: 'Wellness', date_created: 'August 09, 2015' },
+    {
+      title: 'Education',
+      Category: 'Learning',
+      date_created: 'September 11, 2016',
+    },
+    {
+      title: 'Environment',
+      Category: 'Nature',
+      date_created: 'October 19, 2017',
+    },
+    {
+      title: 'Politics',
+      Category: 'Governance',
+      date_created: 'November 23, 2018',
+    },
+    {
+      title: 'Culture',
+      Category: 'Society',
+      date_created: 'December 25, 2019',
+    },
+    { title: 'Art', Category: 'Creativity', date_created: 'January 01, 2020' },
+    {
+      title: 'Travel',
+      Category: 'Exploration',
+      date_created: 'February 14, 2021',
+    },
+    { title: 'Food', Category: 'Cuisine', date_created: 'March 17, 2022' },
     {
       title: 'Technology',
       Category: 'Technical',
       date_created: 'June 23, 2013',
     },
+    { title: 'Science', Category: 'Research', date_created: 'July 15, 2014' },
+    { title: 'Health', Category: 'Wellness', date_created: 'August 09, 2015' },
     {
-      title: 'Technology',
-      Category: 'Technical',
-      date_created: 'June 23, 2013',
-    },
-
-    {
-      title: 'Technology',
-      Category: 'Technical',
-      date_created: 'June 23, 2013',
+      title: 'Education',
+      Category: 'Learning',
+      date_created: 'September 11, 2016',
     },
     {
-      title: 'Technology',
-      Category: 'Technical',
-      date_created: 'June 23, 2013',
+      title: 'Environment',
+      Category: 'Nature',
+      date_created: 'October 19, 2017',
     },
     {
-      title: 'Technology',
-      Category: 'Technical',
-      date_created: 'June 23, 2013',
+      title: 'Politics',
+      Category: 'Governance',
+      date_created: 'November 23, 2018',
     },
+    {
+      title: 'Culture',
+      Category: 'Society',
+      date_created: 'December 25, 2019',
+    },
+    { title: 'Art', Category: 'Creativity', date_created: 'January 01, 2020' },
+    {
+      title: 'Travel',
+      Category: 'Exploration',
+      date_created: 'February 14, 2021',
+    },
+    { title: 'Food', Category: 'Cuisine', date_created: 'March 17, 2022' },
   ];
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedItems = data.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <div>
@@ -122,9 +201,9 @@ export default function DashboardContent() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item, index) => (
+                  {paginatedItems.map((item, index) => (
                     <tr key={index}>
-                      <td>{index}</td>
+                      <td>{startIndex + index + 1}</td>
                       <td>{item.title}</td>
                       <td>{item.Category}</td>
                       <td>{item.date_created}</td>
@@ -132,7 +211,6 @@ export default function DashboardContent() {
                         <FaEdit
                           style={{ fontSize: '1.25rem' }}
                           className="text-primary"
-                          href="/dashboard/viewPost"
                         />
                         <FaTrash
                           style={{ fontSize: '1.25rem' }}
@@ -148,40 +226,11 @@ export default function DashboardContent() {
                 </tbody>
               </table>
             </div>
-            <nav aria-label="Page navigation">
-              <ul className="pagination justify-content-end mt-5">
-                <li className="page-item">
-                  <a className="page-link" href="/Blog/1" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/About">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/Blogs">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/Contact">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/Blog/1">
-                    4
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/Home" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </main>
         </div>
       </div>
