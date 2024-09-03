@@ -9,7 +9,7 @@ import {
   EDIT_BLOG_SUCCESS,
   EDIT_BLOG_FAILED,
   GET_FEATURED_BLOG_SUCCESS,
-  GET_FEATURED_BLOG_FAILED
+  GET_FEATURED_BLOG_FAILED,
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -17,7 +17,6 @@ let authToken;
 try {
   const userInfo = JSON.parse(getTokenString);
   authToken = userInfo?.token.token;
-  console.log('Get token:', getTokenString);
 } catch (error) {
   console.error('Error parsing adminInfo:', error);
 }
@@ -26,6 +25,7 @@ export const createBlog =
   (title, imageUrl, category, tags, isFeatured, isPublished, description) =>
   async (dispatch) => {
     try {
+      console.log('imageUrl', imageUrl, 'category', category);
       const response = await axios.post(
         'http://localhost:8080/blogs',
         {
@@ -65,9 +65,7 @@ export const createBlog =
 
 export const getBlog = () => async (dispatch) => {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/blogs/`
-    );
+    const response = await axios.get(`http://localhost:3000/blogs/`);
     dispatch({
       type: GET_BLOG_SUCCESS,
       payload: response.data?.data,
@@ -128,9 +126,9 @@ export const deleteBlog = (itemId) => async (dispatch) => {
   }
 };
 
-
 export const editBlog =
-  (editId, editDescription, editName, editImage, editTitle) => async (dispatch) => {
+  (editId, editDescription, editName, editImage, editTitle) =>
+  async (dispatch) => {
     try {
       let response = await axios.patch(
         `http://localhost:8080/category/${editId}`,

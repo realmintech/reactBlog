@@ -79,16 +79,15 @@ export class BlogController {
   }
 
   @Public()
-  @Get(':id/:category/:slug')
+  @Get(':id')
   async getPostByIdCategoryAndSlug(
     @Param('id') id: string,
-    @Param('category') category: string,
-    @Param('slug') slug: string,
+    // @Param('slug') slug: string,
   ): Promise<Blog> {
     const post = await this.blogService.findByIdCategoryAndSlug(
       id,
-      category,
-      slug,
+      // category,
+      // slug,
     );
 
     if (!post) {

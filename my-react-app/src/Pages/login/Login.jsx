@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Login.css';
 import { login } from '../../actions/userActions';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const userLogin = useSelector((state) => state.userLogin);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(email, password, navigate));
   };
   useEffect(() => {
     try {
@@ -85,7 +86,6 @@ export default function Login() {
                   color: 'white',
                 }}
               >
-                <Navigate to='' />
                 Login
               </button>
             </div>

@@ -24,6 +24,7 @@ export class BlogService {
       ...createBlogDto,
       author: user._id,
     });
+    console.log('=====>createdBlog<========', createdBlog);
     return createdBlog.save();
   }
 
@@ -67,14 +68,12 @@ export class BlogService {
 
   async findByIdCategoryAndSlug(
     id: string,
-    category: string,
-    slug: string,
+    // category: string,
   ): Promise<Blog> {
     return await this.blogModel
       .findOne({
         _id: id,
-        category: category,
-        slug: slug,
+        // category: category,
       })
       .populate('category', 'name')
       .exec();
