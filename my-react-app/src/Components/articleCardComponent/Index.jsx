@@ -1,4 +1,5 @@
 import './Index.css';
+import moment from 'moment';
 
 export default function ArticleCard(props) {
   const { item } = props;
@@ -11,9 +12,9 @@ export default function ArticleCard(props) {
             <hr className='title-line' />
             <h5 className='title-text'>{item.title}</h5>
           </div>
-          <p className='today_date'>{item.date}</p>
-          <p className="description-text">{item.description}</p>
-          <a className='read_more_link text-decoration-none' href='/blog/1'>
+          <p className='today_date'>{moment(item.timestamp).format('llll')}</p>
+          <p className="description-text">{item.description.slice(0, 100)}</p>
+          <a className='read_more_link text-decoration-none' href='/blog/id'>
             Read more...
           </a>
         </div>

@@ -10,9 +10,12 @@ import { getFeaturedBlogs } from '../../actions/createPostAction';
 
 export default function Index() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.createPost);
+  const data = useSelector((state) => state.createPost.featuredBlogs);
   const user = useSelector((state) => state.userInfo);
-  const results = data.userInfo;
+  // const results = data.userInfo;
+  //  const d = useSelector((state) => state);
+  // console.log('result:', results)
+  console.log('d:', data);
 
   useEffect(() => {
     dispatch(getFeaturedBlogs());
@@ -35,8 +38,8 @@ export default function Index() {
                 ART / LIFESTYLE
               </h5>
               <div className="row">
-                {results &&
-                  results.map((item, index) => (
+                {data &&
+                  data?.map((item, index) => (
                     <div className="col-lg-6 mt-5" key={index}>
                       <ArticleCard item={item} user={user}/>
                     </div>

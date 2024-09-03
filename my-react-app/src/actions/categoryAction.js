@@ -22,7 +22,7 @@ try {
 export const categoryAction = (name) => async (dispatch) => {
   try {
     const response = await axios.post(
-      'http://localhost:8080/category',
+      'http://localhost:3000/category',
       {
         name,
       },
@@ -55,7 +55,7 @@ export const categoryAction = (name) => async (dispatch) => {
 
 export const getCategory = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:8080/category');
+    const res = await axios.get('http://localhost:3000/category');
     dispatch({
       type: FETCH_CATEGORY_SUCCESS,
       payload: res.data,
@@ -75,7 +75,7 @@ export const getCategory = () => async (dispatch) => {
 
 export const deleteCategory = (categoryId) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:8080/category/${categoryId}`, {
+    await axios.delete(`http://localhost:3000/category/${categoryId}`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -102,7 +102,7 @@ export const deleteCategory = (categoryId) => async (dispatch) => {
 export const editCategory = (categoryId, name) => async (dispatch) => {
   try {
     let response = await axios.patch(
-      `http://localhost:8080/category/${categoryId}`,
+      `http://localhost:3000/category/${categoryId}`,
       { name },
       {
         headers: {
