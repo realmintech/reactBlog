@@ -53,7 +53,7 @@ export default function App() {
             }
           />
           <Route
-            path="/blog/id"
+            path="/blog/:id"
             element={
               <LayoutWithNavbarAndFooter>
                 <Blog />
