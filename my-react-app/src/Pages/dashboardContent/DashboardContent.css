@@ -1,7 +1,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .pagination button {
@@ -13,7 +13,7 @@
 }
 
 .pagination button.active {
-  background-color: tomato;
+  background-color: navy;
   color: white;
 }
 

@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      'http://localhost:3000/auth/login',
+      'http://localhost:8080/auth/login',
       { email, password },
       config
     );
@@ -52,7 +52,7 @@ export const login = (email, password) => async (dispatch) => {
 export const register =
   (email, username, password, confirmPassword) => async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/register', {
+      const response = await axios.post('http://localhost:8080/auth/register', {
         email,
         username,
         password,
@@ -75,7 +75,7 @@ export const register =
 
 export const fetchUserById = (userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3000/users/${userId}`, {
+    const response = await axios.get(`http://localhost:8080/users/${userId}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${authToken}`,
