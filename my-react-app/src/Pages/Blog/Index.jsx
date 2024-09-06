@@ -1,27 +1,40 @@
-import React from "react";
-import "./Index.css";
-import BeautyPic from "../../assets/carousel.webp";
-import ManOnSuit from "../../assets/man_image.webp";
-import AboutMe from "../../components/aboutMeComponent/Index";
-import Newsletter from "../../components/newsLetterComponent/Index";
-import OtherPosts from "../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent";
+import React, { useState, useEffect } from 'react';
+import './Index.css';
+import ManOnSuit from '../../assets/man_image.webp';
+import AboutMe from '../../components/aboutMeComponent/Index';
+import Newsletter from '../../components/newsLetterComponent/Index';
 import Comment from '../../components/commentSection/Index';
-import { FaShare, FaTag } from "react-icons/fa";
+import { FaShare, FaTag } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
+import moment from 'moment';
+import axios from 'axios';
+import YouMightAlsoLikeComponent from '../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent';
 
 export default function SingleBlogPost() {
-  const data = [
-    {
-      image: ManOnSuit,
-      writer: "John Phillipe",
-      date: "July 25, 2015 at 8:45am",
-      reply: "reply",
-      admin: "Admin",
-      desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dicta?
-            Nam adipisci eveniet cupiditate delectus, asperiores quo odio sed
-            amet provident voluptate nostrum quis veritatis nisi. Repudiandae
-            quod autem fugiat.`,
-    },
-  ];
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+
+  useEffect(() => {
+    const fetchBlogDetail = async () => {
+      try {
+        const blogDetail = await axios.get(
+          `http://localhost:3000/blogs/${id}/blog`
+        );
+        // console.log('blogDetail', blogDetail);
+        if (blogDetail && blogDetail.data) {
+          setBlog(blogDetail.data);
+        }
+      } catch (err) {
+        console.log('this is blog detail: ', err);
+      }
+    };
+    fetchBlogDetail();
+  }, [id]);
+
+  if (!blog) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className="bgImg"></div>
@@ -29,44 +42,21 @@ export default function SingleBlogPost() {
         <div className="row">
           <div className="col4-lg-8 col-md-8 col-sm-8">
             <div className="heading">
-              <h3>TOP 10 INDREDIENTS</h3>
-              <p className="title_date">July 12, 2003</p>
+              <h3>{blog.title}</h3>
+              <p className="title_date">
+                {moment(blog.timestamp).format('llll')}
+              </p>
             </div>
             <div className="news">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-                alias veritatis, quam magnam dignissimos voluptas porro sed
-                recusandae, magni quaerat quasi voluptates corrupti sint? Sed
-                blanditiis reprehenderit aut doloremque officia. Voluptates,
-                illum fuga consequuntur perferendis eum optio, exercitationem
-                vitae deserunt qui magnam, esse suscipit facilis velit. Vel,
-                aperiam deleniti alias tempore minima laudantium facilis. Error
-                quaerat consequatur dolor amet sit? Eius eum impedit optio,
-                consequatur nemo cupiditate mollitia aliquid ad voluptas,
-                quibusdam ex eaque, explicabo beatae quas assumenda saepe quis
-                praesentium commodi recusandae harum repellat dolorem
-                asperiores! Aspernatur, vel corporis?
-              </p>
-              <img src={BeautyPic} alt="" className="beautyPic" />
-              <p className="picCaption">Travelling the world</p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus, saepe maxime minus odio temporibus illum placeat
-                excepturi asperiores corrupti dignissimos doloribus accusantium
-                nemo nobis quisquam enim. Maxime sit doloremque mollitia? Sit
-                aut, nostrum consequatur ratione blanditiis numquam excepturi
-                eum esse nisi ut molestiae molestias placeat ipsa. Cupiditate
-                blanditiis possimus corporis dolore dignissimos suscipit
-                sapiente, eveniet id tempore beatae quam illum.
-              </p>
-              <span className="desc">
-                GOOD DESIGN IS MAKING SOMETHING INTELLIGIBLE AND MEMORABLE.
-                GREAT DESIGN IS MAKING SOMETHING MEMORABLE AND MEANINGFUL.
-              </span>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-                eaque deserunt neque nihil non delectus laudantium esse itaque.
-              </p>
+              <div className="blog_big_img">
+                <img
+                  src={blog.imageUrl}
+                  alt={blog.title}
+                  className="beautyPic"
+                />
+              </div>
+              <p className="picCaption">Tags: {blog.tags}</p>
+              <p>{blog.description}</p>
               <div className="tagShare row">
                 <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
@@ -104,21 +94,26 @@ export default function SingleBlogPost() {
                   </p>
                 </span>
               </span>
-              <OtherPosts />
+              <YouMightAlsoLikeComponent />
               <p
                 className="comment"
                 style={{
-                  borderTop: "1px solid rgba(139,135,135,0.514)",
-                  paddingTop: "30px",
+                  borderTop: '1px solid rgba(139,135,135,0.514)',
+                  paddingTop: '30px',
                 }}
               >
                 2 COMMENTS
               </p>
-              {data.map((item, index) => (
-                <div className="flexImgWord row" key={index}>
-                  <Comment item={item} />
-                </div>
-              ))}
+              {blog.comments && blog.comments.length > 0 ? (
+                blog.comments.map((comment, index) => (
+                  <div className="flexImgWord row" key={index}>
+                    <Comment item={comment} />
+                  </div>
+                ))
+              ) : (
+                <p>No comments available.</p>
+              )}
+
               <p className="commentSection">
                 Your email address will not be published. Required fields are
                 marked *

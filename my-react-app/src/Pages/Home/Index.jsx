@@ -12,14 +12,12 @@ export default function Index() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.createPost.featuredBlogs);
   const user = useSelector((state) => state.userInfo);
-  // const results = data.userInfo;
-  //  const d = useSelector((state) => state);
-  // console.log('result:', results)
-  console.log('d:', data);
 
   useEffect(() => {
     dispatch(getFeaturedBlogs());
   }, [dispatch]);
+
+
 
   return (
     <>
@@ -41,7 +39,7 @@ export default function Index() {
                 {data &&
                   data?.map((item, index) => (
                     <div className="col-lg-6 mt-5" key={index}>
-                      <ArticleCard item={item} user={user}/>
+                      <ArticleCard item={item}  user={user}/>
                     </div>
                   ))}
               </div>

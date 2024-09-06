@@ -10,6 +10,8 @@ import {
   EDIT_BLOG_FAILED,
   GET_FEATURED_BLOG_SUCCESS,
   GET_FEATURED_BLOG_FAILED,
+  GET_PUBLISHED_BLOG_SUCCESS,
+  GET_PUBLISHED_BLOG_FAILED
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -90,7 +92,6 @@ export const getBlog = () => async (dispatch) => {
         type: GET_FEATURED_BLOG_SUCCESS,
         payload: response.data,
       });
-      console.log('response is here:',response.data)
       return response.data;
     } catch (error) {
       dispatch({
@@ -102,6 +103,27 @@ export const getBlog = () => async (dispatch) => {
       });
     }
   };
+
+  export const getPublishedBlogs = () => async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/blogs/published`);
+      dispatch({
+        type: GET_PUBLISHED_BLOG_SUCCESS,
+        payload: response.data,
+      });
+      console.log('response is here now:', response.data?.data);
+      return response.data;
+    } catch (error) {
+      dispatch({
+        type: GET_PUBLISHED_BLOG_FAILED,
+        payload:
+          error.response && error.response.data
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
 
 export const deleteBlog = (itemId) => async (dispatch) => {
   try {

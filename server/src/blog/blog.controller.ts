@@ -79,7 +79,7 @@ export class BlogController {
   }
 
   @Public()
-  @Get(':id')
+  @Get(':id/blog')
   async getPostByIdCategoryAndSlug(
     @Param('id') id: string,
     // @Param('slug') slug: string,

@@ -1,5 +1,5 @@
 .bgImg {
-  background-image: url("../../assets/bacgroundImage1.jpg");
+  background-image: url('../../assets/bacgroundImage1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,6 +8,12 @@
 .tagDiv {
   border: 1px solid rgb(90, 87, 87);
   width: 100%;
+}
+
+.blog_big_img {
+  width: 100%;
+  max-width: 100%;
+  /* height: 250px; */
 }
 
 button {
@@ -32,15 +38,23 @@ button:hover {
 
 .beautyPic {
   width: 100%;
-  height: 450px;
+  height: 100%;
   object-fit: cover;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
 .picCaption {
-  color: gray;
   padding: 10px 0;
   font-style: italic;
-  text-align: center;
+  /* text-align: center; */
+  font-size: medium;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  line-height: normal;
+  text-transform: capitalize;
 }
 
 .desc {
@@ -110,7 +124,9 @@ button:hover {
 
 .title_date {
   font-style: italic;
-  color: #be9565;
+  color: brown;
+  font-size: small;
+  font-style: italic;
   text-align: center;
 }
 

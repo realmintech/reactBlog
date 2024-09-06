@@ -1,7 +1,18 @@
 import './Index.css';
 import Desert from "../../assets/image5.png";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getCategory,
+} from '../../actions/categoryAction';
 
 export default function CategoryComponent() {
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.category);
+
+    useEffect(() => {
+      dispatch(getCategory());
+    }, [dispatch]);
   return (
     <>
       <div className="imgWithBanner border">
@@ -12,12 +23,12 @@ export default function CategoryComponent() {
       </div>
       <div className="category">
         <h3>CATEGORIES</h3>
-        <p>Art</p>
-        <p>Food</p>
-        <p>Lifestyle</p>
-        <p>Music</p>
-        <p>Top</p>
-        <p>Travel</p>
+        {Array.isArray(data.category) &&
+                data.category.map((item) => (
+                  <div key={item._id}>
+                    <p>{item.name}</p>
+                    </div>
+                ))}
       </div>
     </>
   );

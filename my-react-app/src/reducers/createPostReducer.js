@@ -9,6 +9,8 @@ import {
   EDIT_BLOG_FAILED,
   GET_FEATURED_BLOG_SUCCESS,
   GET_FEATURED_BLOG_FAILED,
+  GET_PUBLISHED_BLOG_SUCCESS,
+  GET_PUBLISHED_BLOG_FAILED,
 } from '../constants/userConstants';
 
 export const createPostReducer = (state = {}, action) => {
@@ -26,6 +28,11 @@ export const createPostReducer = (state = {}, action) => {
     case GET_FEATURED_BLOG_SUCCESS:
       return { featuredBlogs: action.payload };
     case GET_FEATURED_BLOG_FAILED:
+      return { error: action.payload };
+
+    case GET_PUBLISHED_BLOG_SUCCESS:
+      return { publishedBlogs: action.payload };
+    case GET_PUBLISHED_BLOG_FAILED:
       return { error: action.payload };
 
     case DELETE_BLOG_SUCCESS:

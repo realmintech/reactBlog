@@ -1,39 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import moment from 'moment';
+import { useParams } from 'react-router-dom';
 import './YouMightAlsoLikeComponent.css';
-import Wears from "../../assets/wears.jpg";
-import BeautyPic from "../../assets/carousel.webp";
-import ManOnSuit from "../../assets/man_image.webp";
+
+export default function YouMightAlsoLikeComponent() {
+  const { id } = useParams();
+  const [likedBlogs, setLikedBlogs] = useState([]);
 
 
-export default function OtherPosts() {
-  const data = [
-    {
-      image_url: Wears,
-      title: "GOLDEN SNOW LAND",
-      today_date: "July 12, 2003",
-    },
-    {
-      image_url: BeautyPic,
-      title: "HUGE WATERFALL",
-      today_date: "July 12, 2003",
-    },
-    {
-      image_url: ManOnSuit,
-      title: "PLAYING SKATEBOARD",
-      today_date: "July 12, 2003",
-    },
-  ];
+useEffect(() => {
+  const fetchSimilarBlogs = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/blogs/${id}/similar`
+      );
+      console.log('Similar blogs', response.data);
+      if (response.data) {
+        setLikedBlogs(response.data);
+      }
+    } catch (err) {
+      console.log('Error fetching similar blogs: ', err);
+    }
+  };
+  fetchSimilarBlogs();
+}, [id]);
+
+if(!likedBlogs) {
+  return <div>No similar blogs.</div>
+}
+
   return (
     <>
       <p className="trending m-5">YOU MIGHT ALSO LIKE</p>
       <div className="row likedImg mb-5">
-          {data.map((item,index)=>(
-            <div className="col-sm-6 col-md-4 col-lg-4" key={index}>
-              <img src={item.image_url} alt="" className="beautyPic" />
-              <h6 className="title">{item.title}</h6>
-              <em>{item.today_date}</em>
-            </div>
-          ))}
+        {likedBlogs.map((blog) => (
+          <div key={blog.id} className="col-sm-6 col-md-4 col-lg-4">
+            <img src={blog.imageUrl} alt={blog.title} className="beautyPic" />
+            <h6 className="title">{blog.title}</h6>
+            <em>{moment(blog.timestamp).format('llll')}</em>
+          </div>
+        ))}
       </div>
     </>
   );

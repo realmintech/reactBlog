@@ -1,7 +1,3 @@
-.bgImg {
-    background-image: url('../../assets/image6.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 450px;
+.blog_display_body {
+    cursor: pointer;
 }

@@ -1,48 +1,25 @@
-import React from "react";
-import SingleArticleComponet from "../../components/singleArticleComponent/Index";
-import BlogDisplay from "../../components/blogDisplay/Index";
-import CategoryComponent from "../../components/categoryComponent/Index";
-import Newsletter from "../../components/newsLetterComponent/Index";
-import AboutMe from "../../components/aboutMeComponent/Index";
-
-import Forest from "../../assets/image3.png";
-import Desert from "../../assets/image6.png";
-import Tourist from "../../assets/image5.png";
-import Trees from "../../assets/image7.png";
+import React, { useEffect } from 'react';
+import '../blogs/Index.css'
+import SingleArticleComponet from '../../components/singleArticleComponent/Index';
+import BlogDisplay from '../../components/blogDisplay/Index';
+import CategoryComponent from '../../components/categoryComponent/Index';
+import Newsletter from '../../components/newsLetterComponent/Index';
+import AboutMe from '../../components/aboutMeComponent/Index';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPublishedBlogs } from '../../actions/createPostAction';
 
 export default function Index() {
-  const data = [
-    {
-      image: Forest,
-      title: "FASHION MODEL SHOOT",
-      date: "July 25, 2015",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
-    {
-      image: Tourist,
-      title: "GOLDEN SNOW LAND",
-      date: "July 25, 2015",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
-    {
-      image: Desert,
-      title: "FAMILY COMES FIRST",
-      date: "July 25, 2015",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
-    {
-      image: Trees,
-      title: "TRAVEL THE WORLD",
-      date: "July 25, 2015",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
-    {
-      image: Tourist,
-      title: "CITY CENTER BRIDGE",
-      date: "July 25, 2015",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam eos in fugit aut repudiandae dicta? Dignissimos autem unde harum ab quibusdam! Aliquam assumenda consectetur tempora deleniti voluptas vitae a?",
-    },
-  ];
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.createPost.publishedBlogs) || [];
+  const blogs = data.data
+
+
+  const user = useSelector((state) => state.userInfo);
+
+  useEffect(() => {
+    dispatch(getPublishedBlogs());
+  }, [dispatch]);
+
   return (
     <>
       <section className="bgImg"></section>
@@ -50,20 +27,24 @@ export default function Index() {
         <div className="row">
           <div className="col-lg-8 col-md-8 col-sm-6">
             <SingleArticleComponet />
-            {data.map((item, index) => (
-              <div className="row blogs" key={index}>
-                <BlogDisplay item={item} />
-              </div>
-            ))}
+            {blogs ? (
+              blogs.map((item, index) => (
+                <div className="row blogs blog_display_body" key={index}>
+                  <BlogDisplay item={item} user={user} />
+                </div>
+              ))
+            ) : (
+              <p>No blogs available</p>
+            )}
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-6">
+          <div className="col-lg-4 col-md-4 col-sm-6 mb-3">
             <div className="about__me__component">
               <AboutMe />
             </div>
             <div className="news__letter__component">
               <Newsletter />
             </div>
-            <div className="category__component">
+            <div className="category__component ">
               <CategoryComponent />
             </div>
           </div>

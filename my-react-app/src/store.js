@@ -7,7 +7,6 @@ import {
 } from './reducers/userReducers';
 import { categoryReducer } from './reducers/categoryReducer';
 import { createPostReducer } from './reducers/createPostReducer';
-// import { getFeaturedBlogs } from './actions/createPostAction';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -15,7 +14,6 @@ const reducer = combineReducers({
   category: categoryReducer,
   singleUser: singleUserReducer,
   createPost: createPostReducer,
-  // featuredBlogs: getFeaturedBlogs,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

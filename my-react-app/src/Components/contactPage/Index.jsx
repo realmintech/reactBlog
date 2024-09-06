@@ -1,7 +1,7 @@
 import React from "react";
 import "./Index.css";
-import AboutMe from "../../../components/aboutMeComponent/Index";
-import Newsletter from "../../../components/newsLetterComponent/Index";
+import AboutMe from "../aboutMeComponent/Index";
+import Newsletter from "../newsLetterComponent/Index";
 
 export default function ContactPage() {
   return (
@@ -48,7 +48,7 @@ export default function ContactPage() {
             ></textarea>
             <button className="btn btn-secondary">SUBMIT FORM</button>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 ">
+          <div className="col-sm-6 col-md-6 col-lg-4 mb-4 mx-5">
             <div className="about__me__component">
               <AboutMe />
             </div>
