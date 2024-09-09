@@ -1,42 +1,25 @@
-import "./Carousel.css";
-import Carousel from "react-bootstrap/Carousel";
-import backgroundImage from "../../assets/bacgroundImage1.jpg";
-import SecondCarousel from "../../assets/carousel.webp";
-import ThirdCarousel from "../../assets/peachgirl.png";
+import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import './Carousel.css';
 
-const data = [
-  {
-    images: backgroundImage,
-    title: "First slide label",
-    msg: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-  },
-  {
-    images: SecondCarousel,
-    title: "Second slide label",
-    msg: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-  },
-  {
-    images: ThirdCarousel,
-    title: "Third slide label",
-    msg: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-  },
-];
-
-function ImageScroll() {
+function CarouselContent({ data = [] }) {
   const arrayDataItems = data.map((item, index) => (
     <Carousel.Item key={index}>
-      <img
-        className="d-block w-100 h-40 pictureReset"
-        src={item.images}
-        alt="First slide"
-      />
+      <div className='img_div_cover'>
+        <img
+          className="d-block w-100 h-40 pictureReset"
+          src={item.imageUrl}
+          alt={`Slide ${index}`}
+        />
+      </div>
       <Carousel.Caption>
-        <h5>{item.title}</h5>
-        <p>{item.msg}</p>
+        <h5 className="carousel_title">{ item.title }</h5>
+        <p className="carousel_desc">{item.description.slice(0, 60)}</p>
       </Carousel.Caption>
     </Carousel.Item>
   ));
+
   return <Carousel data-bs-theme="white">{arrayDataItems}</Carousel>;
 }
 
-export default ImageScroll;
+export default CarouselContent;

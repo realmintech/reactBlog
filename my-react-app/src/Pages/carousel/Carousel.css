@@ -1,4 +1,21 @@
 .pictureReset {
-  object-fit: cover;
-  height: 500px;
+   width: 100%;
+    height: 100%;
+    object-fit: cover;
+    letter-spacing: 1px;
+}
+
+.img_div_cover {
+  width: 100%;
+    max-width: 100%;
+    height: 550px;
+}
+
+.carousel_title {
+  font-size: x-large;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    line-height: normal;
+    text-transform: capitalize;
 }

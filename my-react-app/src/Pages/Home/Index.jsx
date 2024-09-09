@@ -17,12 +17,10 @@ export default function Index() {
     dispatch(getFeaturedBlogs());
   }, [dispatch]);
 
-
-
   return (
     <>
       <div className="imgSlider">
-        <CarouselContent />
+        <CarouselContent data={data} />
       </div>
       <div className="container">
         <div className="row ">
@@ -39,7 +37,7 @@ export default function Index() {
                 {data &&
                   data?.map((item, index) => (
                     <div className="col-lg-6 mt-5" key={index}>
-                      <ArticleCard item={item}  user={user}/>
+                      <ArticleCard item={item} user={user} />
                     </div>
                   ))}
               </div>
