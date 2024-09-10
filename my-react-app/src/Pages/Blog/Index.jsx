@@ -20,7 +20,6 @@ export default function SingleBlogPost() {
         const blogDetail = await axios.get(
           `http://localhost:3000/blogs/${id}/blog`
         );
-        // console.log('blogDetail', blogDetail);
         if (blogDetail && blogDetail.data) {
           setBlog(blogDetail.data);
         }
