@@ -27,7 +27,6 @@ export const createBlog =
   (title, imageUrl, category, tags, isFeatured, isPublished, description) =>
   async (dispatch) => {
     try {
-      console.log('imageUrl', imageUrl, 'category', category);
       const response = await axios.post(
         'http://localhost:3000/blogs',
         {
@@ -58,10 +57,6 @@ export const createBlog =
             ? error.response.data.message
             : error.message,
       });
-      console.log(
-        'error message:',
-        error.response ? error.response.data.message : error.message
-      );
     }
   };
 
@@ -166,7 +161,6 @@ export const editBlog =
         type: EDIT_BLOG_SUCCESS,
         payload: response.data,
       });
-      console.log('response data', response.data);
       dispatch(getBlog());
     } catch (error) {
       dispatch(getBlog());

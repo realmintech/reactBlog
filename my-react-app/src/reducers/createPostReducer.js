@@ -16,12 +16,12 @@ import {
 export const createPostReducer = (state = {}, action) => {
   switch (action.type) {
     case ADMIN_POST_BLOG_SUCCESS:
-      return { userInfo: action.payload };
+      return { postedData: action.payload };
     case ADMIN_POST_BLOG_FAILED:
-      return { userInfo: action.payload };
+      return { error: action.payload };
 
     case GET_BLOG_SUCCESS:
-      return { userInfo: action.payload };
+      return { returnData: action.payload };
     case GET_BLOG_FAILED:
       return { error: action.payload };
 

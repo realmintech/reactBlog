@@ -13,7 +13,7 @@ const reducer = combineReducers({
   userRegistration: userRegistrationReducer,
   category: categoryReducer,
   singleUser: singleUserReducer,
-  createPost: createPostReducer,
+  post: createPostReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
