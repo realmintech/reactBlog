@@ -15,12 +15,10 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function SingleBlogPost() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const [comments, setComments] = useState([]);
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.comments.comments);
-  console.log('Comment data: ', data);
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -30,7 +28,6 @@ export default function SingleBlogPost() {
         );
         if (blogDetail && blogDetail.data) {
           setBlog(blogDetail.data);
-          setComments(blogDetail.data.comments || []);
         }
       } catch (err) {
         console.log('this is blog detail: ', err);
@@ -47,7 +44,7 @@ export default function SingleBlogPost() {
   
   useEffect(() => {
     dispatch(getPostComments(id));
-  });
+  }, [dispatch, id]);
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -120,10 +117,10 @@ export default function SingleBlogPost() {
                   paddingTop: '30px',
                 }}
               >
-                {comments.length} COMMENTS
+                {data.length} COMMENTS
               </p>
-              {comments.length > 0 ? (
-                comments.map((comment, index) => (
+              {data.length > 0 ? (
+                data.map((comment, index) => (
                   <div className="flexImgWord row" key={index}>
                     <Comment item={comment} />
                   </div>
