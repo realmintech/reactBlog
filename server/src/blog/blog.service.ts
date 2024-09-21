@@ -24,7 +24,6 @@ export class BlogService {
       ...createBlogDto,
       author: user._id,
     });
-    console.log('=====>createdBlog<========', createdBlog);
     return createdBlog.save();
   }
 
@@ -60,9 +59,9 @@ export class BlogService {
 
   async findFeaturedPosts(): Promise<Blog[]> {
     return this.blogModel
-      .find({ isFeatured: true })
+      .find({ isFeatured: true, isPublished: true })
       .sort({ createdAt: -1 })
-      .limit(4)
+      .limit(8)
       .exec();
   }
 

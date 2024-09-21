@@ -41,7 +41,6 @@ export class AuthGuard implements CanActivate {
       // so that we can access it in our route handlers
       request['user'] = await this.authService.findById(payload.sub);
     } catch (error) {
-      console.log('auth error:', error)
       throw new UnauthorizedException();
     }
     return true;

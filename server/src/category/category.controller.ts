@@ -40,7 +40,6 @@ export class CategoryController {
     @Body() createCategoryDto: CreateCategoryDto,
     @Request() req,
   ): Promise<Category> {
-    console.log(req.user)
     return await this.categoryService.createCategory(
       createCategoryDto,
       req.user._id,
