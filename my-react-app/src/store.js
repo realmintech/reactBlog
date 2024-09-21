@@ -5,6 +5,7 @@ import {
   userRegistrationReducer,
   singleUserReducer,
 } from './reducers/userReducers';
+import { commentReducer } from './reducers/commentReducer';
 import { categoryReducer } from './reducers/categoryReducer';
 import { createPostReducer } from './reducers/createPostReducer';
 
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   category: categoryReducer,
   singleUser: singleUserReducer,
   post: createPostReducer,
+  comments: commentReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -22,6 +24,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
+  // comments: [],
 };
 
 const middleware = [thunk];

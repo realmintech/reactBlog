@@ -1,0 +1,63 @@
+import axios from 'axios';
+import {
+  CREATE_COMMENT_SUCCESS,
+  CREATE_COMMENT_FAILED,
+  GET_COMMENTS_SUCCESS,
+  GET_COMMENTS_FAILED,
+} from '../constants/userConstants';
+
+const getTokenString = localStorage.getItem('userInfo');
+let authToken;
+try {
+  const userInfo = JSON.parse(getTokenString);
+  authToken = userInfo?.token?.token;
+} catch (error) {
+  console.error('Error parsing userInfo:', error);
+}
+
+export const createComment = (postId, content) => async (dispatch) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:3000/comment/${postId}`,
+      { content },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+  console.log('Response available',response.data)
+    dispatch({
+      type: CREATE_COMMENT_SUCCESS,
+      payload: response.data,
+    });
+    getPostComments()
+  } catch (error) {
+    dispatch({
+      type: CREATE_COMMENT_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getPostComments = (postId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/comment/${postId}`);
+    dispatch({
+      type: GET_COMMENTS_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_COMMENTS_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

@@ -67,7 +67,6 @@ export const getBlog = () => async (dispatch) => {
       type: GET_BLOG_SUCCESS,
       payload: response.data?.data,
     });
-    // console.log('response is here:',response.data?.data)
     return response.data?.data;
   } catch (error) {
     dispatch({
@@ -106,7 +105,6 @@ export const getBlog = () => async (dispatch) => {
         type: GET_PUBLISHED_BLOG_SUCCESS,
         payload: response.data,
       });
-      console.log('response is here now:', response.data?.data);
       return response.data;
     } catch (error) {
       dispatch({

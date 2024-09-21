@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SingleArticleComponent() {
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.createPost.featuredBlogs);
+    const data = useSelector((state) => state.post.featuredBlogs);
     const navigate = useNavigate();
 
     useEffect(() => {

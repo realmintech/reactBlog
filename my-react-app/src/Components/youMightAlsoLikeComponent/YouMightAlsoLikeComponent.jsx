@@ -16,7 +16,6 @@ export default function YouMightAlsoLikeComponent() {
         const response = await axios.get(
           `http://localhost:3000/blogs/${id}/similar`
         );
-        // console.log('Similar blogs', response.data);
         if (response.data) {
           setLikedBlogs(response.data);
         }

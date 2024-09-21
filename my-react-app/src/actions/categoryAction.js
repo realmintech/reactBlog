@@ -115,7 +115,6 @@ export const editCategory = (categoryId, name) => async (dispatch) => {
       type: EDIT_CATEGORY_SUCCESS,
       payload: response.data, 
     });
-   console.log('response data',response.data)
     dispatch(getCategory());
   } catch (error) {
     dispatch(getCategory());

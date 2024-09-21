@@ -9,10 +9,18 @@ import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import axios from 'axios';
 import YouMightAlsoLikeComponent from '../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent';
+import { createComment, getPostComments } from '../../actions/commentAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function SingleBlogPost() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [content, setContent] = useState('');
+  const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.comments.comments);
+  console.log('Comment data: ', data);
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -22,6 +30,7 @@ export default function SingleBlogPost() {
         );
         if (blogDetail && blogDetail.data) {
           setBlog(blogDetail.data);
+          setComments(blogDetail.data.comments || []);
         }
       } catch (err) {
         console.log('this is blog detail: ', err);
@@ -29,6 +38,16 @@ export default function SingleBlogPost() {
     };
     fetchBlogDetail();
   }, [id]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createComment(id, content));
+    setContent('');
+  };
+  
+  useEffect(() => {
+    dispatch(getPostComments(id));
+  });
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -101,10 +120,10 @@ export default function SingleBlogPost() {
                   paddingTop: '30px',
                 }}
               >
-                2 COMMENTS
+                {comments.length} COMMENTS
               </p>
-              {blog.comments && blog.comments.length > 0 ? (
-                blog.comments.map((comment, index) => (
+              {comments.length > 0 ? (
+                comments.map((comment, index) => (
                   <div className="flexImgWord row" key={index}>
                     <Comment item={comment} />
                   </div>
@@ -122,31 +141,14 @@ export default function SingleBlogPost() {
                 name="comment"
                 id=""
                 cols="97"
-                rows="10"
+                rows="5"
                 className="textArea"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
               ></textarea>
-              <div className="row namedInput">
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <h6>NAME *</h6>
-                  <input type="text" placeholder="NAME*" />
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <h6>EMAIL *</h6>
-                  <input type="text" placeholder="Email*" />
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-4">
-                  <h6>WEBSITE</h6>
-                  <input type="text" placeholder="Website" />
-                </div>
-              </div>
-              <div className="checkedInput">
-                <input type="checkbox" name="checked" id="" />
-                <span>
-                  SAVE MY NAME, EMAIL, AND WEBSITE IN THIS BROWSER FOR THE NEXT
-                  TIME I COMMENT.
-                </span>
-              </div>
-              <button className="btnPost">POST COMMENT</button>
+              <button className="btnPost" onClick={handleSubmit}>
+                POST COMMENT
+              </button>
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-6">

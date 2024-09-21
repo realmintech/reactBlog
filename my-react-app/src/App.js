@@ -12,7 +12,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Sidebar from './components/sidebar/Sidebar';
 import Category from './pages/category/Category';
 import DashboardContent from './pages/dashboardContent/DashboardContent';
-import CreatePost from './pages/createPost/CreatePost';
+import Post from './pages/post/Post';
 import Posts from './pages/posts/Posts';
 
 export default function App() {
@@ -64,7 +64,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<DashboardContent />} />
-            <Route path="create_post" element={<CreatePost />} />
+            <Route path="create_post" element={<Post />} />
             <Route path="sideBar" element={<Sidebar />} />
             <Route path="category" element={<Category />} />
             <Route path="posts" element={<Posts />} />

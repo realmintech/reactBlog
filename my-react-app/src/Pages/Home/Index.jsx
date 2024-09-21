@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CarouselContent from '../carousel/Carousel';
-import SingleArticleComponet from '../../components/singleArticleComponent/Index';
+// import SingleArticleComponet from '../../components/singleArticleComponent/Index';
 import ArticleCard from '../../components/articleCardComponent/Index';
 import AboutMe from '../../components/aboutMeComponent/Index';
 import Newsletter from '../../components/newsLetterComponent/Index';
@@ -10,7 +10,7 @@ import { getFeaturedBlogs } from '../../actions/createPostAction';
 
 export default function Index() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.createPost.featuredBlogs);
+  const data = useSelector((state) => state.post.featuredBlogs);
   const user = useSelector((state) => state.userInfo);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Index() {
       <div className="container">
         <div className="row ">
           <div className="col-sm-6 col-md-6 col-lg-8">
-            <SingleArticleComponet />
+            {/* <SingleArticleComponet /> */}
             <div>
               <h5
                 className="text-center p-4"

@@ -10,7 +10,7 @@ import { getPublishedBlogs } from '../../actions/createPostAction';
 
 export default function Index() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.createPost.publishedBlogs) || [];
+  const data = useSelector((state) => state.post.publishedBlogs) || [];
   const blogs = data.data
 
 
