@@ -36,7 +36,6 @@ export class CommentService {
 
   async getPostComments(postId: string): Promise<Comment[]> {
     const comments = await this.commentModel.find({ post: postId });
-    console.log('object', postId);
     if (!comments || comments.length === 0) {
       throw new NotFoundException('Comments not found');
     }
