@@ -27,10 +27,6 @@ button {
   width: 100%;
 }
 
-button:hover {
-  color: grey;
-}
-
 .heading {
   text-align: center;
   margin: 10px 0;
@@ -48,7 +44,6 @@ button:hover {
 .picCaption {
   padding: 10px 0;
   font-style: italic;
-  /* text-align: center; */
   font-size: medium;
   font-weight: 500;
   font-style: normal;
@@ -129,13 +124,3 @@ button:hover {
   font-style: italic;
   text-align: center;
 }
-
-/* .highLight::before {
-  content: '';
-  border-bottom: 1px solid #141212;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 50%;
-  z-index: 0;
-} */
