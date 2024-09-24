@@ -3,6 +3,8 @@ import {
   CREATE_COMMENT_FAILED,
   GET_COMMENTS_SUCCESS,
   GET_COMMENTS_FAILED,
+  DELETE_COMMENTS_SUCCESS,
+  DELETE_COMMENTS_FAILED,
 } from '../constants/userConstants';
 
 const initialState = {
@@ -26,9 +28,19 @@ export const commentReducer = (state = initialState, action) => {
       return {
         ...state,
         comments: action.payload,
-        error: null,
       };
     case GET_COMMENTS_FAILED:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case DELETE_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload,
+      };
+    case DELETE_COMMENTS_FAILED:
       return {
         ...state,
         error: action.payload,

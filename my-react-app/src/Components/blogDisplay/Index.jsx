@@ -17,13 +17,13 @@ export default function Index({item}) {
         </div>
       </div>
       <div className="col-lg-8 col-md-8 col-sm-8 mt-4">
-        <h4 className='blog_display_title'>
-          <a className="text-decoration-none text-dark" href="/Blogs">
+        <h4 className="blog_display_title" onClick={handleNavigate}>
             {item.title}
-          </a>
         </h4>
-        <span className="blog_display_date">{moment(item.timestamp).format('llll')}</span>
-        <p>{item.description.slice(0, 200)}...</p>
+        <span className="blog_display_date">
+          {moment(item.timestamp).format('llll')}
+        </span>
+        <p onClick={handleNavigate}>{item.description.slice(0, 200)}...</p>
       </div>
     </>
   );

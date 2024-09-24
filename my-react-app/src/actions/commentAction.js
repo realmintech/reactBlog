@@ -4,6 +4,8 @@ import {
   CREATE_COMMENT_FAILED,
   GET_COMMENTS_SUCCESS,
   GET_COMMENTS_FAILED,
+  DELETE_COMMENTS_SUCCESS,
+  DELETE_COMMENTS_FAILED,
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
@@ -27,7 +29,6 @@ export const createComment = (postId, content) => async (dispatch) => {
         },
       }
     );
-  console.log('Response available',response.data)
     dispatch({
       type: CREATE_COMMENT_SUCCESS,
       payload: response.data,
@@ -58,6 +59,26 @@ export const getPostComments = (postId) => async (dispatch) => {
         error.response && error.response.data
           ? error.response.data.message
           : error.message,
+    });
+  }
+};
+
+
+export const deletePostComments = (postId) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`http://localhost:3000/comment/${postId}`);
+    dispatch({
+      type: DELETE_COMMENTS_SUCCESS,
+      payload: response.data,
+    });
+    getPostComments()
+  } catch (error) {
+    dispatch({
+      type: DELETE_COMMENTS_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,                            
     });
   }
 };

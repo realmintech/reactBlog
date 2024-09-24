@@ -57,7 +57,7 @@ export default function App() {
             element={
               <LayoutWithNavbarAndFooter>
                 <Blog />
-              </LayoutWithNavbarAndFooter>
+              </LayoutWithNavbarAndFooter> 
             }
           />
           <Route path="/login" element={<Login />} />

@@ -59,7 +59,7 @@ export default function Register() {
               <label htmlFor="username">Username</label>
               <input
                 type="text"
-                value={username}
+                value={username.toUpperCase()}
                 onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
                 placeholder="User name"

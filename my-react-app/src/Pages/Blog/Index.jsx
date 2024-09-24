@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Index.css';
-import ManOnSuit from '../../assets/man_image.webp';
+import MyPicture from '../../assets/passport.jpg';
 import AboutMe from '../../components/aboutMeComponent/Index';
 import Newsletter from '../../components/newsLetterComponent/Index';
 import Comment from '../../components/commentSection/Index';
@@ -41,7 +41,7 @@ export default function SingleBlogPost() {
     dispatch(createComment(id, content));
     setContent('');
   };
-  
+
   useEffect(() => {
     dispatch(getPostComments(id));
   }, [dispatch, id]);
@@ -75,9 +75,7 @@ export default function SingleBlogPost() {
               <div className="tagShare row">
                 <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
-                  <button className="btn">COOKING</button>
-                  <button className="btn">FOOD</button>
-                  <button className="btn">LIFESTYLE</button>
+                  <button className="btn">{blog.tags}</button>
                 </div>
                 <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
                   <button>
@@ -94,18 +92,16 @@ export default function SingleBlogPost() {
               <span className="flexImgWord row">
                 <div className="col-lg-2 col-md-2 col-sm-2">
                   <img
-                    src={ManOnSuit}
+                    src={MyPicture}
                     alt="man_on_suit"
                     className="roundedImg"
                   />
                 </div>
-                <span className="col-lg-10 col-md-10 col-sm-10">
-                  <h3>John Phillipe</h3>
+                <span className="col-lg-10 col-md-10 col-sm-10 mb-5">
+                  <h3>Mariam Temitope</h3>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quo, dicta? Nam adipisci eveniet cupiditate delectus,
-                    asperiores quo odio sed amet provident voluptate nostrum
-                    quis veritatis nisi. Repudiandae quod autem fugiat. Minima
+                    I am a front-end developer, passionate about converting
+                    ideas into reality.
                   </p>
                 </span>
               </span>

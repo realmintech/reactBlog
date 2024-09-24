@@ -20,7 +20,6 @@ export default function Posts() {
   const data = useSelector((state) => state.post);
   const user = useSelector((state) => state.userInfo);
   const results = data.returnData;
-   console.log('result: ', results)
   useEffect(() => {
     dispatch(getBlog());
   }, [dispatch]);
