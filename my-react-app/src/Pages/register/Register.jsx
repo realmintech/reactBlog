@@ -107,7 +107,6 @@ export default function Register() {
               >
                 Register
               </button>
-              {/* <Navigate to="" /> */}
             </div>
             <p className="text-center">
               Already have an account? <a href="/login">Login</a>

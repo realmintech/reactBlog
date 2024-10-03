@@ -1,17 +1,12 @@
-import React from "react";
-import "./Navbar.css";
-import Logo from "../../../assets/logo.png";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import React from 'react';
+import './Navbar.css';
+import Logo from '../../../assets/logo.png';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-export default function CustomNavbar() {
+export default function CustomNavbar({ isAdmin }) {
   return (
     <>
       <header className="header">
@@ -39,22 +34,35 @@ export default function CustomNavbar() {
               <Nav.Link href="/blogs">Blogs</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
-            <button className="btn" style={{ backgroundColor: 'navy' }}>
-              <a
-                href="/Login"
-                style={{ textDecoration: 'none', color: 'white' }}
-              >
-                Login
-              </a>
-            </button>
-            <button className="btn" style={{ backgroundColor: 'navy' }}>
-              <a
-                href="/Register"
-                style={{ textDecoration: 'none', color: 'white' }}
-              >
-                Register
-              </a>
-            </button>
+            {!isAdmin ? (
+              <>
+                <button className="btn" style={{ backgroundColor: 'navy' }}>
+                  <a
+                    href="/about"
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    Login
+                  </a>
+                </button>
+                <button className="btn" style={{ backgroundColor: 'navy' }}>
+                  <a
+                    href="/Login"
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    Register
+                  </a>
+                </button>
+              </>
+            ) : (
+              <button className="btn" style={{ backgroundColor: 'navy' }}>
+                <a
+                  href="/Register"
+                  style={{ textDecoration: 'none', color: 'white' }}
+                >
+                  Logout
+                </a>
+              </button>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

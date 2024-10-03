@@ -4,7 +4,7 @@ import Blog from './pages/Blog/Index';
 import Blogs from './pages/blogs/Index';
 import Contact from './pages/contact/Contact';
 import Home from './pages/home/Index';
-import Navbar from './components/common/navbar/Navbar';
+// import Navbar from './components/common/navbar/Navbar';
 import Footer from './components/common/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
@@ -14,8 +14,11 @@ import Category from './pages/category/Category';
 import DashboardContent from './pages/dashboardContent/DashboardContent';
 import Post from './pages/post/Post';
 import Posts from './pages/posts/Posts';
+import CustomNavbar from './components/common/navbar/Navbar';
+import { useSelector } from 'react-redux';
 
 export default function App() {
+ 
   return (
     <Router>
       <div>
@@ -76,9 +79,10 @@ export default function App() {
 }
 
 function LayoutWithNavbarAndFooter({ children }) {
+   const user = useSelector((state) => state.userLogin.userInfo.token);
   return (
     <div>
-      <Navbar />
+      <CustomNavbar isAdmin={user.user.role} />
       {children}
       <Footer />
     </div>
