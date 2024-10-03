@@ -5,6 +5,7 @@ import {
   USER_REGISTRATION_FAIL,
   FETCH_USER_BY_ID_SUCCESS,
   FETCH_USER_BY_ID_FAILURE,
+  USER_LOGOUT,
 } from '../constants/userConstants';
 
 export const userLoginReducer = (state = {}, action) => {
@@ -13,7 +14,8 @@ export const userLoginReducer = (state = {}, action) => {
       return { userInfo: action.payload };
     case USER_LOGIN_FAIL:
       return { error: action.payload };
-
+    case USER_LOGOUT:
+      return {};
     default:
       return state;
   }

@@ -7,13 +7,14 @@ import {
   USER_REGISTRATION_FAIL,
   FETCH_USER_BY_ID_SUCCESS,
   FETCH_USER_BY_ID_FAILURE,
+  USER_LOGOUT,
 } from '../constants/userConstants';
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
 try {
   const userInfo = JSON.parse(getTokenString);
-  authToken = userInfo?.token.token;
+  authToken = userInfo?.token?.token;
 } catch (error) {
   console.error('Error parsing adminInfo:', error);
 }
@@ -39,7 +40,9 @@ export const login = (email, password, navigate) => async (dispatch) => {
     });
     localStorage.setItem('userInfo', JSON.stringify(data));
     if (data?.token?.user?.role === 'admin') {
-      navigate('/dashboard');
+      navigate('/');
+    }else if (data?.token?.user?.role === 'guest') {
+      navigate('/');
     } else {
       setTimeout(() => {
         navigate('/access-denied');
@@ -49,15 +52,21 @@ export const login = (email, password, navigate) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
-        error.response && error.response.data
-          ? error.response.data.message
-          : error.message,
+        error?.response && error?.response?.data
+          ? error?.response?.data?.message
+          : error?.message,
     });
   }
 };
 
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('userInfo');
+  dispatch({ type: USER_LOGOUT });
+};
+
 export const register =
-  (email, username, password, confirmPassword) => async (dispatch) => {
+  (email, username, password, confirmPassword,navigate) => async (dispatch) => {
     try {
       const response = await axios.post('http://localhost:3000/auth/register', {
         email,
@@ -69,6 +78,7 @@ export const register =
         type: USER_REGISTRATION_SUCCESS,
         payload: response.data,
       });
+      navigate('/login');
     } catch (error) {
       dispatch({
         type: USER_REGISTRATION_FAIL,
