@@ -14,9 +14,18 @@ import DashboardContent from './pages/dashboardContent/DashboardContent';
 import Post from './pages/post/Post';
 import Posts from './pages/posts/Posts';
 import CustomNavbar from './components/common/navbar/Navbar';
+import { useState, useEffect } from 'react';
+import AccessDenied from './components/accessDenied/AccessDenied';
 
 export default function App() {
- 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('userInfo'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
   return (
     <Router>
       <div>
@@ -58,18 +67,22 @@ export default function App() {
             element={
               <LayoutWithNavbarAndFooter>
                 <Blog />
-              </LayoutWithNavbarAndFooter> 
+              </LayoutWithNavbarAndFooter>
             }
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<DashboardContent />} />
-            <Route path="create_post" element={<Post />} />
-            <Route path="sideBar" element={<Sidebar />} />
-            <Route path="category" element={<Category />} />
-            <Route path="posts" element={<Posts />} />
-          </Route>
+          {user && user.token && user?.token?.user?.role === 'admin' ? (
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<DashboardContent />} />
+              <Route path="create_post" element={<Post />} />
+              <Route path="sideBar" element={<Sidebar />} />
+              <Route path="category" element={<Category />} />
+              <Route path="posts" element={<Posts />} />
+            </Route>
+          ) : (
+            <Route element={<AccessDenied />} />
+          )}
         </Routes>
       </div>
     </Router>
@@ -79,7 +92,7 @@ export default function App() {
 function LayoutWithNavbarAndFooter({ children }) {
   return (
     <div>
-      <CustomNavbar  />
+      <CustomNavbar />
       {children}
       <Footer />
     </div>
