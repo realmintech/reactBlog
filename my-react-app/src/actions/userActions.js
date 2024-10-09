@@ -9,6 +9,7 @@ import {
   FETCH_USER_BY_ID_FAILURE,
   USER_LOGOUT,
 } from '../constants/userConstants';
+const API = process.env.REACT_APP_API_URL;
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
@@ -30,7 +31,7 @@ export const login = (email, password, navigate) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      'http://localhost:3000/auth/login',
+      `${API}/auth/login`,
       { email, password },
       config
     );
@@ -68,7 +69,7 @@ export const logout = () => (dispatch) => {
 export const register =
   (email, username, password, confirmPassword,navigate) => async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/register', {
+      const response = await axios.post(`${API}/auth/register`, {
         email,
         username,
         password,
@@ -92,7 +93,7 @@ export const register =
 
 export const fetchUserById = (userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3000/users/${userId}`, {
+    const response = await axios.get(`${API}/users/${userId}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${authToken}`,

@@ -9,12 +9,12 @@ export default function YouMightAlsoLikeComponent() {
   const { id } = useParams();
   const [likedBlogs, setLikedBlogs] = useState([]);
   const navigate = useNavigate;
-
+  const API = process.env.REACT_APP_API_URL
   useEffect(() => {
     const fetchSimilarBlogs = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/blogs/${id}/similar`
+          `${API}/blogs/${id}/similar`
         );
         if (response.data) {
           setLikedBlogs(response.data)

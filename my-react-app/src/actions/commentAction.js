@@ -7,6 +7,7 @@ import {
   DELETE_COMMENTS_SUCCESS,
   DELETE_COMMENTS_FAILED,
 } from '../constants/userConstants';
+const API = process.env.REACT_APP_API_URL;
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
@@ -23,7 +24,7 @@ export const createComment = (postId, content) => async (dispatch) => {
       window.alert('You must login before you comment.')
     }
     const response = await axios.post(
-      `http://localhost:3000/comment/${postId}`,
+      `${API}/comment/${postId}`,
       { content },
       {
         headers: {
@@ -50,7 +51,7 @@ export const createComment = (postId, content) => async (dispatch) => {
 
 export const getPostComments = (postId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3000/comment/${postId}`);
+    const response = await axios.get(`${API}/comment/${postId}`);
     dispatch({
       type: GET_COMMENTS_SUCCESS,
       payload: response.data,
@@ -69,7 +70,7 @@ export const getPostComments = (postId) => async (dispatch) => {
 
 export const deletePostComments = (postId) => async (dispatch) => {
   try {
-    const response = await axios.delete(`http://localhost:3000/comment/${postId}`);
+    const response = await axios.delete(`${API}/comment/${postId}`);
     dispatch({
       type: DELETE_COMMENTS_SUCCESS,
       payload: response.data,

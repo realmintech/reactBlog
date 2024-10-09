@@ -13,7 +13,7 @@ import {
   GET_PUBLISHED_BLOG_SUCCESS,
   GET_PUBLISHED_BLOG_FAILED
 } from '../constants/userConstants';
-
+const API = process.env.REACT_APP_API_URL;
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
 try {
@@ -28,7 +28,7 @@ export const createBlog =
   async (dispatch) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/blogs',
+        `${API}/blogs`,
         {
           title,
           imageUrl,
@@ -62,7 +62,7 @@ export const createBlog =
 
 export const getBlog = () => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3000/blogs/`);
+    const response = await axios.get(`${API}/blogs/`);
     dispatch({
       type: GET_BLOG_SUCCESS,
       payload: response.data?.data,
@@ -81,7 +81,7 @@ export const getBlog = () => async (dispatch) => {
 
   export const getFeaturedBlogs = () => async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3000/blogs/featured`);
+      const response = await axios.get(`${API}/blogs/featured`);
       dispatch({
         type: GET_FEATURED_BLOG_SUCCESS,
         payload: response.data,
@@ -100,7 +100,7 @@ export const getBlog = () => async (dispatch) => {
 
   export const getPublishedBlogs = () => async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3000/blogs/published`);
+      const response = await axios.get(`${API}/blogs/published`);
       dispatch({
         type: GET_PUBLISHED_BLOG_SUCCESS,
         payload: response.data,
@@ -120,7 +120,7 @@ export const getBlog = () => async (dispatch) => {
 
 export const deleteBlog = (itemId) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:3000/blogs/${itemId}`, {
+    await axios.delete(`${API}/blogs/${itemId}`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -146,7 +146,7 @@ export const editBlog =
   async (dispatch) => {
     try {
       let response = await axios.patch(
-        `http://localhost:3000/category/${editId}`,
+        `${API}/category/${editId}`,
         { editDescription, editName, editImage, editTitle, editId },
         {
           headers: {

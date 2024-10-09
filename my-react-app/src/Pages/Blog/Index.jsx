@@ -19,12 +19,12 @@ export default function SingleBlogPost() {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.comments.comments);
-
+   const API = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchBlogDetail = async () => {
       try {
         const blogDetail = await axios.get(
-          `http://localhost:3000/blogs/${id}/blog`
+          `${API}/blogs/${id}/blog`
         );
         if (blogDetail && blogDetail.data) {
           setBlog(blogDetail.data);
