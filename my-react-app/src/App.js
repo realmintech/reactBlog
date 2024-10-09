@@ -1,20 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/home/Index';
-import AboutPage from './pages/about/About';
-import Blogs from './pages/blogs/Index';
-import ContactPage from './components/contactPage/Index';
-import Blog from './pages/Blog/Index';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import Dashboard from './pages/dashboard/Dashboard';
-import DashboardContent from './pages/dashboardContent/DashboardContent';
-import Post from './pages/post/Post';
-import Sidebar from './components/sidebar/Sidebar';
-import Category from './pages/category/Category';
-import Posts from './pages/posts/Posts';
-import AccessDenied from './components/accessDenied/AccessDenied';
-import CustomNavbar from './components/common/navbar/Navbar';
-import Footer from './components/common/footer/Footer';
+import HomePage from './pages/home/Index.jsx';
+import AboutPage from './pages/about/About.jsx';
+import Blogs from './pages/blogs/Index.jsx';
+import ContactPage from './components/contactPage/Index.jsx';
+import Blog from './pages/Blog/Index.jsx';
+import Login from './pages/login/Login.jsx';
+import Register from './pages/register/Register.jsx';
+import Dashboard from './pages/dashboard/Dashboard.jsx';
+import DashboardContent from './pages/dashboardContent/DashboardContent.jsx';
+import Post from './pages/post/Post.jsx';
+import Sidebar from './components/sidebar/Sidebar.jsx';
+import Category from './pages/category/Category.jsx';
+import Posts from './pages/posts/Posts.jsx';
+import AccessDenied from './components/accessDenied/AccessDenied.jsx';
+import CustomNavbar from './components/common/navbar/Navbar.jsx';
+import Footer from './components/common/footer/Footer.jsx';
 
 
 
