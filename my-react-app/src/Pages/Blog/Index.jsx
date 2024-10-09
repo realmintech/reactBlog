@@ -13,7 +13,7 @@ import { createComment, getPostComments } from '../../actions/commentAction';
 import { useDispatch, useSelector } from 'react-redux';
 const API = process.env.REACT_APP_API_URL;
 
-export default function Index() {
+export default function Blog() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [likedBlogs, setLikedBlogs] = useState([]);

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Blogs from './pages/blogs/Index';
+
 import Contact from './pages/contact/Contact';
-import Home from './pages/home/Index';
+
 import Footer from './components/common/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
@@ -16,6 +16,8 @@ import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
 import About from './pages/about/About';
 import Blog from './pages/Blog/Index';
+import Blogs from './pages/blogs/Index';
+import HomePage from './pages/home/Index';
 
 export default function App() {
   return (
@@ -23,15 +25,15 @@ export default function App() {
       <div>
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <LayoutWithNavbarAndFooter>
-                <Home />
+                <HomePage/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/about"
+            path='/about'
             element={
               <LayoutWithNavbarAndFooter>
                 <About />
@@ -39,15 +41,15 @@ export default function App() {
             }
           />
           <Route
-            path="/blogs"
+            path='/blogs'
             element={
               <LayoutWithNavbarAndFooter>
-                <Blogs />
+               <Blogs/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/contact"
+            path='/contact'
             element={
               <LayoutWithNavbarAndFooter>
                 <Contact />
@@ -55,23 +57,23 @@ export default function App() {
             }
           />
           <Route
-            path="/blog/:id"
+            path='/blog/:id'
             element={
               <LayoutWithNavbarAndFooter>
                 <Blog />
               </LayoutWithNavbarAndFooter>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />}>
-              <Route index element={<DashboardContent />} />
-              <Route path="create_post" element={<Post />} />
-              <Route path="sideBar" element={<Sidebar />} />
-              <Route path="category" element={<Category />} />
-              <Route path="posts" element={<Posts />} />
-            </Route>
-            <Route path="*" element={<AccessDenied />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/dashboard' element={<Dashboard />}>
+            <Route index element={<DashboardContent />} />
+            <Route path='create_post' element={<Post />} />
+            <Route path='sideBar' element={<Sidebar />} />
+            <Route path='category' element={<Category />} />
+            <Route path='posts' element={<Posts />} />
+          </Route>
+          <Route path='*' element={<AccessDenied />} />
         </Routes>
       </div>
     </Router>

@@ -7,7 +7,7 @@ import AboutMe from '../../components/aboutMeComponent/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeaturedBlogs } from '../../actions/createPostAction';
 
-export default function Index() {
+export default function HomePage() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.post.featuredBlogs);
   const user = useSelector((state) => state.userInfo);

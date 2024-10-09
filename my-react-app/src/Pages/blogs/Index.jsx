@@ -8,7 +8,7 @@ import AboutMe from '../../components/aboutMeComponent/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPublishedBlogs } from '../../actions/createPostAction';
 
-export default function Index() {
+export default function Blogs() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.post.publishedBlogs) || [];
   const blogs = data.data
