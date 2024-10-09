@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import About from './pages/about/About';
 import Blog from './pages/Blog/Index';
 import Blogs from './pages/blogs/Index';
 import Contact from './pages/contact/Contact';
@@ -15,7 +14,7 @@ import Post from './pages/post/Post';
 import Posts from './pages/posts/Posts';
 import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
-
+import About from './pages/about/About';
 
 export default function App() {
   return (
