@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Blogs from './pages/blogs/Index';
 import Contact from './pages/contact/Contact';
 import Home from './pages/home/Index';
 import Footer from './components/common/footer/Footer';
@@ -16,6 +15,7 @@ import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
 import About from './pages/about/About';
 import Blog from './pages/Blog/Index';
+import Blogs from './pages/blogs/Index';
 
 export default function App() {
   return (
@@ -64,14 +64,14 @@ export default function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />}>
-              <Route index element={<DashboardContent />} />
-              <Route path="create_post" element={<Post />} />
-              <Route path="sideBar" element={<Sidebar />} />
-              <Route path="category" element={<Category />} />
-              <Route path="posts" element={<Posts />} />
-            </Route>
-            <Route path="*" element={<AccessDenied />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardContent />} />
+            <Route path="create_post" element={<Post />} />
+            <Route path="sideBar" element={<Sidebar />} />
+            <Route path="category" element={<Category />} />
+            <Route path="posts" element={<Posts />} />
+          </Route>
+          <Route path="*" element={<AccessDenied />} />
         </Routes>
       </div>
     </Router>
