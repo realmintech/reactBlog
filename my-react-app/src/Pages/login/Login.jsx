@@ -11,19 +11,25 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((state) => state.userLogin.userInfo);
+  useEffect(() => {
+    if (userLogin) {
+      navigate('/')
+    }
+  }, [navigate, userLogin]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password, navigate));
   };
+
   useEffect(() => {
     try {
-      if (userLogin.error) {
+      if (userLogin?.error) {
         setShowAlert(true);
       }
     } catch (error) {}
-  }, [userLogin.error]);
+  }, [userLogin?.error]);
 
   const closeAlert = () => {
     setShowAlert(false);

@@ -9,21 +9,21 @@ export default function YouMightAlsoLikeComponent() {
   const { id } = useParams();
   const [likedBlogs, setLikedBlogs] = useState([]);
   const navigate = useNavigate;
-
+  const API = process.env.REACT_APP_API_URL
   useEffect(() => {
     const fetchSimilarBlogs = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/blogs/${id}/similar`
+          `${API}/blogs/${id}/similar`
         );
         if (response.data) {
-          setLikedBlogs(response.data);
+          setLikedBlogs(response.data)
         }
       } catch (err) {
-        console.log('Error fetching similar blogs: ', err);
+        console.log('Error fetching similar blogs: ', err)
       }
-    };
-    fetchSimilarBlogs();
+    }
+    fetchSimilarBlogs()
   }, [id]);
 
   if (!likedBlogs) {
@@ -32,9 +32,9 @@ export default function YouMightAlsoLikeComponent() {
 
   return (
     <>
-      <p className='trending m-5'>YOU MIGHT ALSO LIKE</p>
+      <p className='trending mt-4'>YOU MIGHT ALSO LIKE</p>
       <div className='row likedImg mb-5'>
-        {likedBlogs.map((blog) => (
+        {likedBlogs ? (likedBlogs.map((blog) => (
           <div key={blog._id} className='col-sm-6 col-md-4 col-lg-4'>
             <img src={blog.imageUrl} alt={blog.title} className='beautyPic' />
             <h6
@@ -47,7 +47,7 @@ export default function YouMightAlsoLikeComponent() {
             </h6>
             <em>{moment(blog.timestamp).format('llll')}</em>
           </div>
-        ))}
+        ))): (<p>No similar post.</p>)}
       </div>
     </>
   );

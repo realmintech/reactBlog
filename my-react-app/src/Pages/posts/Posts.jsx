@@ -17,10 +17,9 @@ export default function Posts() {
   const [editImage, setEditImage] = useState();
   const dispatch = useDispatch();
 
-  const data = useSelector((state) => state.createPost);
+  const data = useSelector((state) => state.post);
   const user = useSelector((state) => state.userInfo);
-  const results = data.userInfo;
-
+  const results = data.returnData;
   useEffect(() => {
     dispatch(getBlog());
   }, [dispatch]);

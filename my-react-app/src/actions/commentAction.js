@@ -4,7 +4,10 @@ import {
   CREATE_COMMENT_FAILED,
   GET_COMMENTS_SUCCESS,
   GET_COMMENTS_FAILED,
+  DELETE_COMMENTS_SUCCESS,
+  DELETE_COMMENTS_FAILED,
 } from '../constants/userConstants';
+const API = process.env.REACT_APP_API_URL;
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
@@ -17,8 +20,11 @@ try {
 
 export const createComment = (postId, content) => async (dispatch) => {
   try {
+    if(!authToken) {
+      window.alert('You must login before you comment.')
+    }
     const response = await axios.post(
-      `http://localhost:3000/comment/${postId}`,
+      `${API}/comment/${postId}`,
       { content },
       {
         headers: {
@@ -27,7 +33,6 @@ export const createComment = (postId, content) => async (dispatch) => {
         },
       }
     );
-  console.log('Response available',response.data)
     dispatch({
       type: CREATE_COMMENT_SUCCESS,
       payload: response.data,
@@ -46,7 +51,7 @@ export const createComment = (postId, content) => async (dispatch) => {
 
 export const getPostComments = (postId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3000/comment/${postId}`);
+    const response = await axios.get(`${API}/comment/${postId}`);
     dispatch({
       type: GET_COMMENTS_SUCCESS,
       payload: response.data,
@@ -58,6 +63,26 @@ export const getPostComments = (postId) => async (dispatch) => {
         error.response && error.response.data
           ? error.response.data.message
           : error.message,
+    });
+  }
+};
+
+
+export const deletePostComments = (postId) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`${API}/comment/${postId}`);
+    dispatch({
+      type: DELETE_COMMENTS_SUCCESS,
+      payload: response.data,
+    });
+    getPostComments()
+  } catch (error) {
+    dispatch({
+      type: DELETE_COMMENTS_FAILED,
+      payload:
+        error.response && error.response.data
+          ? error.response.data.message
+          : error.message,                            
     });
   }
 };

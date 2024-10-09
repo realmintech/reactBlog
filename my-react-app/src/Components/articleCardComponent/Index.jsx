@@ -21,13 +21,12 @@ export default function ArticleCard({ item }) {
           />
         </div>
         <div className='title-wrapper'>
-          {/* <hr className="title-line" /> */}
           <h5 className='title-text' onClick={handleNavigate}>
-            {item.title.slice(0, 25)}.. .
+            {item.title.slice(0, 25)}...
           </h5>
         </div>
         <p className='today_date'>{moment(item.timestamp).format('llll')}</p>
-        <p className='description-text'>{item.description.slice(0, 100)}...</p>
+        <p className='description-text'>{item.description.slice(0, 120)}...</p>
       </div>
     </div>
   );

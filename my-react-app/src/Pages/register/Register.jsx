@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Register.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -10,19 +11,25 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userInfo = useSelector((state) => state.userLogin.userInfo);
 
-  const userRegister = useSelector((state) => state.userRegistration);
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(email, username, password, confirmPassword));
+    dispatch(register(email, username, password, confirmPassword, navigate));
   };
 
   useEffect(() => {
-    if (userRegister.error) {
+    if (userInfo?.error) {
       setShowAlert(true);
     }
-  }, [userRegister.error]);
+  }, [userInfo?.error]);
 
   const closeAlert = () => {
     setShowAlert(false);
@@ -30,21 +37,19 @@ export default function Register() {
 
   return (
     <>
-      <div
-        className="container login_template justify-content-center align-items-center vh-100"
-      >
+      <div className="container login_template justify-content-center align-items-center vh-100">
         <div className="form_container bg-white p-5 ">
           <form>
             <h3 className="text-center">Register</h3>
             {showAlert && (
               <div
                 className={`alert ${
-                  userRegister.error ? 'alert-danger' : 'alert-success'
+                  userInfo.error ? 'alert-danger' : 'alert-success'
                 } alert-dismissible fade show`}
                 role="alert"
               >
-                {userRegister.error
-                  ? userRegister.error
+                {userInfo.error
+                  ? userInfo.error
                   : 'You have successfully registered'}
                 <button
                   type="button"
@@ -107,7 +112,6 @@ export default function Register() {
               >
                 Register
               </button>
-              {/* <Navigate to="" /> */}
             </div>
             <p className="text-center">
               Already have an account? <a href="/login">Login</a>

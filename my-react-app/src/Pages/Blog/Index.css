@@ -13,7 +13,6 @@
 .blog_big_img {
   width: 100%;
   max-width: 100%;
-  /* height: 250px; */
 }
 
 button {
@@ -25,10 +24,6 @@ button {
 
 .textArea {
   width: 100%;
-}
-
-button:hover {
-  color: grey;
 }
 
 .heading {
@@ -48,7 +43,6 @@ button:hover {
 .picCaption {
   padding: 10px 0;
   font-style: italic;
-  /* text-align: center; */
   font-size: medium;
   font-weight: 500;
   font-style: normal;
@@ -129,13 +123,3 @@ button:hover {
   font-style: italic;
   text-align: center;
 }
-
-/* .highLight::before {
-  content: '';
-  border-bottom: 1px solid #141212;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 50%;
-  z-index: 0;
-} */

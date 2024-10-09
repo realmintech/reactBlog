@@ -13,14 +13,14 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import * as crypto from 'crypto';
 import { Auth, AuthDocument } from './entities/auth.entity';
-import { EmailService } from '../utils/email.service';
+// import { EmailService } from '../utils/email.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(Auth.name) private readonly authModel: Model<AuthDocument>,
     private jwtService: JwtService,
-    private emailService: EmailService,
+    // private emailService: EmailService,
   ) {}
 
   private generateConfirmationToken(): string {
@@ -207,7 +207,7 @@ export class AuthService {
 
     await user.save();
 
-    await this.emailService.sendEmail('resetToken', email, resetToken);
+    // await this.emailService.sendEmail('resetToken', email, resetToken);
   }
 
   private generateResetToken(): string {
