@@ -5,8 +5,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../actions/userActions';
+import { Link } from 'react-router-dom';
 
-export default function CustomNavbar({ isAdmin }) {
+export default function CustomNavbar() {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const isAdmin = userInfo?.token?.user?.role === 'admin';
+  const isUser = userInfo?.token?.user?.role === 'guest';
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <header className="header">
@@ -34,35 +46,48 @@ export default function CustomNavbar({ isAdmin }) {
               <Nav.Link href="/blogs">Blogs</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
-            {!isAdmin ? (
+            {userInfo && isUser ? (
               <>
                 <button className="btn" style={{ backgroundColor: 'navy' }}>
-                  <a
-                    href="/about"
+                  <Link
+                    onClick={logoutHandler}
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    Logout
+                  </Link>
+                </button>
+              </>
+            ) :  ( userInfo && isAdmin ? (
+              <>
+                <button className="btn" style={{ backgroundColor: 'navy' }}>
+                  <Link
+                    to="/dashboard"
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    Dashboard
+                  </Link>
+                </button>
+                <button className="btn" style={{ backgroundColor: 'navy' }}>
+                  <Link
+                    onClick={logoutHandler}
+                    style={{ textDecoration: 'none', color: 'white' }}
+                  >
+                    Logout
+                  </Link>
+                </button>
+              </>
+            ): (
+                <button className="btn" style={{ backgroundColor: 'navy' }}>
+                  <Link
+                    to='/login'
                     style={{ textDecoration: 'none', color: 'white' }}
                   >
                     Login
-                  </a>
+                  </Link>
                 </button>
-                <button className="btn" style={{ backgroundColor: 'navy' }}>
-                  <a
-                    href="/Login"
-                    style={{ textDecoration: 'none', color: 'white' }}
-                  >
-                    Register
-                  </a>
-                </button>
-              </>
-            ) : (
-              <button className="btn" style={{ backgroundColor: 'navy' }}>
-                <a
-                  href="/Register"
-                  style={{ textDecoration: 'none', color: 'white' }}
-                >
-                  Logout
-                </a>
-              </button>
-            )}
+            ))}
+
+           
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function Comment(props) {
   const { item } = props;
-    const users = useSelector((state) => state.userLogin.userInfo.token.user);
+    const users = useSelector((state) => state?.userLogin?.userInfo?.token?.user);
   return (
     <>
       <div className="col-lg-10 col-md-10 col-sm-10">

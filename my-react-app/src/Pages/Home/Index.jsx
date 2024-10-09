@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import CarouselContent from '../carousel/Carousel';
 import ArticleCard from '../../components/articleCardComponent/Index';
 import AboutMe from '../../components/aboutMeComponent/Index';
-import Newsletter from '../../components/newsLetterComponent/Index';
-import CategoryComponent from '../../components/categoryComponent/Index';
+// import Newsletter from '../../components/newsLetterComponent/Index';
+// import CategoryComponent from '../../components/categoryComponent/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeaturedBlogs } from '../../actions/createPostAction';
 
@@ -46,10 +46,10 @@ export default function Index() {
               <AboutMe />
             </div>
             <div className="news__letter__component">
-              <Newsletter />
+              {/* <Newsletter /> */}
             </div>
             <div className="category__component">
-              <CategoryComponent />
+              {/* <CategoryComponent /> */}
             </div>
           </div>
         </div>

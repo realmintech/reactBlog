@@ -1,8 +1,20 @@
 import React from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function Dashboard() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  useEffect(() => {
+     if (!userInfo || userInfo?.token?.user?.role !== 'admin') {
+       navigate('/');
+     }
+  }, [userInfo, dispatch, navigate]);
   return (
     <>
       <div className="dashboard container-fluid">

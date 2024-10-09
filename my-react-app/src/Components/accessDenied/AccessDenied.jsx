@@ -6,7 +6,7 @@ const AccessDenied = () => {
   return (
     <div className="text-center mt-5">
       <h1>Acess denied.</h1>
-      <Link to="/about" className="goToHome cursor-pointer text-blue">
+      <Link to="/" className="goToHome cursor-pointer text-blue">
         Go back to Home
       </Link>
     </div>

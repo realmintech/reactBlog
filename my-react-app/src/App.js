@@ -14,18 +14,10 @@ import DashboardContent from './pages/dashboardContent/DashboardContent';
 import Post from './pages/post/Post';
 import Posts from './pages/posts/Posts';
 import CustomNavbar from './components/common/navbar/Navbar';
-import { useState, useEffect } from 'react';
 import AccessDenied from './components/accessDenied/AccessDenied';
 
-export default function App() {
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('userInfo'));
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
+export default function App() {
   return (
     <Router>
       <div>
@@ -72,7 +64,6 @@ export default function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {user && user.token && user?.token?.user?.role === 'admin' ? (
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<DashboardContent />} />
               <Route path="create_post" element={<Post />} />
@@ -80,9 +71,7 @@ export default function App() {
               <Route path="category" element={<Category />} />
               <Route path="posts" element={<Posts />} />
             </Route>
-          ) : (
-            <Route element={<AccessDenied />} />
-          )}
+            <Route path="/accessDenied" element={<AccessDenied />} />
         </Routes>
       </div>
     </Router>

@@ -18,7 +18,7 @@ export default function SingleArticleComponent() {
             <div className="firstSection">
                 {data && data.length > 0 && (
                     <>
-                        <h3 className="text-center pt-4">{data[0]?.title}</h3>
+                        <h3 className="text-center pt-5">{data[0]?.title}</h3>
                         <div className="text-center">
                             <p className='today_date'>July-12-2024</p>
                         </div>

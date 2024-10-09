@@ -17,13 +17,13 @@ export default function YouMightAlsoLikeComponent() {
           `http://localhost:3000/blogs/${id}/similar`
         );
         if (response.data) {
-          setLikedBlogs(response.data);
+          setLikedBlogs(response.data)
         }
       } catch (err) {
-        console.log('Error fetching similar blogs: ', err);
+        console.log('Error fetching similar blogs: ', err)
       }
-    };
-    fetchSimilarBlogs();
+    }
+    fetchSimilarBlogs()
   }, [id]);
 
   if (!likedBlogs) {

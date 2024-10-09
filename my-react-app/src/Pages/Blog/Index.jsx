@@ -135,11 +135,12 @@ export default function SingleBlogPost() {
                 id=""
                 cols="97"
                 rows="5"
+                required
                 className="textArea"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
-              <button className="btnPost" onClick={handleSubmit}>
+              <button className="btnPost" disabled={!content} onClick={handleSubmit}>
                 POST COMMENT
               </button>
             </div>
