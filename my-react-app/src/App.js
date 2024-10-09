@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Blog from './pages/Blog/Index';
+
 import Blogs from './pages/blogs/Index';
 import Contact from './pages/contact/Contact';
 import Home from './pages/home/Index';
@@ -15,6 +15,7 @@ import Posts from './pages/posts/Posts';
 import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
 import About from './pages/about/About';
+import Blog from './pages/Blog/Index';
 
 export default function App() {
   return (
@@ -70,7 +71,7 @@ export default function App() {
               <Route path="category" element={<Category />} />
               <Route path="posts" element={<Posts />} />
             </Route>
-            <Route path="/accessDenied" element={<AccessDenied />} />
+            <Route path="*" element={<AccessDenied />} />
         </Routes>
       </div>
     </Router>
