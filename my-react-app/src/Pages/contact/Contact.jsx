@@ -1,7 +1,7 @@
 import React from "react";
 import ContactPage from "../../components/contactPage/Index";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <>
       <ContactPage />
