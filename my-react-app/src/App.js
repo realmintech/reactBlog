@@ -1,8 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
-import Contact from './pages/contact/Contact';
-
 import Footer from './components/common/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
@@ -18,6 +15,7 @@ import About from './pages/about/About';
 import Blog from './pages/Blog/Index';
 import Blogs from './pages/blogs/Index';
 import HomePage from './pages/home/Index';
+import ContactPage from './components/contactPage/Index';
 
 export default function App() {
   return (
@@ -52,7 +50,7 @@ export default function App() {
             path='/contact'
             element={
               <LayoutWithNavbarAndFooter>
-                <Contact />
+            <ContactPage/>
               </LayoutWithNavbarAndFooter>
             }
           />
