@@ -1,21 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Footer from './components/common/footer/Footer';
+import HomePage from './pages/home/Index';
+import AboutPage from './pages/about/About';
+import Blogs from './pages/blogs/Index';
+import ContactPage from './components/contactPage/Index';
+import Blog from './pages/Blog/Index';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
-import Sidebar from './components/sidebar/Sidebar';
-import Category from './pages/category/Category';
 import DashboardContent from './pages/dashboardContent/DashboardContent';
 import Post from './pages/post/Post';
+import Sidebar from './components/sidebar/Sidebar';
+import Category from './pages/category/Category';
 import Posts from './pages/posts/Posts';
-import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
-import About from './pages/about/About';
-import Blog from './pages/Blog/Index';
-import Blogs from './pages/blogs/Index';
-import HomePage from './pages/home/Index';
-import ContactPage from './components/contactPage/Index';
+import CustomNavbar from './components/common/navbar/Navbar';
+import Footer from './components/common/footer/Footer';
+
+
 
 export default function App() {
   return (
@@ -26,7 +27,7 @@ export default function App() {
             path='/'
             element={
               <LayoutWithNavbarAndFooter>
-                <HomePage/>
+             <HomePage/>
               </LayoutWithNavbarAndFooter>
             }
           />
@@ -34,7 +35,7 @@ export default function App() {
             path='/about'
             element={
               <LayoutWithNavbarAndFooter>
-                <About />
+               <AboutPage/>
               </LayoutWithNavbarAndFooter>
             }
           />
@@ -42,7 +43,7 @@ export default function App() {
             path='/blogs'
             element={
               <LayoutWithNavbarAndFooter>
-               <Blogs/>
+              <Blogs/>
               </LayoutWithNavbarAndFooter>
             }
           />
@@ -50,7 +51,7 @@ export default function App() {
             path='/contact'
             element={
               <LayoutWithNavbarAndFooter>
-            <ContactPage/>
+           <ContactPage/>
               </LayoutWithNavbarAndFooter>
             }
           />
@@ -58,7 +59,7 @@ export default function App() {
             path='/blog/:id'
             element={
               <LayoutWithNavbarAndFooter>
-                <Blog />
+               <Blog/>
               </LayoutWithNavbarAndFooter>
             }
           />
