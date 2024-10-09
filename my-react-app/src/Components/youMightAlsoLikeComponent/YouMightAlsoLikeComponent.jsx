@@ -1,32 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import moment from 'moment';
-import { useParams } from 'react-router-dom';
 import './YouMightAlsoLikeComponent.css';
-import { useNavigate } from 'react-router-dom';
+import '../../components/articleCardComponent/Index';
 
-export default function YouMightAlsoLikeComponent() {
-  const { id } = useParams();
-  const [likedBlogs, setLikedBlogs] = useState([]);
-  const navigate = useNavigate;
-  const API = process.env.REACT_APP_API_URL
-  useEffect(() => {
-    const fetchSimilarBlogs = async () => {
-      try {
-        const response = await axios.get(
-          `${API}/blogs/${id}/similar`
-        );
-        if (response.data) {
-          setLikedBlogs(response.data)
-        }
-      } catch (err) {
-        console.log('Error fetching similar blogs: ', err)
-      }
-    }
-    fetchSimilarBlogs()
-  }, [id]);
-
-  if (!likedBlogs) {
+export default function YouMightAlsoLikeComponent({ likedBlogs, navigate }) {
+  if (!likedBlogs || likedBlogs.length === 0) {
     return <div>No similar blogs.</div>;
   }
 
@@ -34,20 +12,37 @@ export default function YouMightAlsoLikeComponent() {
     <>
       <p className='trending mt-4'>YOU MIGHT ALSO LIKE</p>
       <div className='row likedImg mb-5'>
-        {likedBlogs ? (likedBlogs.map((blog) => (
-          <div key={blog._id} className='col-sm-6 col-md-4 col-lg-4'>
-            <img src={blog.imageUrl} alt={blog.title} className='beautyPic' />
-            <h6
-              className='title'
-              onClick={() => {
-                navigate(`/blog/${blog._id}`);
-              }}
-            >
-              {blog.title}
-            </h6>
-            <em>{moment(blog.timestamp).format('llll')}</em>
-          </div>
-        ))): (<p>No similar post.</p>)}
+        {likedBlogs ? (
+          likedBlogs.map((blog) => (
+            <div key={blog._id} className='col-sm-6 col-md-4 col-lg-4'>
+              <div className='single_blog_img'>
+                <img
+                  onClick={() => {
+                    navigate(`/blog/${blog._id}`);
+                  }}
+                  src={blog.imageUrl}
+                  alt={blog.title}
+                  className='blog_img'
+                />
+              </div>
+              <div className='title-wrapper'>
+                <h5
+                  className='title-text'
+                  onClick={() => {
+                    navigate(`/blog/${blog._id}`);
+                  }}
+                >
+                  {blog.title.slice(0, 25)}...
+                </h5>
+              </div>
+              <p className='today_date'>
+                {moment(blog.timestamp).format('llll')}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>No similar post.</p>
+        )}
       </div>
     </>
   );

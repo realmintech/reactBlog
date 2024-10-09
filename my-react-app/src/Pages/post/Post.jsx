@@ -19,7 +19,6 @@ export default function Post() {
 
   const data = useSelector((state) => state.category);
   const postedData = useSelector((state) => state.post);
-  console.log('postedData', postedData);
   const closeAlert = () => {
     setShowAlert(false);
   };

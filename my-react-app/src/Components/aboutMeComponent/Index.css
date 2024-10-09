@@ -1,5 +1,18 @@
-.card__img__top{
-    width: 100%;
-    object-fit: cover;
-    
+.card__img__top {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+}
+
+.card-text {
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.p___bottom {
+  font-size: large;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 0.1rem;
 }
