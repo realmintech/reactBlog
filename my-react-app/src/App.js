@@ -1,21 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './Pages/home/Index.jsx';
+import AboutPage from './Pages/about/About.jsx';
+import Blogs from './Pages/blogs/Index.jsx';
+import ContactPage from './Components/contactPage/Index.jsx';
+import Blog from './Pages/Blog/Index.jsx';
+import Login from './Pages/login/Login.jsx';
+import Register from './Pages/register/Register.jsx';
+import Dashboard from './Pages/dashboard/Dashboard.jsx';
+import DashboardContent from './Pages/dashboardContent/DashboardContent.jsx';
+import Post from './Pages/post/Post.jsx';
+import Sidebar from './Components/sidebar/Sidebar.jsx';
+import Category from './Pages/category/Category.jsx';
+import Posts from './Pages/posts/Posts.jsx';
+import AccessDenied from './Components/accessDenied/AccessDenied.jsx';
+import CustomNavbar from './Components/common/navbar/Navbar.jsx';
+import Footer from './Components/common/footer/Footer.jsx';
 
-import Contact from './pages/contact/Contact';
-import Home from './pages/home/Index';
-import Footer from './components/common/footer/Footer';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import Dashboard from './pages/dashboard/Dashboard';
-import Sidebar from './components/sidebar/Sidebar';
-import Category from './pages/category/Category';
-import DashboardContent from './pages/dashboardContent/DashboardContent';
-import Post from './pages/post/Post';
-import Posts from './pages/posts/Posts';
-import CustomNavbar from './components/common/navbar/Navbar';
-import AccessDenied from './components/accessDenied/AccessDenied';
-import About from './pages/about/About';
-import Blog from './pages/Blog/Index';
-import Blogs from '.pages/blogs/Index'
+
 
 export default function App() {
   return (
@@ -23,55 +24,55 @@ export default function App() {
       <div>
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <LayoutWithNavbarAndFooter>
-                <Home />
+             <HomePage/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/about"
+            path='/about'
             element={
               <LayoutWithNavbarAndFooter>
-                <About />
+               <AboutPage/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/blogs"
+            path='/blogs'
             element={
               <LayoutWithNavbarAndFooter>
-                <Blogs />
+              <Blogs/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/contact"
+            path='/contact'
             element={
               <LayoutWithNavbarAndFooter>
-                <Contact />
+           <ContactPage/>
               </LayoutWithNavbarAndFooter>
             }
           />
           <Route
-            path="/blog/:id"
+            path='/blog/:id'
             element={
               <LayoutWithNavbarAndFooter>
-                <Blog />
+               <Blog/>
               </LayoutWithNavbarAndFooter>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />}>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/dashboard' element={<Dashboard />}>
             <Route index element={<DashboardContent />} />
-            <Route path="create_post" element={<Post />} />
-            <Route path="sideBar" element={<Sidebar />} />
-            <Route path="category" element={<Category />} />
-            <Route path="posts" element={<Posts />} />
+            <Route path='create_post' element={<Post />} />
+            <Route path='sideBar' element={<Sidebar />} />
+            <Route path='category' element={<Category />} />
+            <Route path='posts' element={<Posts />} />
           </Route>
-          <Route path="*" element={<AccessDenied />} />
+          <Route path='*' element={<AccessDenied />} />
         </Routes>
       </div>
     </Router>
