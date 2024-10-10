@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import '../blogs/Index.css'
-import SingleArticleComponet from '../../components/singleArticleComponent/Index';
-import BlogDisplay from '../../components/blogDisplay/Index';
-import CategoryComponent from '../../components/categoryComponent/Index';
-import Newsletter from '../../components/newsLetterComponent/Index';
-import AboutMe from '../../components/aboutMeComponent/Index';
+import SingleArticleComponet from '../../Components/singleArticleComponent/Index';
+import BlogDisplay from '../../Components/blogDisplay/Index';
+import CategoryComponent from '../../Components/categoryComponent/Index';
+import Newsletter from '../../Components/newsLetterComponent/Index';
+import AboutMe from '../../Components/aboutMeComponent/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPublishedBlogs } from '../../actions/createPostAction';
 

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Index.css';
 import MyPicture from '../../assets/passport.jpg';
-import AboutMe from '../../components/aboutMeComponent/Index';
-import Newsletter from '../../components/newsLetterComponent/Index';
-import Comment from '../../components/commentSection/Index';
+import AboutMe from '../../Components/aboutMeComponent/Index';
+import Newsletter from '../../Components/newsLetterComponent/Index';
+import Comment from '../../Components/commentSection/Index';
 import { FaShare, FaTag } from 'react-icons/fa';
 import { useParams, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import axios from 'axios';
-import YouMightAlsoLikeComponent from '../../components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent';
+import YouMightAlsoLikeComponent from '../../Components/youMightAlsoLikeComponent/YouMightAlsoLikeComponent';
 import { createComment, getPostComments } from '../../actions/commentAction';
 import { useDispatch, useSelector } from 'react-redux';
 const API = process.env.REACT_APP_API_URL;

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import './YouMightAlsoLikeComponent.css';
-import '../../components/articleCardComponent/Index';
+import '../../Components/articleCardComponent/Index';
 
 export default function YouMightAlsoLikeComponent({ likedBlogs, navigate }) {
   if (!likedBlogs || likedBlogs.length === 0) {
