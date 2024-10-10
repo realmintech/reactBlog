@@ -15,7 +15,7 @@ import CustomNavbar from './components/common/navbar/Navbar';
 import AccessDenied from './components/accessDenied/AccessDenied';
 import About from './pages/about/About';
 import Blog from './pages/Blog/Index';
-import Blogs from './pages/blogs/Index';
+import Blogs from '.pages/blogs/Index'
 
 export default function App() {
   return (
