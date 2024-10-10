@@ -11,7 +11,7 @@ export default function Index({item}) {
    };
   return (
     <>
-      <div className="col-lg-4 col-md-4 col-sm-4" onClick={handleNavigate}>
+      <div className="col-lg-4 col-md-4 col-sm-4  mt-3" onClick={handleNavigate}>
         <div className="image___div">
           <img src={item.imageUrl} alt="" className="bloging__img my-4" />
         </div>
