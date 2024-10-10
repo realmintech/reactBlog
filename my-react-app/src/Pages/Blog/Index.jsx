@@ -147,7 +147,7 @@ export default function Blog() {
               )}
 
               <p className='commentSection'>
-                Your email address will not be published. Required fields are
+                Your email address will not be published. Required field is
                 marked *
               </p>
               <h6>COMMENT *</h6>
