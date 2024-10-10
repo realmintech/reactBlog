@@ -9,7 +9,7 @@ export default function Comment(props) {
   return (
     <>
       <div className="col-lg-10 col-md-10 col-sm-10">
-        <h5 className="writer">
+        <h5 className="writer"> Author:
           {users && users._id === item.author ? users.username : ''}
         </h5>
         <p className="admin">{item.content}</p>
