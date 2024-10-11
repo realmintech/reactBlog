@@ -61,41 +61,47 @@ export default function Blog() {
   }, [dispatch, id]);
 
   if (!blog) {
-    return <div>Loading...</div>;
+    return (
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
-      <div className='bgImg'></div>
-      <div className='container'>
-        <div className='row'>
-          <div className='col4-lg-8 col-md-8 col-sm-8'>
-            <div className='heading'>
+      <div className="bgImg"></div>
+      <div className="container">
+        <div className="row">
+          <div className="col4-lg-8 col-md-8 col-sm-8">
+            <div className="heading">
               <h2>{blog.title}</h2>
-              <p className='title_date'>
+              <p className="title_date">
                 {moment(blog.timestamp).format('llll')}
               </p>
             </div>
-            <div className='news'>
-              <div className='blog_big_img'>
+            <div className="news">
+              <div className="blog_big_img">
                 <img
                   src={blog.imageUrl}
                   alt={blog.title}
-                  className='beautyPic'
+                  className="beautyPic"
                 />
               </div>
-              <p className='picCaption'>
-                <button class='btn btn-primary' type='submit'>
+              <p className="picCaption">
+                <button class="btn btn-primary" type="submit">
                   {blog.tags}{' '}
                 </button>
               </p>
               <p>{blog.description}</p>
-              <div className='tagShare row'>
-                <div className='btns col-lg-8 col-md-8 col-sm-8'>
+              <div className="tagShare row">
+                <div className="btns col-lg-8 col-md-8 col-sm-8">
                   <FaTag />
-                  <button className='btn'>{blog.tags}</button>
+                  <button className="btn">{blog.tags}</button>
                 </div>
-                <div className='shareIcon col-lg-4 col-md-4 col-sm-4'>
+                <div className="shareIcon col-lg-4 col-md-4 col-sm-4">
                   <button>
                     <FaShare />
                     Share
@@ -104,19 +110,19 @@ export default function Blog() {
               </div>
             </div>
             <div>
-              <p className='highLight'>
+              <p className="highLight">
                 <span> ART / FOOD / TOP</span>
               </p>
-              <span className='flexImgWord row'>
-                <div className='col-lg-2 col-md-2 col-sm-2'>
+              <span className="flexImgWord row">
+                <div className="col-lg-2 col-md-2 col-sm-2">
                   <img
                     src={MyPicture}
-                    alt='man_on_suit'
-                    className='roundedImg'
+                    alt="man_on_suit"
+                    className="roundedImg"
                   />
                 </div>
-                <span className='col-lg-10 col-md-10 col-sm-10 mb-5'>
-                  <h3 className='h3__maryam'>Mariam Temitope</h3>
+                <span className="col-lg-10 col-md-10 col-sm-10 mb-5">
+                  <h3 className="h3__maryam">Mariam Temitope</h3>
                   <p>
                     I am a front-end developer, passionate about converting
                     ideas into reality.
@@ -128,7 +134,7 @@ export default function Blog() {
                 navigate={navigate}
               />
               <p
-                className='comment'
+                className="comment"
                 style={{
                   borderTop: '1px solid rgba(139,135,135,0.514)',
                   paddingTop: '30px',
@@ -138,7 +144,7 @@ export default function Blog() {
               </p>
               {data.length > 0 ? (
                 data.map((comment, index) => (
-                  <div className='flexImgWord row' key={index}>
+                  <div className="flexImgWord row" key={index}>
                     <Comment item={comment} />
                   </div>
                 ))
@@ -146,23 +152,23 @@ export default function Blog() {
                 <p>No comments available.</p>
               )}
 
-              <p className='commentSection'>
+              <p className="commentSection">
                 Your email address will not be published. Required field is
                 marked *
               </p>
               <h6>COMMENT *</h6>
               <textarea
-                name='comment'
-                id=''
-                cols='97'
-                rows='5'
+                name="comment"
+                id=""
+                cols="97"
+                rows="5"
                 required
-                className='textArea'
+                className="textArea"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <button
-                className='btnPost'
+                className="btnPost"
                 disabled={!content}
                 onClick={handleSubmit}
               >
@@ -170,10 +176,10 @@ export default function Blog() {
               </button>
             </div>
           </div>
-          <div className='col-lg-4 col-md-4 col-sm-6'>
+          <div className="col-lg-4 col-md-4 col-sm-6">
             <AboutMe />
             <Newsletter />
-            <div className='tagDiv'>
+            <div className="tagDiv">
               <button>BRIDGE</button>
               <button>PHOTOGRAPH</button>
               <button>FOOD</button>
