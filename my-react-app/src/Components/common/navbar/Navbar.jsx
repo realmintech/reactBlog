@@ -23,10 +23,18 @@ export default function CustomNavbar() {
     <>
       <header className="header">
         <div className="socialIcons">
+          <Link to="https://x.com/Adesina20638088">
+            <FaTwitter
+              style={{ marginRight: '10px', fontSize: '25px', color: 'black' }}
+            />
+          </Link>
+          <Link to="https://www.linkedin.com/in/mariam-adesina-temitope">
+            <FaLinkedin
+              style={{ fontSize: '25px', marginRight: '10px', color: 'black' }}
+            />
+          </Link>
           <FaFacebook style={{ marginRight: '10px', fontSize: '25px' }} />
-          <FaTwitter style={{ marginRight: '10px', fontSize: '25px' }} />
-          <FaLinkedin style={{ marginRight: '10px', fontSize: '25px' }} />
-          <FaInstagram size={20} />
+          <FaInstagram fontSize={25} style={{ marginRight: '10px' }} />
         </div>
         <div className="headerWord">
           <img src={Logo} alt="letsBlog" className="lets_blog" />
@@ -57,7 +65,7 @@ export default function CustomNavbar() {
                   </Link>
                 </button>
               </>
-            ) :  ( userInfo && isAdmin ? (
+            ) : userInfo && isAdmin ? (
               <>
                 <button className="btn" style={{ backgroundColor: 'navy' }}>
                   <Link
@@ -76,18 +84,16 @@ export default function CustomNavbar() {
                   </Link>
                 </button>
               </>
-            ): (
-                <button className="btn" style={{ backgroundColor: 'navy' }}>
-                  <Link
-                    to='/login'
-                    style={{ textDecoration: 'none', color: 'white' }}
-                  >
-                    Login
-                  </Link>
-                </button>
-            ))}
-
-           
+            ) : (
+              <button className="btn" style={{ backgroundColor: 'navy' }}>
+                <Link
+                  to="/login"
+                  style={{ textDecoration: 'none', color: 'white' }}
+                >
+                  Login
+                </Link>
+              </button>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

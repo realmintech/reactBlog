@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import CarouselContent from '../carousel/Carousel';
 import ArticleCard from '../../Components/articleCardComponent/Index';
 import AboutMe from '../../Components/aboutMeComponent/Index';
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeaturedBlogs } from '../../actions/createPostAction';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -52,6 +54,29 @@ export default function HomePage() {
           <div className="col-sm-6 col-md-6 col-lg-4 ">
             <div className="about__me__component">
               <AboutMe />
+            </div>
+            <div className="socialMedia border mt-3 p-5 text-center mb-4">
+              <p>FOLLOW ME ON </p>
+              <Link to="https://x.com/Adesina20638088">
+                <FaTwitter
+                  style={{
+                    marginRight: '10px',
+                    fontSize: '25px',
+                    color: 'black',
+                  }}
+                />
+              </Link>
+              <Link to="https://www.linkedin.com/in/mariam-adesina-temitope">
+                <FaLinkedin
+                  style={{
+                    fontSize: '25px',
+                    marginRight: '10px',
+                    color: 'black',
+                  }}
+                />
+              </Link>
+              <FaFacebook style={{ marginRight: '10px', fontSize: '25px' }} />
+              <FaInstagram fontSize={25} style={{ marginRight: '10px' }} />
             </div>
           </div>
         </div>
