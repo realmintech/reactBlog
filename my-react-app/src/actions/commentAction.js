@@ -20,7 +20,7 @@ try {
 
 export const createComment = (postId, content) => async (dispatch) => {
   try {
-    if(!authToken) {
+    if(!getTokenString){
       window.alert('You must login before you comment.')
     }
     const response = await axios.post(

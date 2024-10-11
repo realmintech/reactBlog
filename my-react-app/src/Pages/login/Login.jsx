@@ -9,12 +9,14 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin.userInfo);
+  const userInfo = useSelector((state) => state.userLogin);
+  console.log('user login error', userLogin);
   useEffect(() => {
     if (userLogin) {
-      navigate('/')
+      navigate('/');
     }
   }, [navigate, userLogin]);
 
@@ -25,11 +27,11 @@ export default function Login() {
 
   useEffect(() => {
     try {
-      if (userLogin?.error) {
+      if (userInfo?.error) {
         setShowAlert(true);
       }
     } catch (error) {}
-  }, [userLogin?.error]);
+  }, [userInfo?.error]);
 
   const closeAlert = () => {
     setShowAlert(false);
@@ -38,53 +40,53 @@ export default function Login() {
   return (
     <>
       <div
-        className='container login_template justify-content-center align-items-center vh-100'
+        className="container login_template justify-content-center align-items-center vh-100"
         style={{ margin: 'auto', marginTop: '100px' }}
       >
-        <div className='form_container bg-white p-5 '>
+        <div className="form_container bg-white p-5 ">
           <form>
-            <h3 className='text-center'>Login</h3>
+            <h3 className="text-center">Login</h3>
             {showAlert && (
               <div
                 className={`alert ${
-                  userLogin.error ? 'alert-danger' : 'alert-success'
+                  userInfo.error ? 'alert-danger' : 'alert-success'
                 } alert-dismissible fade show`}
-                role='alert'
+                role="alert"
               >
-                {userLogin.error
-                  ? userLogin.error
+                {userInfo.error
+                  ? userInfo.error
                   : 'You have logged in successfully'}
                 <button
-                  type='button'
-                  className='btn-close'
+                  type="button"
+                  className="btn-close"
                   onClick={closeAlert}
-                  aria-label='Close'
+                  aria-label="Close"
                 ></button>
               </div>
             )}
-            <div className='mb-2'>
-              <label htmlFor=''>Email</label>
+            <div className="mb-2">
+              <label htmlFor="">Email</label>
               <input
-                type='email'
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder='Enter Email'
-                className='form-control'
+                placeholder="Enter Email"
+                className="form-control"
               />
             </div>
-            <div className='mb-2'>
-              <label htmlFor='password'>Password</label>
+            <div className="mb-2">
+              <label htmlFor="password">Password</label>
               <input
-                type='password'
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='form-control'
-                placeholder='Password'
+                className="form-control"
+                placeholder="Password"
               />
             </div>
-            <div className='d-grid'>
+            <div className="d-grid">
               <button
-                className='btn'
+                className="btn"
                 onClick={submitHandler}
                 style={{
                   width: '100%',
@@ -95,8 +97,8 @@ export default function Login() {
                 Login
               </button>
             </div>
-            <p className='text-center'>
-              Don't have an account? <a href='/register'>Register</a>
+            <p className="text-center">
+              Don't have an account? <a href="/register">Register</a>
             </p>
           </form>
         </div>
