@@ -16,6 +16,10 @@ export default function HomePage() {
     dispatch(getFeaturedBlogs());
   }, [dispatch]);
 
+    if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className="imgSlider">

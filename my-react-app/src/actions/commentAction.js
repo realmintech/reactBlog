@@ -11,19 +11,19 @@ const API = process.env.REACT_APP_API_URL;
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
-  const userInfo = JSON.parse(getTokenString);
-  authToken = userInfo?.token?.token;
+const userInfo = JSON.parse(getTokenString);
+authToken = userInfo?.token?.token;
 try {
   const userInfo = JSON.parse(getTokenString);
-  authToken = userInfo
+  authToken = userInfo?.token?.token;
 } catch (error) {
   console.error('Error parsing userInfo:', error);
 }
 
 export const createComment = (postId, content) => async (dispatch) => {
   try {
-    if(!authToken){
-      window.alert('You must login before you comment.')
+    if (!authToken) {
+      window.alert('You must login before you comment.');
     }
     const response = await axios.post(
       `${API}/comment/${postId}`,
@@ -39,7 +39,7 @@ export const createComment = (postId, content) => async (dispatch) => {
       type: CREATE_COMMENT_SUCCESS,
       payload: response.data,
     });
-    getPostComments()
+    getPostComments();
   } catch (error) {
     dispatch({
       type: CREATE_COMMENT_FAILED,
@@ -69,7 +69,6 @@ export const getPostComments = (postId) => async (dispatch) => {
   }
 };
 
-
 export const deletePostComments = (postId) => async (dispatch) => {
   try {
     const response = await axios.delete(`${API}/comment/${postId}`);
@@ -77,14 +76,14 @@ export const deletePostComments = (postId) => async (dispatch) => {
       type: DELETE_COMMENTS_SUCCESS,
       payload: response.data,
     });
-    getPostComments()
+    getPostComments();
   } catch (error) {
     dispatch({
       type: DELETE_COMMENTS_FAILED,
       payload:
         error.response && error.response.data
           ? error.response.data.message
-          : error.message,                            
+          : error.message,
     });
   }
 };

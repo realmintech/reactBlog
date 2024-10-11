@@ -20,6 +20,10 @@ export default function Blogs() {
     dispatch(getPublishedBlogs());
   }, [dispatch]);
 
+    if (!blogs) {
+      return <div>Loading...</div>;
+    }
+
   return (
     <>
       <section className="bgImg"></section>
