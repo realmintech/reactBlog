@@ -11,16 +11,18 @@ const API = process.env.REACT_APP_API_URL;
 
 const getTokenString = localStorage.getItem('userInfo');
 let authToken;
-try {
   const userInfo = JSON.parse(getTokenString);
   authToken = userInfo?.token?.token;
+try {
+  const userInfo = JSON.parse(getTokenString);
+  authToken = userInfo
 } catch (error) {
   console.error('Error parsing userInfo:', error);
 }
 
 export const createComment = (postId, content) => async (dispatch) => {
   try {
-    if(!getTokenString){
+    if(!authToken){
       window.alert('You must login before you comment.')
     }
     const response = await axios.post(
