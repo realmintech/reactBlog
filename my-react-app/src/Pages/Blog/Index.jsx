@@ -62,9 +62,9 @@ export default function Blog() {
 
   if (!blog) {
     return (
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center my-5 ">
         <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden ">Loading...</span>
         </div>
       </div>
     );

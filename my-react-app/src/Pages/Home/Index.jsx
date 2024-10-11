@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import CarouselContent from '../carousel/Carousel';
 import ArticleCard from '../../Components/articleCardComponent/Index';
 import AboutMe from '../../Components/aboutMeComponent/Index';
-import Newsletter from '../../Components/newsLetterComponent/Index';
-import CategoryComponent from '../../Components/categoryComponent/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeaturedBlogs } from '../../actions/createPostAction';
 
@@ -16,9 +14,9 @@ export default function HomePage() {
     dispatch(getFeaturedBlogs());
   }, [dispatch]);
 
-    if (!data) {
+  if (!data) {
     return (
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center my-5">
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -54,12 +52,6 @@ export default function HomePage() {
           <div className="col-sm-6 col-md-6 col-lg-4 ">
             <div className="about__me__component">
               <AboutMe />
-            </div>
-            <div className="news__letter__component">
-              <Newsletter />
-            </div>
-            <div className="category__component mb-3">
-              <CategoryComponent />
             </div>
           </div>
         </div>
