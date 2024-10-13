@@ -20,14 +20,14 @@ function CarouselContent({ data = [] }) {
       </div>
       <Carousel.Caption>
         <h5
-          className='carousel_title'
+          className='carousel_title text-black'
           onClick={() => {
             navigate(`/blog/${item._id}`);
           }}
         >
           {item.title}
         </h5>
-        <p className='carousel_desc'>{item.description.slice(0, 60)}</p>
+        <p className='carousel_desc text-black'>{item.description.slice(0, 60)}</p>
       </Carousel.Caption>
     </Carousel.Item>
   ));
