@@ -1,6 +1,5 @@
-![Screenshot3](https://github.com/user-attachments/assets/19115f9b-fc15-4564-aecb-f85d62062525)
-![Screenshot2](https://github.com/user-attachments/assets/e488608c-00ac-4439-8d61-a3dda594848e)
-![Screenshot 2024-10-24 000849](https://github.com/user-attachments/assets/492954a2-b26e-46a9-a2e8-af9fc9c6a5b4)
+![IMG_20241024_014229_226](https://github.com/user-attachments/assets/59525118-b21a-48d9-9c36-a5b8b1a7d2f2)
+
 ### Database Schema Diagram
 ![Untitled](https://github.com/wastech/nestjs-chat-api/assets/56930241/7506d114-0b69-463d-9de3-0eb276887ebd)
 
